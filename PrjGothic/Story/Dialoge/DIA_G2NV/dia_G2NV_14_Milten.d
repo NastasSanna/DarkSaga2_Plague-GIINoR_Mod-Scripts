@@ -1,11 +1,4 @@
-instance DIA_Milten_EXIT(C_Info)
+instance DIA_Milten_EXIT(DIA_Proto_End)
 {
 	npc = none_14_Milten;
-	nr = 999;
-	permanent = TRUE;
-	condition = DIA_Milten_EXIT_condition;	
-	information = DIA_Milten_EXIT_info;
-	description = Dialog_Ende;
 };
-func int DIA_Milten_EXIT_condition(){	return TRUE;};
-func void DIA_Milten_EXIT_info(){	AI_StopProcessInfos(self);};
