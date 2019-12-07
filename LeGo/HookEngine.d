@@ -3,116 +3,208 @@
 \***********************************/
 
 
-//-------------------
-// OPCODES
-//-------------------
-// /* 1 Byte */
-const int ASMINT_OP_CompareEAX  = 61;    //0x3D
-const int ASMINT_OP_JZ_Byte     = 116;   //0x74
-const int ASMINT_OP_popEAX      = 88;    //0x58
-// /* 2 Byte */
-const int ASMINT_OP_addMemToESP = 9475;  //0x2503
-const int ASMINT_OP_movESItoEAX = 61577; //0xF089
-const int ASMINT_OP_movEAXtoEDI = 51081; //0xC789
-
-//-------------------
-// Registervariablen
-//-------------------
+//---------------------
+// Register variables
+//---------------------
 var int EAX;
 var int ECX;
-var int ESP;
+var int EDX;
 var int EBX;
+var int ESP;
 var int EBP;
-var int EDI;
 var int ESI;
+var int EDI;
+
+//---------------------
+// Overwrite instances
+//---------------------
+var int HookOverwriteInstances; // self, other, item
+
+//========================================
+// [intern] Hook controller
+//========================================
+func void _Hook(var int evtHAddr, // ESP-36
+                var int _edi,     // ESP-32 // Function parameters in order of popad (reverse order of pushad)
+                var int _esi,     // ESP-28
+                var int _ebp,     // ESP-24
+                var int _esp,     // ESP-20
+                var int _ebx,     // ESP-16
+                var int _edx,     // ESP-12
+                var int _ecx,     // ESP-8
+                var int _eax) {   // ESP-4
+
+    // Backup use-instance before anything else. Temporary variable for now, because it's done before locals()
+    var int _instBak_temp; _instBak_temp = MEM_GetUseInstance();
+
+    // Local backup for recursive hooks
+    locals();
+
+    // Secure register variables locally for recursive hooks
+    var int eaxBak; eaxBak = EAX;
+    var int ecxBak; ecxBak = ECX;
+    var int edxBak; edxBak = EDX;
+    var int ebxBak; ebxBak = EBX;
+    var int espBak; espBak = ESP;
+    var int ebpBak; ebpBak = EBP;
+    var int esiBak; esiBak = ESI;
+    var int ediBak; ediBak = EDI;
+
+    // Get address of yINSTANCE_HELP by symbol index 0
+    const int instHlpAddr = 0;
+    if (!instHlpAddr) {
+        instHlpAddr = MEM_GetSymbolByIndex(0)+zCParSymbol_offset_offset;
+    };
+
+    // Also secure global instances
+    var int selfBak;  selfBak  = _@(self);
+    var int otherBak; otherBak = _@(other);
+    var int itemBak;  itemBak  = _@(item);
+    var int iHlpBak;  iHlpBak  = MEM_ReadInt(instHlpAddr);
+    var int instBak;  instBak  = _instBak_temp;
+
+    // Update register variables
+    EAX = _eax;
+    ECX = _ecx;
+    EDX = _edx;
+    EBX = _ebx;
+    ESP = _esp;
+    EBP = _ebp;
+    ESI = _esi;
+    EDI = _edi;
+
+    // Check whether Ikarus is initialized for hooks that happen during level change
+    if (!_@(MEM_Parser)) {
+        MEM_InitLabels();
+        MEM_InitGlobalInst();
+    };
+
+    // Do not overwrite the global instances by default
+    HookOverwriteInstances = FALSE;
+
+    // Iterate over all registered event handler functions
+    var zCArray a; a = _^(evtHAddr);
+    repeat(i, a.numInArray); var int i;
+        // Clear data stack in-between function calls
+        MEM_Parser.datastack_sptr = 0;
+
+        // Call the function
+        MEM_CallByID(MEM_ReadIntArray(a.array, i));
+
+        // Restore global instances in between function calls
+        if (!HookOverwriteInstances) {
+            MEM_AssignInstSuppressNullWarning = TRUE;
+            self  = _^(selfBak);
+            other = _^(otherBak);
+            item  = _^(itemBak);
+            MEM_AssignInstSuppressNullWarning = FALSE;
+        };
+        MEM_WriteInt(instHlpAddr, iHlpBak);
+        MEM_SetUseInstance(instBak);
+
+        // Stack registers should be kept read-only in between function calls
+        ESP = _esp; // Stack pointer is read-only
+        EBP = _ebp; // Base pointer is read-only
+    end;
+
+    // Update modifiable registers on stack (ESP points to the position before pushad)
+    MEM_WriteInt(ESP-32, EDI);
+    MEM_WriteInt(ESP-28, ESI);
+    MEM_WriteInt(ESP-16, EBX);
+    MEM_WriteInt(ESP-12, EDX);
+    MEM_WriteInt(ESP-8,  ECX);
+    MEM_WriteInt(ESP-4,  EAX);
+
+    // Restore register variables for recursive hooks
+    EDI = ediBak;
+    ESI = esiBak;
+    EBP = ebpBak;
+    ESP = espBak;
+    EBX = ebxBak;
+    EDX = edxBak;
+    ECX = ecxBak;
+    EAX = eaxBak;
+
+    // Just to be safe: restore again at the very end of the function
+    MEM_SetUseInstance(instBak);
+};
+
+
+//-------------------------
+// Hash table of all hooks
+//-------------------------
+const int _Hook_htbl = 0;
 
 
 //========================================
-// Engine hooken
+// Engine hook
 //========================================
 func void HookEngineI(var int address, var int oldInstr, var int function) {
 
-    var int SymbID;   // Symbolindex von 'function'
-    var int ptr;      // Pointer auf den Zwischenspeicher der alten Anweisung
-    var int relAdr;   // Relative Addresse zum neuen Assemblercode, ausgehend von 'address'
+    var int SymbID;         // Symbol index of 'function'
+    var int ptr;            // Pointer to temporary memory of the old instruction
+    var int relAdr;         // Relative address from 'address' to new assembly code
 
-    // ----- Sicherheitsabfragen -----
-    if(oldInstr < 5) {
-        PrintDebug("HOOKENGINE: oldInstr ist zu kurz. Es werden mindestens 5 Bytes erwartet.");
+    // ----- Safety checks -----
+    if (oldInstr < 5) {
+        PrintDebug("HOOKENGINE: oldInstr is too small. The minimum required length is 5 bytes.");
         return;
     };
 
     SymbID = function;
-    if(SymbID == -1) {
-        PrintDebug("HOOKENGINE: Die gegebene Daedalusfunktion kann nicht gefunden werden.");
+    if (SymbID == -1) {
+        PrintDebug("HOOKENGINE: The provided deadalus function was not found.");
         return;
     };
 
-    MemoryProtectionOverride (address, oldInstr+3);
-    // ----- Eventuell geschьtzen Speicher behandeln -----
+    // ----- Find event handler in hash table -----
+    if (!_Hook_htbl) {
+        _Hook_htbl = _HT_Create();
+    };
 
-    if (MEM_ReadByte(address) == 233) { // Hook schon vorhanden
-        HookEngineI(MEM_ReadInt(address+1)+address+5+81, oldInstr, function);
+    // ----- Hook already present -----
+    if (_HT_Has(_Hook_htbl, address)) {
+        // Add deadalus function (new listener) to event handler once
+        MEM_PushIntParam(_HT_Get(_Hook_htbl, address));
+        MEM_PushIntParam(SymbID);
+        MEM_Call(EventPtr_AddOnceI); // EventPtr_AddOnceI(_HT_Get(_Hook_htbl, address), SymbID);
         return;
     };
 
-    // ----- Die alte Anweisung sichern -----
+    // ----- Create event and add function as listener -----
+    MEM_Call(EventPtr_Create);
+    var int ev; ev = MEM_PopIntResult(); // var int ev; ev = Event_Create();
+
+    MEM_PushIntParam(ev);
+    MEM_PushIntParam(SymbID);
+    MEM_Call(EventPtr_AddI); // EventPtr_AddI(ev, SymbID);
+
+    _HT_Insert(_Hook_htbl, ev, address);
+
+    // ----- Backup old instruction -----
     ptr = MEM_Alloc(oldInstr);
     MEM_CopyBytes(address, ptr, oldInstr);
 
-    // ----- Einen neuen Stream fьr den Assemblercode anlegen -----
-    ASM_Open(200 + oldInstr); // Play it safe.
+    // ----- Allocate new stream for assembly code -----
+    ASM_Open(25 + oldInstr + 6 + 1); // Asm code + oldInstr + retn + 1
 
-    // ----- Jump aus der Enginefunktion in den neuen Code einfьgen -----
+    // ----- Treat possibly protected memory -----
+    MemoryProtectionOverride(address, oldInstr+3);
+
+    // ----- Add jump from engine function to new code -----
     relAdr = ASMINT_CurrRun-address-5;
-    MEM_WriteInt(address + 0, 233);
-    MEM_WriteInt(address + 1, relAdr);
+    MEM_WriteByte(address + 0, ASMINT_OP_jmp);
+    MEM_WriteInt (address + 1, relAdr);
 
-    // ----- Neuen Assemblercode verfassen -----
+    // ----- Write new assembly code -----
 
-    // Alle Register sichern
-
-    // EAX in Daedalus Variable sichern
-    ASM_2(ASMINT_OP_movEAXToMem);
-    ASM_4(_@(EAX));
-    ASM_1(ASMINT_OP_pusha);
-
-    // ECX in Daedalus Variable sichern
-    ASM_2(ASMINT_OP_movECXtoEAX);
-    ASM_2(ASMINT_OP_movEAXToMem);
-    ASM_4(_@(ECX));
-
-    // ESP in Daedalus Variable sichern
-    ASM_2(ASMINT_OP_movESPtoEAX);
-    ASM_2(ASMINT_OP_addImToEAX);
-    ASM_1(4*8);                  // Wegen pushad [Danke an Sektenspinner]
-    ASM_2(ASMINT_OP_movEAXToMem);
-    ASM_4(_@(ESP));
-
-    // EBX in Daedalus Variable sichern
-    ASM_2(ASMINT_OP_movEBXtoEAX);
-    ASM_2(ASMINT_OP_movEAXtoMem);
-    ASM_4(_@(EBX));
-
-    // EBP in Daedalus Variable sichern
-    ASM_2(ASMINT_OP_movEBPtoEAX);
-    ASM_2(ASMINT_OP_movEAXtoMem);
-    ASM_4(_@(EBP));
-
-    // EDI in Daedalus Variable sichern
-    ASM_2(ASMINT_OP_movEDItoEAX);
-    ASM_2(ASMINT_OP_movEAXtoMem);
-    ASM_4(_@(EDI));
-	
-    // ESI in Daedalus Variable sichern	
-	ASM_2(ASMINT_OP_movESItoEAX);
-	ASM_2(ASMINT_OP_movEAXtoMem);
-	ASM_4(_@(ESI));
-
-    // --- Daedalusfunktion aufrufen ---
+    // Call deadalus hook function
+    ASM_1(ASMINT_OP_pusha); // ESP -= 32 (8*4)
 
     ASM_1(ASMINT_OP_pushIm);
-    ASM_4(SymbID);
+    ASM_4(ev);
+
+    ASM_1(ASMINT_OP_pushIm);
+    ASM_4(MEM_GetFuncID(_Hook));
 
     ASM_1(ASMINT_OP_pushIm);
     ASM_4(parser);
@@ -121,284 +213,173 @@ func void HookEngineI(var int address, var int oldInstr, var int function) {
     ASM_4(zParser__CallFunc-ASM_Here()-4);
 
     ASM_2(ASMINT_OP_addImToESP);
-    ASM_1(8);
+    ASM_1(12); // 3*4: parser, _Hook, address
 
-    ASM_1(ASMINT_OP_popa);
-    //NS - опасное место! если значения ECX, EDI, EAX изменены другим хуком, то Готика может вылететь!
-	// Attention! If ECX, EDI, EAX were changed by some other Hook it may even crash the game
-	ASM_1(ASMINT_OP_movMemToEAX);
-    ASM_4(_@(ECX));
-    ASM_2(ASMINT_OP_movEAXtoECX);
-		
-	ASM_1(ASMINT_OP_movMemToEax);
-	ASM_4(_@(EDI));
-	ASM_2(ASMINT_OP_movEAXtoEDI);
+    ASM_1(ASMINT_OP_popa); // Pop altered registers
 
-    ASM_1(ASMINT_OP_movMemToEAX);
-    ASM_4(_@(EAX));
-
-
-
-    // Alte Anweisung wieder einfьgen
+    // Append original instruction
     MEM_CopyBytes(ptr, ASMINT_Cursor, oldInstr);
     MEM_Free(ptr);
 
     ASMINT_Cursor += oldInstr;
 
-    // Zur Enginefunktion zurьckkehren
+    // Return to engine function
     ASM_1(ASMINT_OP_pushIm);
     ASM_4(address + oldInstr);
     ASM_1(ASMINT_OP_retn);
 
     var int i; i = ASM_Close();
 };
-
 func void HookEngineF(var int address, var int oldInstr, var func function) {
     HookEngineI(address, oldInstr, MEM_GetFuncID(function));
 };
 func void HookEngine(var int address, var int oldInstr, var string function) {
     HookEngineI(address, oldInstr, MEM_FindParserSymbol(STR_Upper(function)));
 };
-
-
-
-//++++++++++++++++++++++++++++++ HOOK ENGINE EXT +++++++++++++++++++++++++++++++++++++
-// двойной хук - до и после вызова движковой функции
-// позволяет изменять возвращаемое значение (через HookedFunc_Result)
-// предполагается, что взломанная функция - thiscall/stdcall, возвращает int/ptr через EAX
-// для других использовать можно, но осторожно
-// в HookEngineI_Ext можно передавать -1 вместо любой из функций, тогда она просто не вызовется
-// в HookEngineF_Ext и HookEngineS_Ext нельзя
-
-// Double hook (before and after call of engine function).
-// Assumptions: hooked function is thiscall/stdcall and returns int/ptr value in EAX.
-// HookedFunc_Result allows to modify returning value (from EAX)
-// In HookEngineI_Ext you could miss one of the functions with -1, 
-// but not in HookEngineF_Ext and HookEngineS_Ext.
-//NS (12/2013)
-
-var int HookedFunc_Result;
-var int RetAddr;
-
-
-// =================== MY STACK BEGIN ====================
-// здесь можно сохранять что-нибудь в пределах сессии
-// например, значения переменных, которые кто-то может испортить
-// Stack for reg vars.
-const int MyStack_ptr = 0;
-
-func void MyStack_PushRegVars()
-{
-	var int vals_ptr;	vals_ptr = MEM_Alloc(4*9);	//array[9]
-	MEM_WriteInt(vals_ptr,		EAX);
-	MEM_WriteInt(vals_ptr + 4,	ECX);
-	MEM_WriteInt(vals_ptr + 8,	ESP);
-	MEM_WriteInt(vals_ptr + 12,	EBX);
-	MEM_WriteInt(vals_ptr + 16,	EBP);
-	MEM_WriteInt(vals_ptr + 20,	EDI);
-	MEM_WriteInt(vals_ptr + 24,	ESI);	
-	MEM_WriteInt(vals_ptr + 28,	HookedFunc_Result);	
-	MEM_WriteInt(vals_ptr + 32,	RetAddr);	
-	var int list_ptr;	list_ptr = MEM_Alloc(4*2);	//zCList
-	MEM_WriteInt(list_ptr,		vals_ptr);		//data
-	MEM_WriteInt(list_ptr + 4,	MyStack_ptr);	//next
-	MyStack_ptr = list_ptr;
+// Wrapper function for naming consistency
+func void HookEngineS(var int address, var int oldInstr, var string function) {
+    HookEngine(address, oldInstr, function);
 };
 
-func void MyStack_PopRegVars()
-{
-	if (!MyStack_ptr)	{return;};	//MyStack is empty
-	var int list_ptr;	list_ptr = MyStack_ptr;		//zCList
-	MyStack_ptr = MEM_ReadInt(list_ptr+4);		//next
-	var int vals_ptr;	vals_ptr = MEM_ReadInt(list_ptr);	//array[9]	//data
-	EAX = MEM_ReadInt(vals_ptr);
-	ECX = MEM_ReadInt(vals_ptr + 4);
-	ESP = MEM_ReadInt(vals_ptr + 8);
-	EBX = MEM_ReadInt(vals_ptr + 12);
-	EBP = MEM_ReadInt(vals_ptr + 16);
-	EDI = MEM_ReadInt(vals_ptr + 20);
-	ESI = MEM_ReadInt(vals_ptr + 24);
-	HookedFunc_Result = MEM_ReadInt(vals_ptr + 28);
-	RetAddr = MEM_ReadInt(vals_ptr + 32);
-	MEM_Free(list_ptr);
-	MEM_Free(vals_ptr);
-};
-// ==================== MY STACK END ====================
 
-// write registers' values to LeGo variables
-func void WriteASM_CopyReg()
-// code len = 59 bytes
-{
-    // EAX
-    ASM_2(ASMINT_OP_movEAXToMem);
-    ASM_4(_@(EAX));
-    // ECX
-    ASM_2(ASMINT_OP_movECXtoEAX);
-    ASM_2(ASMINT_OP_movEAXToMem);
-    ASM_4(_@(ECX));
-    // ESP
-    ASM_2(ASMINT_OP_movESPtoEAX);
-    ASM_2(ASMINT_OP_movEAXToMem);
-    ASM_4(_@(ESP));
-    // EBX
-    ASM_2(ASMINT_OP_movEBXtoEAX);
-    ASM_2(ASMINT_OP_movEAXtoMem);
-    ASM_4(_@(EBX));
-    // EBP
-    ASM_2(ASMINT_OP_movEBPtoEAX);
-    ASM_2(ASMINT_OP_movEAXtoMem);
-    ASM_4(_@(EBP));
-    // EDI
-    ASM_2(ASMINT_OP_movEDItoEAX);
-    ASM_2(ASMINT_OP_movEAXtoMem);
-    ASM_4(_@(EDI));
-    // ESI
-	ASM_2(ASMINT_OP_movESItoEAX);
-	ASM_2(ASMINT_OP_movEAXtoMem);
-	ASM_4(_@(ESI));
-	
-	ASM_1(ASMINT_OP_movMemToEAX);
-	ASM_4(_@(EAX));
+//========================================
+// Check if address is hooked
+//========================================
+func int IsHooked(var int address) {
+    if (!_Hook_htbl) {
+        return FALSE;
+    };
+
+    return _HT_Has(_Hook_htbl, address);
 };
 
-// call func by its ID, save registers via pushad-popad
-func void WriteASM_ParserCallByID(var int SymbID)
-// code len 20 bytes
-{
-	if (SymbID == -1)	{return;};
-	ASM_1(ASMINT_OP_pusha);
-	
-    ASM_1(ASMINT_OP_pushIm);
-    ASM_4(SymbID);
 
-    ASM_1(ASMINT_OP_pushIm);
-    ASM_4(parser);
+//========================================
+// Check if function hooks engine
+//========================================
+func int IsHookI(var int address, var int function) {
+    if (!IsHooked(address)) {
+        return FALSE;
+    };
 
-    ASM_1(ASMINT_OP_call);
-    ASM_4(zParser__CallFunc - (ASM_Here()+4));
+    var int ev; ev = _HT_Get(_Hook_htbl, address);
+    var int SymbID; SymbID = function;
 
-    ASM_2(ASMINT_OP_addImToESP);
-    ASM_1(8);
-
-    ASM_1(ASMINT_OP_popa);
+    // Check if listener exists
+    MEM_PushIntParam(ev);
+    MEM_PushIntParam(SymbID);
+    MEM_Call(EventPtr_HasI); // EventPtr_HasI(ev, SymbID)
+    return MEM_PopIntResult(); // This line is redundant (left here for readability)
+};
+func int IsHookF(var int address, var func function) {
+    return IsHookI(address, MEM_GetFuncID(function));
+};
+func int IsHook(var int address, var string function) {
+    return IsHookI(address, MEM_FindParserSymbol(STR_Upper(function)));
 };
 
-func void HookEngineI_Ext(var int address, var int oldInstr, var int funct_before, var int funct_after) {
-	
-    if(oldInstr < 5) {      return;  };	//short instr
-	if((funct_before == -1) && (funct_after == -1)) {      return;  };	//no hooks
-    if (MEM_ReadByte(address) == 233) {	return; };// only 1 hook allowed
 
+//========================================
+// Remove listener (and engine hook)
+//========================================
+func void RemoveHookI(var int address, var int oldInstr, var int function) {
+    if (!IsHookI(address, function)) {
+        return;
+    };
 
-	//saving rewritten instruction
-	var int ptr;
-    ptr = MEM_Alloc(oldInstr);
-    MEM_CopyBytes(address, ptr, oldInstr);
+    var int ev; ev = _HT_Get(_Hook_htbl, address);
+    var int SymbID; SymbID = function;
 
-	
-	// SymbolIndexes
-    var int SymbID_before;    SymbID_before = funct_before;
-    var int SymbID_after;    SymbID_after = funct_after;
-	var int SymbID_SaveRegVars;	SymbID_SaveRegVars = MEM_GetFuncID(MyStack_PushRegVars);
-	var int SymbID_LoadRegVars;	SymbID_LoadRegVars = MEM_GetFuncID(MyStack_PopRegVars);
- 
-	MemoryProtectionOverride (address, oldInstr+3);
+    // Remove listener
+    MEM_PushIntParam(ev);
+    MEM_PushIntParam(SymbID);
+    MEM_Call(EventPtr_RemoveI); // EventPtr_RemoveI(ev, SymbID)
 
-	//Allocating memory for ASM-Code
-    ASM_Open(270+oldInstr);
+    // Is event empty now?
+    MEM_PushIntParam(ev);
+    MEM_Call(EventPtr_Empty); // EventPtr_Empty(ev);
+    if (MEM_PopIntResult()) && (oldInstr >= 5) {
+        /* If RemoveHookI is called with oldInstr == 0, the hook (ASM jump) remains.
+         * This is good for adding and removing a listener/hook frequently.
+         */
 
-	//overriding old instruction with jump to my ASM_Code
-	var int relAdr;		// Relative Address
-    relAdr = ASMINT_CurrRun-address-5;
-    MEM_WriteInt(address + 0, 233);
-    MEM_WriteInt(address + 1, relAdr);
+        // Remove hook from hash table
+        _HT_Remove(_Hook_htbl, address);
 
+        // Delete event
+        MEM_PushIntParam(ev);
+        MEM_Call(EventPtr_Delete); // EventPtr_Delete(ev);
 
-//-------------- ASM-CODE BEGIN -------------------
+        // Check integrity of opcode at address (expecting jump)
+        if (MEM_ReadByte(address) != ASMINT_OP_jmp) {
+            MEM_Error("HOOKENGINE: Hook was invalidated by overwritten opcode");
+            return;
+        };
 
-	// save reg vars
-	WriteASM_ParserCallByID(SymbID_SaveRegVars);
-	
-	// save reg values to vars
-	WriteASM_CopyReg();
-	
- 	// get the caller address from the top of the stack: Stack -> EAX -> RetAddr
-//pop EAX
-//mov RetAddr, EAX
-//push EAX
-	ASM_1(ASMINT_OP_popEAX);
-    ASM_2(ASMINT_OP_movEAXToMem);
-    ASM_4(_@(RetAddr));
-	ASM_1(ASMINT_OP_PushEAX);
-//mov EAX, EAX_
-	ASM_1(ASMINT_OP_movMemToEAX);
-    ASM_4(_@(EAX));
-	
-	// Call 'funct_before'
-	if (symbID_before != -1)	{
-		WriteASM_ParserCallByID(symbID_before);
-	};
-	
-	// Call original function with rewritten instr
-		MEM_CopyBytes(ptr, ASMINT_Cursor, oldInstr);
-		MEM_Free(ptr);
-		ASMINT_Cursor += oldInstr;
-		
-		ASM_2(ASMINT_OP_addImToESP);
-		ASM_1(4);
-		ASM_1(ASMINT_OP_call);
-		ASM_4(address + oldInstr - (ASM_Here()+4));
+        // Remove engine hook
+        var int newCodeAddr; newCodeAddr = MEM_ReadInt(address+1)+address+5;
+        var int rvtCodeAddr; rvtCodeAddr = newCodeAddr+25; // Original code
 
+        // Replace jump with original instruction
+        MEM_CopyBytes(rvtCodeAddr, address, oldInstr);
 
-	if (symbID_after != -1)	{
-		// get the return value from EAX
-//mov HookedFunc_Result, EAX
-		ASM_2(ASMINT_OP_movEAXToMem);
-		ASM_4(_@(HookedFunc_Result));
-
-		// save regs to vars again
-		WriteASM_CopyReg();
-
-		// Call 'funct_after'
-		WriteASM_ParserCallByID(SymbID_after);
-
-		//write new return value to EAX
-//mov EAX, HookedFunc_Result
-		ASM_1(ASMINT_OP_movMemToEAX);
-		ASM_4(_@(HookedFunc_Result));
-	};
-
-
-	// Return to the caller: RetAddr -> EAX -> Stack
-//mov EAX_, EAX
-    ASM_2(ASMINT_OP_movEAXToMem);
-    ASM_4(_@(EAX));
-//mov EAX, RetAddr
-//push EAX
-    ASM_1(ASMINT_OP_movMemToEAX);
-    ASM_4(_@(RetAddr));
-	ASM_1(ASMINT_OP_PushEAX);
-//mov EAX, EAX_
-	ASM_1(ASMINT_OP_movMemToEAX);
-	ASM_4(_@(EAX));
-
-	// load reg vars
-	WriteASM_ParserCallByID(SymbID_LoadRegVars);
-	
-//retn
-    ASM_1(ASMINT_OP_retn);
-
-//-------------- ASM-CODE END -------------------
-
-	ASM_Close();
-	MEM_Debug("HookEngine_Ext done");
+        // Free previously allocated space in memory (does this work as expected?)
+        MEM_Free(newCodeAddr);
+    };
+};
+func void RemoveHookF(var int address, var int oldInstr, var func function) {
+    RemoveHookI(address, oldInstr, MEM_GetFuncID(function));
+};
+func void RemoveHook(var int address, var int oldInstr, var string function) {
+    RemoveHookI(address, oldInstr, MEM_FindParserSymbol(STR_Upper(function)));
 };
 
-func void HookEngineF_Ext(var int address, var int oldInstr, var func funct_before, var func funct_after) {
-    var int SymbID_before;	SymbID_before = MEM_GetFuncID(funct_before);
-	var int SymbID_after;	SymbID_after = MEM_GetFuncID(funct_after);
-	HookEngineI_Ext(address, oldInstr, SymbID_before, SymbID_after);
+
+//========================================
+// Replace Engine Function
+//========================================
+func void ReplaceEngineFuncI(var int funcAddr, var int thiscall_numParams, var int replaceFunc) {
+    // Check if already hooked
+    if (IsHooked(funcAddr)) {
+        if (!IsHookI(funcAddr, replaceFunc)) {
+            MEM_Error("Cannot replace/disable engine function: Address already hooked");
+        };
+        return;
+    };
+
+    // Write return at beginning of function
+    MemoryProtectionOverride(funcAddr, 3);
+    if (thiscall_numParams) {
+        MEM_WriteByte(funcAddr,   /*C2*/ 194); // retn
+        MEM_WriteByte(funcAddr+1, thiscall_numParams*4);
+        MEM_WriteByte(funcAddr+2, 0);
+    } else {
+        MEM_WriteByte(funcAddr, ASMINT_OP_retn);
+    };
+
+    // Hook on top of return instruction
+    if (replaceFunc != /*NOFUNC*/ -1) {
+        HookEngineI(funcAddr, 5, replaceFunc);
+    };
 };
-func void HookEngineS_Ext(var int address, var int oldInstr, var string funct_before, var string funct_after) {
-    HookEngineI_Ext(address, oldInstr, MEM_FindParserSymbol(STR_Upper(funct_before)), MEM_FindParserSymbol(STR_Upper(funct_after)));
+func void ReplaceEngineFuncF(var int funcAddr, var int thiscall_numParams, var func replaceFunc) {
+    ReplaceEngineFuncI(funcAddr, thiscall_numParams, MEM_GetFuncID(replaceFunc));
+};
+func void ReplaceEngineFunc(var int funcAddr, var int thiscall_numParams, var string replaceFunc) {
+    ReplaceEngineFuncI(funcAddr, thiscall_numParams, MEM_FindParserSymbol(STR_Upper(replaceFunc)));
+};
+
+// Simple replace functions for return values
+func void Hook_ReturnFalse() {
+    EAX = FALSE;
+};
+func void Hook_ReturnTrue() {
+    EAX = TRUE;
+};
+
+//========================================
+// Disable Engine Function
+//========================================
+func void DisableEngineFunc(var int funcAddr, var int thiscall_numParams) {
+    ReplaceEngineFuncI(funcAddr, thiscall_numParams, -1);
 };

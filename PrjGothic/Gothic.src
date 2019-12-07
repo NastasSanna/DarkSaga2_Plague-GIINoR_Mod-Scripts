@@ -732,6 +732,7 @@ Story\Dialoge\DIA_Addon_WispDetector.d
 Story\B_Story\B_DS_BuildString_TeachPayment.d
 Story\B_Story\C_DS2P_HasPirateNews.d
 Story\B_Story\B_DS2P_Talk_End.d
+Story\Dialoge\DIA_Proto.d
 AI\Human\ZS_Human\ZS_ClearRoom.d
 AI\Human\ZS_Human\ZS_Dead.d
 AI\Human\ZS_Human\ZS_Flee.d

@@ -14,14 +14,14 @@ var int Gamestate;
 var int _Gamestate_Event;
 
 //========================================
-// Listener fur Gamestate hinzufugen
+// Listener für Gamestate hinzufügen
 //========================================
 func void Gamestate_AddListener(var func f) {
     Event_AddOnce(_Gamestate_Event, f);
 };
 
 //========================================
-// Listener fur Gamestate entfernen
+// Listener für Gamestate entfernen
 //========================================
 func void Gamestate_RemoveListener(var func f) {
     Event_Remove(_Gamestate_Event, f);

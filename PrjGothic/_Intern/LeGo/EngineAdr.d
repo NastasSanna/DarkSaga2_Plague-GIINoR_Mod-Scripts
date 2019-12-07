@@ -14,8 +14,6 @@ const int Cursor_sX                                 = 9019720; //0x89A148
 const int Cursor_sY                                 = 9019724; //0x89A14C
 const int GetFileSize                               = 8079310; //0x7B47CE
 const int GetLastError                              = 8079394; //0x7B4822
-const int oCGame__changeLevel                       = 7107216; //0x6C7290 Hook: Saves
-const int oCGame__changeLevelEnd                    = 7109323; //0x6C7ACB Hook: Saves
 const int oCGame__Render                            = 7112352; //0x6C86A0 Hook: FrameFunctions
 const int oCGame__RenderX                           = 7112704; //0x6C8800 Hook: Quickslots
 const int oCGame__UpdateStatus                      = 7093113; //0x6C3B79 Hook: Focusnames
@@ -27,35 +25,30 @@ const int oCNpc__EquipItem                          = 7545792; //0x7323C0 Hook: 
 const int oCNpc__EquipWeapon                        = 7577648; //0x73A030
 const int oCNpc__EV_DrawWeapon                      = 7654416; //0x74CC10 Hook: Shields
 const int oCNpc__EV_DrawWeapon1                     = 7656160; //0x74D2E0 Hook: Shields
+const int oCNpc__EV_DrawWeapon2                     = 7656832; //0x74D580 Hook: Shields(RangedWeapons)
 const int oCNpc__EV_PlayAni                         = 7699121; //0x757AB1 Hook: AI_Function
 const int oCNpc__EV_RemoveWeapon                    = 7658272; //0x74DB20 Hook: Shields
 const int oCNpc__EV_RemoveWeapon1                   = 7660720; //0x74E4B0 Hook: Shields
+const int oCNpc__EV_RemoveWeapon2                   = 7661104; //0x74E630 Shields(RangedWeapons)
 const int oCNpc__OpenInventory                      = 7742032; //0x762250 Hook: Quickslots
 const int oCNpc__PutInSlot                          = 7642288; //0x749CB0
 const int oCNpc__RemoveFromSlot                     = 7643760; //0x74A270
 const int oCNpc__UnequipItem                        = 7546560; //0x7326C0 Hook: Shields
 const int oCNpc__UseItem                            = 7584784; //0x73BC10
-const int oCNpc__StartDialogAniX 					= 7700155; // 0x757EBB
-const int oCNpc__StartDialogAniY					= 7700162; // 0x757EC2
 const int oCSavegameManager__SetAndWriteSavegame    = 4428037; //0x439105 Hook: Saves
-const int oCSavegameManager__SetAndWriteSavegame_bp_offset = 60;
 const int parser                                    =11223232; //0xAB40C0
 const int ReadFile                                  = 8272388; //0x7E3A04
-const int screen                                    =11232360; //0xAB6468
+const int screen                                     =11232360; //0xAB6468
 const int sysGetTimePtr                             = 5264000; //0x505280
 const int WriteFile                                 = 8079292; //0x7B47BC
 const int zCAICamera_StartDialogCam                 = 4923632; //0x4B20F0
 const int zCAICamera__current                       = 9235128; //0x8CEAB8
 const int zCAICamera__StartDialogCam                = 4923632; //0x4B20F0
-const int zCAICamera__StartDialogCam_oldInstr		= 275316586;
 const int zCFontMan__GetFont                        = 7898288; //0x7884B0
 const int zCFontMan__Load                           = 7897808; //0x7882D0
 const int zCFont__GetFontName                       = 7902368; //0x7894A0
 const int zCFont__GetFontX                          = 7902448; //0x7894F0
 const int zCFont__GetFontY                          = 7902432; //0x7894E0
-const int zCViewText_vtbl							= 8643396; //0x83E344
-const int zCInput_zinput							= 9246288; //0x8D1650
-const int zCInput_Win32__SetDeviceEnabled			= 5067008; //0x4D5100
 const int zCInput_Win32__GetMouseButtonPressedLeft  = 5068688; //0x4D5790
 const int zCInput_Win32__GetMouseButtonPressedMid   = 5068704; //0x4D57A0
 const int zCInput_Win32__GetMouseButtonPressedRight = 5068720; //0x4D57B0
@@ -74,7 +67,6 @@ const int zCView__Render                            = 8045072; //0x7AC210
 const int zCView__SetFontColor                      = 8034576; //0x7A9910
 const int zCView__SetSize                           = 8026016; //0x7A77A0
 const int zCView__zCView                            = 8017664; //0x7A5700
-const int zCView_Top 								= 8021904; //007A6790
 const int zCWorld__zCWorld                          = 6421056; //0x61FA40
 const int zFontMan                                  =11221460; //0xAB39D4
 const int zParser__CallFunc                         = 7940592; //0x7929F0
@@ -83,18 +75,14 @@ const int zRND_D3D__DrawLine                        = 6609120; //0x64D8E0
 const int zRND_D3D__DrawPolySimple                  = 6597680; //0x64AC30
 const int zRND_D3D__EndFrame                        = 6610720; //0X64DF20 Hook: Sprite
 const int zRND_D3D__SetAlphaBlendFunc               = 6628880; //0x652610
-const int zCRnd_D3D__XD3D_SetRenderState			= 6573808; //0x644EF0
-const int zRND_D3D_TexMemory_offset					= 1208;
 const int zSinCosApprox                             = 6269632; //0x5FAAC0
-const int T_DIALOGGESTURE_							= 9148264; //0x8B9768
-const int _atan2f									= 8123804; //0x7BF59C
-const int _sinf 									= 8123910; //0x7BF606
-const int _acosf 									= 8123794; //0x7BF592
-const int menu_savegame_slot_offset					= 3276;
-const int sub_4D3D90_X								= 5062907; //0x4D40FB // ???
-const int zCConsole__Register                       = 7875296; //0x782AE0
-const int zCConsoleOutputOverwriteAddr              = 7142904; //0x6CFDF8 Hook: ConsoleCommands
-
+//oCAniCtrl_Human::DrawWeapon1(int,int,int) 006B2610 2ED 
+//oCAniCtrl_Human::DrawWeapon2(void)  006B2CF0 34C 
+const int oCAniCtrl_Human__DrawWeapon1                            = 7022096; //006B2610
+const int oCAniCtrl_Human__DrawWeapon2                            = 7023856; //006B2610
+const int oCNpc__ForceRemoveWeapon = 7662656;	//int __thiscall (oCMsgWeapon *) 0x0074EC40 0 6
+const int oCNpc__EV_UnequipWeapons = 7663920;	//int __thiscall (oCMsgWeapon *) 0x0074F130 0 9
+const int oCNpc__EV_EquipBestWeapon = 7663408;	//void __thiscall (int) 0x0074EF30 0 7
 
 //========================================
 // Globale Flagvariable
@@ -161,7 +149,7 @@ func int Print_GetStringWidth(var string s, var string font) {
 };
 
 //========================================
-// Höhe einer Font holen
+// Hohe einer Font holen
 //========================================
 func int Print_GetFontHeight(var string font) {
     var int adr; adr = Print_GetFontPtr(font);
@@ -183,7 +171,7 @@ func string MEM_GetAnyWP() {
 };
 
 //========================================
-// Item an Koordinaten einfügen
+// Item an Koordinaten einfugen
 //========================================
 func void MEM_InsertItem(var c_item itm, var int fX, var int fY, var int fZ) {
     var zCWaynet wayNet; wayNet = MEM_PtrToInst(MEM_World.wayNet);
@@ -201,7 +189,7 @@ func void MEM_InsertItem(var c_item itm, var int fX, var int fY, var int fZ) {
 };
 
 //========================================
-// Vob an Npc hängen
+// Vob an Npc hangen
 //========================================
 func int oCNpc_PutInSlot(var c_npc slf, var string SlotName, var int oCVobPtr, var int SlotID) {
     CALL_IntParam(SlotID);
@@ -280,7 +268,8 @@ func void oCNpc_Equip(var int npcPtr, var int itmPtr) {
 //========================================
 // Aktuelle Instanz bearbeiten
 //========================================
-func void MEM_SetUseInstance(var int ptr) {
+func void MEM_SetUseInstance(var int inst) {
+    var int ptr; ptr = MEM_ReadIntArray (currSymbolTableAddress, inst);
     MemoryProtectionOverride(11232304, 10);
     MEM_WriteInt(11232304, ptr);
     MEM_WriteInt(11232308, MEM_ReadInt(ptr+28));

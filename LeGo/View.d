@@ -3,7 +3,7 @@
 \***********************************/
 
 //========================================
-// Klassen f?r PermMem
+// Klassen für PermMem
 //========================================
 
 instance zCView@ (zCView);
@@ -19,7 +19,7 @@ func void _ViewPtr_CreateIntoPtr(var int ptr, var int x1, var int y1, var int x2
     CALL_IntParam(x1);
     CALL__thiscall(ptr, zCView__zCView);
     var zCView vw; vw = MEM_PtrToInst(ptr);
-    vw.fxOpen = 0; // Das sieht einfach nur h?sslich aus.
+    vw.fxOpen = 0; // Das sieht einfach nur hässlich aus.
     vw.fxClose = 0;
 };
 func int ViewPtr_Create(var int x1, var int y1, var int x2, var int y2) {
@@ -120,25 +120,56 @@ func string View_GetTexture(var int hndl) {
     return ViewPtr_GetTexture(getPtr(hndl));
 };
 
+//========================================
+// Mark:
+// View set alpha
+//========================================
+func void ViewPtr_SetAlpha(var int ptr, var int val) {
+	var zCView v; v = _^(ptr);
+	v.alpha = val;
+	if((v.alpha != 255) && (v.alphafunc == 1)) {
+        v.alphafunc = 2;
+    };
+};
+
+func void View_SetAlpha(var int hndl,var int val) {
+	ViewPtr_SetAlpha(getPtr(hndl), val);
+};
+//========================================
+// Mark: View set alpha 
+// (including all text within the view)
+//========================================
+func void ViewPtr_SetAlphaAll(var int ptr, var int val) {
+	var zCView v; v = _^(ptr);
+	v.alpha = val;
+	if((v.alpha != 255) && (v.alphafunc == 1)) {
+        v.alphafunc = 2;
+    };
+	if (v.textLines_next) { 
+		var int list; list = v.textLines_next;
+		var zCList l;
+		while(list);
+			l = _^(list);
+			PrintPtr_SetAlpha(l.data,val);
+			list = l.next;
+		end;
+	};
+};
+
+func void View_SetAlphaAll(var int hndl, var int val) {
+	ViewPtr_SetAlphaAll(getPtr(hndl), val);
+};
 
 //========================================
-// View einf?rben
+// View einfärben
 //========================================
 func void ViewPtr_SetColor(var int ptr, var int zColor) {
     var zCView v; v = _^(ptr);
     v.color = zColor;
-    v.alpha = (zColor >> zCOLOR_SHIFT_ALPHA) & zCOLOR_CHANNEL;
-    if((v.alpha != 255) && (v.alphafunc == 1)) {
-        v.alphafunc = 2;
-    };
+    ViewPtr_SetAlpha(ptr, (zColor >> zCOLOR_SHIFT_ALPHA) & zCOLOR_CHANNEL);
 };
 func void View_SetColor(var int hndl, var int zColor) {
-    var zCView v; v = get(hndl);
-    v.color = zColor;
-    v.alpha = (zColor >> zCOLOR_SHIFT_ALPHA) & zCOLOR_CHANNEL;
-    if((v.alpha != 255) && (v.alphafunc == 1)) {
-        v.alphafunc = 2;
-    };
+	ViewPtr_SetColor(getPtr(hndl), zColor);
 };
 
 func int ViewPtr_GetColor(var int ptr) {
@@ -146,9 +177,9 @@ func int ViewPtr_GetColor(var int ptr) {
     return v.color;
 };
 func int View_GetColor(var int hndl) {
-    var zCView v; v = get(hndl);
-    return v.color;
+    return ViewPtr_GetColor(getPtr(hndl));
 };
+
 
 //========================================
 // View anzeigen
@@ -168,7 +199,7 @@ func void View_Open(var int hndl) {
 };
 
 //========================================
-// View schlie?en
+// View schließen
 //========================================
 func void ViewPtr_Close(var int ptr) {
     CALL__thiscall(ptr, zCView__Close);
@@ -178,7 +209,7 @@ func void View_Close(var int hndl) {
 };
 
 //========================================
-// View l?schen
+// View löschen
 //========================================
 func void zCView_Delete(var zCView this) {
     if (this.textlines_next) {
@@ -201,7 +232,7 @@ func void View_Delete(var int hndl) {
 
 
 //========================================
-// Gr??e ?ndern
+// Größe ändern
 //========================================
 func void ViewPtr_Resize(var int ptr, var int x, var int y) {
     var zCView v; v = _^(ptr);
@@ -227,13 +258,13 @@ func void View_Resize(var int hndl, var int x, var int y) {
 };
 
 //========================================
-// Gr??e ?ndern (pxl)
+// Größe ändern (pxl)
 //========================================
 func void ViewPtr_ResizePxl(var int ptr, var int x, var int y) {
     ViewPtr_Resize(ptr, Print_ToVirtual(x, PS_X), Print_ToVirtual(y, PS_Y));
 };
 func void View_ResizePxl(var int hndl, var int x, var int y) {
-    ViewPtr_ResizePxl(hndl, x, y);
+    ViewPtr_ResizePxl(getPtr(hndl), x, y);
 };
 
 //========================================
@@ -244,10 +275,11 @@ func void ViewPtr_Move(var int ptr, var int x, var int y) {
     CALL_IntParam(y);
     CALL_IntParam(x);
     CALL__thiscall(ptr, zCView__Move);
-
+	
     v.pposx = Print_ToPixel(v.vposx, PS_X);
     v.pposy = Print_ToPixel(v.vposy, PS_Y);
 };
+
 func void View_Move(var int hndl, var int x, var int y) {
     ViewPtr_Move(getPtr(hndl), x, y);
 };
@@ -308,11 +340,11 @@ func void View_DeleteText(var int hndl) {
 };
 
 //========================================
-// Text hinzuf?gen
+// Text hinzufügen
 //========================================
-func void ViewPtr_AddText(var int ptr, var int x, var int y, var string text, var string font) {
+func void ViewPtr_AddText(var int ptr, var int x, var int y, var string text, var string font, var int color) {
     var zCView v; v = _^(ptr);
-    var int field; field = Print_TextField(x, y, text, font, Print_ToVirtual(Print_GetFontHeight(font), v.pposy+v.psizey));
+    var int field; field = Print_TextFieldColored(x, y, text, font, Print_ToVirtual(Print_GetFontHeight(font), v.psizey), color);
     if(v.textLines_next) {
         List_Concat(v.textLines_next, field);
     }
@@ -321,11 +353,15 @@ func void ViewPtr_AddText(var int ptr, var int x, var int y, var string text, va
     };
 };
 func void View_AddText(var int hndl, var int x, var int y, var string text, var string font) {
-    ViewPtr_AddText(getPtr(hndl), x, y, text, font);
+    ViewPtr_AddText(getPtr(hndl), x, y, text, font, -1);
+};
+
+func void View_AddTextColored(var int hndl, var int x, var int y, var string text, var string font, var int color) {
+    ViewPtr_AddText(getPtr(hndl), x, y, text, font, color);
 };
 
 //========================================
-// Textview hinzuf?gen
+// Textview hinzufügen
 //========================================
 func void ViewPtr_AddTextView(var int ptr, var int view) {
     var zCView v; v = _^(ptr);
@@ -470,7 +506,6 @@ func void ViewPtr_AlignText(var int ptr, var int margin) {
 // View nach oben bewegen
 //========================================
 func void ViewPtr_Top(var int ptr) {
-    const int zCView_Top = 8021904; //007A6790
     Call__thiscall(ptr, zCView_Top);
 };
 func void View_Top(var int hndl) {
@@ -482,7 +517,10 @@ func void zCView_Archiver(var zCView this) {
     PM_SaveInt("_vtbl", this._vtbl);
     PM_SaveInt("_zCInputCallBack_vtbl", this._zCInputCallBack_vtbl);
 
-    PM_SaveInt("m_bFillZ", this.m_bFillZ);
+    if (MEMINT_SwitchG1G2(false, true)) {
+        /* Gothic 1 kennt die Eigenschaft m_bFillZ nicht, daher die Pointerarithmetik hier */
+        PM_SaveInt("m_bFillZ", MEM_ReadInt(_@(this)+8));
+    };
     PM_SaveInt("next", this.next);
 
     PM_SaveInt("ViewID", this.viewID);
@@ -563,8 +601,11 @@ func void zCView_Unarchiver(var zCView this) {
     this._vtbl = PM_LoadInt("_vtbl");
     this._zCInputCallBack_vtbl = PM_LoadInt("_zCInputCallBack_vtbl");
 
-    this.m_bFillZ = PM_LoadInt("m_bFillZ");
-    // this.next = PM_LoadInt("next"); // Darf ich nicht ?berschreiben, habs der ?bersicht halber aber hier gelassen
+    if (MEMINT_SwitchG1G2(false, true)) {
+        /* Gothic 1 kennt die Eigenschaft m_bFillZ nicht, daher die Pointerarithmetik hier */
+        MEM_WriteInt(_@(this)+8, PM_LoadInt("m_bFillZ"));
+    };
+    // this.next = PM_LoadInt("next"); // Darf ich nicht überschreiben, habs der Übersicht halber aber hier gelassen
 
     this.viewID = PM_LoadInt("ViewID");
     this.flags = PM_LoadInt("flags");
@@ -580,12 +621,12 @@ func void zCView_Unarchiver(var zCView this) {
 
 
 
-    /*this.childs_compare = PM_LoadInt("childs_compare"); // Darf ich eventuell ?berschreiben, ist aber eh Schwachsinn da Pointer
+    /*this.childs_compare = PM_LoadInt("childs_compare"); // Darf ich eventuell überschreiben, ist aber eh Schwachsinn da Pointer
     this.childs_count = PM_LoadInt("childs_count");
     this.childs_last = PM_LoadInt("childs_last");
     this.childs_wurzel = PM_LoadInt("childs_wurzel"); */
 
-    // this.owner = PM_LoadInt("owner"); // Darf ich nicht ?berschreiben, habs der ?bersicht halber aber hier gelassen
+    // this.owner = PM_LoadInt("owner"); // Darf ich nicht überschreiben, habs der Übersicht halber aber hier gelassen
 
     ViewPtr_SetTexture(_@(this), PM_LoadString("backtex"));
 
@@ -640,6 +681,10 @@ func void zCView_Unarchiver(var zCView this) {
         ViewPtr_Open(_@(this));
     };
 
-    this.textLines_next = PM_LoadClassPtr("textLines"); // Muss ich nach dem ?ffnen machen... >.>
+    this.textLines_next = PM_LoadClassPtr("textLines"); // Muss ich nach dem öffnen machen... >.>
 
 };
+
+
+
+

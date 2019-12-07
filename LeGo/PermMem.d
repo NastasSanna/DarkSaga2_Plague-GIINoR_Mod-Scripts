@@ -34,7 +34,7 @@ func void MEM_ArraySortFunc(var int array, var func comparator) {
 }; */
 
 func string MEM_ReadStringArray(var int arr, var int index) {
-    return MEM_ReadString(arr+20*index);
+	return MEM_ReadString(arr+20*index);
 };
 
 func int _MEM_ArraySortFuncC(var int v0, var int v1) {};
@@ -90,7 +90,7 @@ func void MEM_ArraySortFunc(var int stream, var func fnc) {
 //========================================
 const int HandlesPointer = 0;
 const int HandlesInstance = 0;
-var int nextHandle;
+var int nextHandle; 
 var int _PM_ArrayElements;
 var int _PM_Inst;
 var int _PM_Stack;
@@ -105,7 +105,7 @@ func int numHandles() {
         return (_HT_GetNumber(HandlesPointer));
     };
     return false;
-    /* return (!!HandlesPointer*(_HT_GetNumber(HandlesPointer))); w?re viel sch?ner gewesen :( */
+	/* return (!!HandlesPointer*(_HT_GetNumber(HandlesPointer))); wäre viel schöner gewesen :( */
 };
 
 //========================================
@@ -119,11 +119,11 @@ func int zCParser_CreateInstance(var int inst, var int ptr) {
 };
 
 //========================================
-// Handle auf G?ltigkeit pr?fen
+// Handle auf Gültigkeit prüfen
 //========================================
 func int Hlp_IsValidHandle(var int h) {
     if (!HandlesPointer) { return false; };
-    return !!_HT_Get(HandlesPointer, h);
+	return !!_HT_Get(HandlesPointer, h);
 };
 
 //========================================
@@ -152,7 +152,7 @@ func string _PM_InstName(var int inst) {
 };
 
 //========================================
-// Gr??e einer Instanz ermitteln
+// Größe einer Instanz ermitteln
 //========================================
 func int sizeof(var int inst) {
     var zCPar_Symbol symb; symb = _PM_ToClass(inst);
@@ -160,15 +160,15 @@ func int sizeof(var int inst) {
 };
 
 //========================================
-// Handle l?schen
+// Handle löschen
 //========================================
 func void clear(var int h) {
     if (!Hlp_IsValidHandle(h)) { return; };
     var int a;
     a = _HT_Get(HandlesPointer, h);
     MEM_Free(a);
-    _HT_Remove(HandlesPointer, h);
-    _HT_Remove(HandlesInstance, h);
+	_HT_Remove(HandlesPointer, h);
+	_HT_Remove(HandlesInstance, h);
 };
 
 //========================================
@@ -176,12 +176,12 @@ func void clear(var int h) {
 //========================================
 func void release(var int h) {
     if (!Hlp_IsValidHandle(h)) { return; };
-    _HT_Remove(HandlesPointer, h);
-    _HT_Remove(HandlesInstance, h);
+	_HT_Remove(HandlesPointer, h);
+	_HT_Remove(HandlesInstance, h);
 };
 
 //========================================
-// Funktion f?r alle Handles aufrufen
+// Funktion für alle Handles aufrufen
 //========================================
 const int rBreak = break;
 const int rContinue = continue;
@@ -223,6 +223,7 @@ func void _PM_RemoveFromForeachTable(var int h) {
 func void _PM_CreateForeachTable_HTSub(var int key, var int val) {
   _PM_AddToForeachTable(key);
 };
+
 func void _PM_CreateForeachTable() {
     if(_PM_foreachTable) {
         MEM_Free(_PM_foreachTable);
@@ -230,7 +231,7 @@ func void _PM_CreateForeachTable() {
     foreachHndl_ptr = MEM_GetFuncPtr(foreachHndl);
     _PM_foreachTable = MEM_Alloc(currSymbolTableLength * 4);
     if(HandlesPointer) {
-        _HT_ForEach(HandlesPointer, _PM_CreateForeachTable_HTSub);
+      _HT_ForEach(HandlesPointer, _PM_CreateForeachTable_HTSub);
     };
 };
 
@@ -243,7 +244,7 @@ func void foreachHndl(var int inst, var func fnc) {
     };
     var zCArray z; z = _^(c);
     var int l; l = z.numInArray;
-    var int a; a = MEM_Alloc(l<<2);
+    var int a; a = MEM_Alloc(l<<2); 
     MEM_Copy(z.array, a, l);
     var int i; i = 0;
     var int o; o = MEM_GetFuncPtr(fnc);
@@ -278,7 +279,7 @@ func void foreachHndlSort(var int inst, var func cmp) {
 };
 
 //========================================
-// Handle mit Destruktor l?schen
+// Handle mit Destruktor löschen
 //========================================
 func void delete(var int h) {
     locals();
@@ -297,7 +298,7 @@ func void delete(var int h) {
 };
 
 //========================================
-// Pointer mit Destruktor l?schen
+// Pointer mit Destruktor löschen
 //========================================
 func void free(var int h, var int inst) {
     if (!h) { return; };
@@ -311,7 +312,7 @@ func void free(var int h, var int inst) {
         h = MEMINT_StackPopInt();
     };
     MEM_Free(h);
-};
+}; 
 
 //========================================
 // Speicher reservieren.
@@ -322,7 +323,7 @@ func int create(var int inst) {
     //Symbol der Klasse holen
     symbCls = _PM_ToClass(inst);
 
-    //Speicher gem?? der Gr??e eines Objekts der Klasse holen
+    //Speicher gemäß der Größe eines Objekts der Klasse holen
     var int ptr; ptr = MEM_Alloc(symbCls.offset);
     var int i; i = zCParser_CreateInstance(inst, ptr);
     return ptr;
@@ -333,16 +334,17 @@ func int create(var int inst) {
 //========================================
 func int new(var int inst) {
     locals(); var int ptr;
-
-    nextHandle += 1;
+	
+	nextHandle += 1;
     if (!HandlesPointer) {
+		MEM_InfoBox("This should never happen! If it does anyway, please report to Lehona on WorldOfGothic.");
         //Falls das Array nicht existiert neu anlegen.
         HandlesPointer = _HT_Create();
         HandlesInstance = _HT_Create();
     };
     ptr = create(inst);
-    _HT_Insert(HandlesPointer, ptr, nextHandle);
-    _HT_Insert(HandlesInstance, inst, nextHandle);
+	_HT_Insert(HandlesPointer, ptr, nextHandle);
+	_HT_Insert(HandlesInstance, inst, nextHandle);
     _PM_AddToForeachTable(nextHandle);
     return nextHandle; //das erste Handle ist somit 1
 };
@@ -350,16 +352,16 @@ func int new(var int inst) {
 /* provisorisch */
 func int wrap(var int inst, var int ptr) {
     locals();
-
-    nextHandle += 1;
+	
+	nextHandle += 1;
     if (!HandlesPointer) {
         //Falls das Array nicht existiert neu anlegen.
         HandlesPointer = _HT_Create();
         HandlesInstance = _HT_Create();
     };
-
-    _HT_Insert(HandlesPointer, ptr, nextHandle);
-    _HT_Insert(HandlesInstance, inst, nextHandle);
+	
+	_HT_Insert(HandlesPointer, ptr, nextHandle);
+	_HT_Insert(HandlesInstance, inst, nextHandle);
     _PM_AddToForeachTable(nextHandle);
     return nextHandle; //das erste Handle ist somit 1
 };
@@ -368,7 +370,7 @@ func int wrap(var int inst, var int ptr) {
 // Handle als Instanz holen
 //========================================
 func MEMINT_HelperClass get(var int h) {
-    if (!Hlp_IsValidHandle(h)) { return; };
+	if (!Hlp_IsValidHandle(h)) { return; };
     var int p; p = _HT_Get(HandlesPointer, h);
     if(p) {
         MEM_PtrToInst(p);
@@ -383,15 +385,15 @@ func MEMINT_HelperClass get(var int h) {
 //========================================
 func int getPtr(var int h) {
     if (!Hlp_IsValidHandle(h)) { return 0; };
-    return _HT_Get(HandlesPointer, h);
+	return _HT_Get(HandlesPointer, h);
 };
 
 //========================================
 // Instanz eines Handles holen
 //========================================
 func int getInst(var int h) {
-    if (!Hlp_IsValidHandle(h)) { return 0; };
-    return _HT_Get(HandlesInstance, h);
+	if (!Hlp_IsValidHandle(h)) { return 0; };
+	return _HT_Get(HandlesInstance, h);
 };
 
 //========================================
@@ -407,19 +409,19 @@ func void setPtr(var int h, var int ptr) {
 // Scripte auf eigene Gefahr :0
 //========================================
 func void _deleteAll(var int key, var int val) {
-    delete(key);
+	delete(key);
 };
 
 func void _PM_Reset() {
     MEM_Info("Reset ALL the handles!");
     if(HandlesPointer) {
-        _HT_ForEach(HandlesPointer, _deleteAll);
-        _HT_Destroy(HandlesPointer);
-        _HT_Destroy(HandlesInstance);
-        HandlesPointer = 0;
-        HandlesInstance = 0;
+		_HT_ForEach(HandlesPointer, _deleteAll);
+		_HT_Destroy(HandlesPointer);
+		_HT_Destroy(HandlesInstance);
+		HandlesPointer = 0;
+		HandlesInstance = 0;
     };
-    MEM_Info("Resetting done.");
+	MEM_Info("Resetting done.");
 };
 
 const int _PM_Version = 2;
@@ -785,7 +787,7 @@ func void _PM_DataToSaveStruct_Struct(var int classID, var int struct) {
         var int p1;
         if(!STR_Compare(curr, "AUTO")) {
             if(ptr) {
-                _PM_Error(ConcatStrings("auto* ist keine g?ltige Klasse. ", zstruct.name));
+                _PM_Error(ConcatStrings("auto* ist keine gültige Klasse. ", zstruct.name));
                 return;
             };
             p1 = MEM_StackPos.position;
@@ -801,7 +803,7 @@ func void _PM_DataToSaveStruct_Struct(var int classID, var int struct) {
 
         if(!STR_Compare(curr, "VOID")) {
             if(ptr) {
-                _PM_Error(ConcatStrings("void* ist keine g?ltige Klasse. ", zstruct.name));
+                _PM_Error(ConcatStrings("void* ist keine gültige Klasse. ", zstruct.name));
                 return;
             };
             currOffs += num;
@@ -1064,23 +1066,23 @@ func void _PM_WriteSaveStruct() {
 
 var int PM_HandleList;
 func void _PM_Archive_HTSub(var int key, var int val) {
-    if (!PM_HandleList) {
-        /* PM_HandleList = List_Create(key); */
-        key;
-        MEM_Call(List_Create);
-        PM_HandleList = MEM_PopIntResult();
-    } else {
-        /* List_InsertSorted(PM_HandleList, key, List_CmpAscending); */
-        PM_HandleList; key; MEM_GetFuncID(List_CmpAscending);
-        MEM_Call(List_InsertSorted);
-    };
+	if (!PM_HandleList) {
+		/* PM_HandleList = List_Create(key); */
+		key;
+		MEM_Call(List_Create);
+		PM_HandleList = MEM_PopIntResult();
+	} else {
+		/* List_InsertSorted(PM_HandleList, key, List_CmpAscending); */
+		PM_HandleList; key; MEM_GetFuncID(List_CmpAscending);
+		MEM_Call(List_InsertSorted);
+	};
 };
 
 func void _PM_Archive_ListSub(var int lPtr) {
-    var zCList list; list = _^(lPtr);
-    var int key; key = list.data;
-
-    PM_CurrHandle = key;
+	var zCList list; list = _^(lPtr);
+	var int key; key = list.data;
+	
+	PM_CurrHandle = key;
     _PM_InstToSaveStruct(_HT_Get(HandlesPointer, key), _HT_Get(HandlesInstance, key));
 
     BW_Text(ConcatStrings("HNDL:", IntToString(key/*+1*/)));
@@ -1097,7 +1099,7 @@ func void _PM_Archive() {
     _PM_FreedSize = 0;    _PM_FreedNum    = 0;
 
     _PM_Mode = 1;
-
+	
     var int arrMax; arrMax = _HT_GetNumber(HandlesPointer);
 
     var int newArr; newArr = MEM_ArrayCreate();
@@ -1108,12 +1110,14 @@ func void _PM_Archive() {
     BW_NextLine();
     BW_NextLine();
 
-    _HT_ForEach(HandlesPointer, _PM_Archive_HTSub);
-    /* List_ForF(PM_HandleList, _PM_Archive_ListSub); */
-    PM_HandleList; MEM_GetFuncID(_PM_Archive_ListSub);
-    MEM_Call(List_ForF);
+	_HT_ForEach(HandlesPointer, _PM_Archive_HTSub);
+	/* List_ForF(PM_HandleList, _PM_Archive_ListSub); */
+	if (PM_HandleList) {
+		PM_HandleList; MEM_GetFuncID(_PM_Archive_ListSub);
+		MEM_Call(List_ForF);
+	};
 
-    PM_HandleList = 0;
+	PM_HandleList = 0;
     PM_CurrHandle = 1;
 
     BW_Text("PermMem::End");
@@ -1223,7 +1227,7 @@ func void _PM_ReadSaveStruct() {
 
     var string str; str = _PM_TextLine();
     if(STR_SplitCount(str, ":") < 2) {
-        _PM_Error(ConcatStrings("Ung?ltiger Objektkopf: ", str));
+        _PM_Error(ConcatStrings("Ungültiger Objektkopf: ", str));
         return;
     };
 
@@ -1247,7 +1251,7 @@ func void _PM_ReadSaveStruct() {
     // Nach allen Sicherheitschecks endlich den Pointer holen:
     _PM_Head.currOffs = MEM_Alloc(classSym.offset);
 
-    // Und nat?rlich f?llen:
+    // Und natürlich füllen:
     _PM_ReadClass();
 };
 
@@ -1404,7 +1408,7 @@ func void _PM_Unarchive() {
         return;
     }
     else if(v > _PM_Version) {
-        _PM_Error("Die PermMem Speicherdatei ist zu neu f?r diese Scripte und kann nicht gelesen werden.");
+        _PM_Error("Die PermMem Speicherdatei ist zu neu für diese Scripte und kann nicht gelesen werden.");
         return;
     };
 
@@ -1458,14 +1462,14 @@ func void _PM_ArchiveError() {
     if(_PM_Mode == 1&&(PM_CurrHandle)) {
         return;
     };
-    _PM_Error("Archiverfunktionen d?rfen nur innerhalb eines Archivers genutzt werden!");
+    _PM_Error("Archiverfunktionen dürfen nur innerhalb eines Archivers genutzt werden!");
 };
 
 func void _PM_UnarchiveError() {
     if(_PM_Mode == 0&&(PM_CurrHandle)) {
         return;
     };
-    _PM_Error("Unarchiverfunktionen d?rfen nur innerhalb eines Unarchivers genutzt werden!");
+    _PM_Error("Unarchiverfunktionen dürfen nur innerhalb eines Unarchivers genutzt werden!");
 };
 
 func void PM_SaveInt(var string name, var int val) {
@@ -1498,8 +1502,8 @@ func void PM_SaveFuncPtr(var string name, var int fnc) {
 func void _PM_SaveClassPtr(var string name, var int ptr, var string className, var int p) {
     _PM_ArchiveError();
     // Das hier ist etwas komplizierter als alles andere.
-    // Ich muss zuerst ein Klassenobjekt anlegen, dann den offsPtr vom PM_Head ?berschreiben (und pushen)
-    // und dann den Archiver der gegebenen Klasse ?berschreiben
+    // Ich muss zuerst ein Klassenobjekt anlegen, dann den offsPtr vom PM_Head überschreiben (und pushen)
+    // und dann den Archiver der gegebenen Klasse überschreiben
     name = STR_Upper(name);
     className = STR_Upper(className);
     if(!ptr) {
@@ -1582,7 +1586,7 @@ func int _PM_Load(var string objName, var int type, var int ptr) {
     if(!obj) { return 0; };
     if(type == -1) { type = _PM_ObjectType(obj); };
     if((_PM_ObjectType(obj) != type&&type < _PM_IntArr)||(!obj)) {
-        MEM_Warn(ConcatStrings("Objekt ist invalid oder Typ stimmt nicht ?berein. ", objName));
+        MEM_Warn(ConcatStrings("Objekt ist invalid oder Typ stimmt nicht überein. ", objName));
         return 0;
     };
     if(type == _PM_String) {
@@ -1613,7 +1617,9 @@ func int _PM_Load(var string objName, var int type, var int ptr) {
         if(!ptr) {
             var _PM_SaveObject_Arr oa; oa = MEM_PtrToInst(obj);
             if(type == _PM_IntArr) {
-                ptr = MEM_Alloc(oa.elements * 4);
+				if (oa.elements > 0) {
+					ptr = MEM_Alloc(oa.elements * 4);
+				};
             }
             else {
                 ptr = MEM_Alloc(oa.elements * 20);
@@ -1679,3 +1685,8 @@ func int PM_Load(var string name) {
 func void PM_LoadToPtr(var string name, var int destPtr) {
     destPtr = _PM_Load(name, -1, destPtr);
 };
+
+
+
+
+

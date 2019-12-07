@@ -17,83 +17,83 @@ const int _SB_Current = 0;
 // Aktiven StringBuilder setzen
 //========================================
 func void SB_Use(var int sb) {
-   _SB_Current = sb;
+    _SB_Current = sb;
 };
 
 //========================================
 // Aktiven StringBuilder holen
 //========================================
 func int SB_Get() {
-   return _SB_Current;
+    return _SB_Current;
 };
 
 //========================================
 // Neuen StringBuilder erstellen
 //========================================
 func int SB_New() {
-   SB_Use(MEM_Alloc(12));
-   return _SB_Current;
+    SB_Use(MEM_Alloc(12));
+    return _SB_Current;
 };
 
 //========================================
 // Buffer initialisieren (def: auto)
 //========================================
 func void SB_InitBuffer(var int size) {
-   var StringBuilder c; c = _^(_SB_Current);
-   if(c.ptr) {
-      MEM_Error("SB_InitBuffer: Der StringBuilder hat bereits einen Buffer.");
-      return;
-   };
-   if(size < 8) {
-      size = 8;
-   };
-   c.ptr = MEM_Alloc(size);
-   c.cln = 0;
-   c.cal = size;
+    var StringBuilder c; c = _^(_SB_Current);
+    if(c.ptr) {
+        MEM_Error("SB_InitBuffer: Der StringBuilder hat bereits einen Buffer.");
+        return;
+    };
+    if(size < 8) {
+        size = 8;
+    };
+    c.ptr = MEM_Alloc(size);
+    c.cln = 0;
+    c.cal = size;
 };
 
 //========================================
 // Leeren (wird nicht zerstört!)
 //========================================
 func void SB_Clear() {
-   var StringBuilder c; c = _^(_SB_Current);
-   if(c.ptr) {
-      MEM_Free(c.ptr);
-   };
-   c.ptr = 0;
-   c.cln = 0;
-   c.cal = 0;
+    var StringBuilder c; c = _^(_SB_Current);
+    if(c.ptr) {
+        MEM_Free(c.ptr);
+    };
+    c.ptr = 0;
+    c.cln = 0;
+    c.cal = 0;
 };
 
 //========================================
 // Stream entkoppeln
 //========================================
 func void SB_Release() {
-   MEM_Free(_SB_Current);
-   _SB_Current = 0;
+    MEM_Free(_SB_Current);
+    _SB_Current = 0;
 };
 
 //========================================
 // StringBuilder komplett zerstören
 //========================================
 func void SB_Destroy() {
-   SB_Clear();
-   SB_Release();
+    SB_Clear();
+    SB_Release();
 };
 
 //========================================
 // Stream als String zurückgeben
 //========================================
 func string SB_ToString() {
-   var StringBuilder c; c = _^(_SB_Current);
-   if(!c.ptr) { return ""; };
-   var string ret; ret = "";
-   var zString z; z = _^(_@s(ret));
-   z.ptr = MEM_Alloc(c.cln+2)+1;
-   MEM_CopyBytes(c.ptr, z.ptr, c.cln);
-   z.len = c.cln;
-   z.res = c.cln;
-   return ret;
+    var StringBuilder c; c = _^(_SB_Current);
+    if(!c.ptr) { return ""; };
+    var string ret; ret = "";
+    var zString z; z = _^(_@s(ret));
+    z.ptr = MEM_Alloc(c.cln+2)+1;
+    MEM_CopyBytes(c.ptr, z.ptr, c.cln);
+    z.len = c.cln;
+    z.res = c.cln;
+    return ret;
 };
 
 //========================================

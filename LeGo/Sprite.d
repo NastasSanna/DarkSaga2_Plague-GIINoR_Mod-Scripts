@@ -1,3 +1,4 @@
+
 var int sinApprox; var int cosApprox;
 func void SinCosApprox(var int angle) {
     const int sinPtr = 0;
@@ -46,7 +47,7 @@ func void zRND_D3D_DrawLine(var int x0, var int y0, var int x1, var int y1, var 
 };
 
 func int zRND_D3D_GetTotalTextureMem() {
-    return MEM_ReadInt(zrenderer_adr + 1208);
+    return MEM_ReadInt(zrenderer_adr + zRND_D3D_TexMemory_offset);
 };
 
 func void zRND_D3D_SetAlphaBlendFunc(var int zTRnd_AlphaBlendFunc) {
@@ -80,7 +81,7 @@ func void zRND_XD3D_SetRenderState(var int state, var int mode) {
         CALL_IntParam(_@(mode));
         CALL_IntParam(_@(state));
 
-        CALL__thiscall(zrenderer_adr, 6573808);
+        CALL__thiscall(zrenderer_adr, zCRnd_D3D__XD3D_SetRenderState);
 
         call = CALL_End();
     };
@@ -212,7 +213,7 @@ func void Sprite_SetColor(var int h, var int col) {
 };
 
 //========================================
-// Prioritat eines Sprites
+// Priorität eines Sprites
 //========================================
 func void Sprite_SetPrio(var int h, var int prio) {
     var gCSprite s; s = get(h);
@@ -295,7 +296,7 @@ func void Sprite_SetWidth(var int h, var int w) {
 };
 
 //========================================
-// Hohe eines Sprites setzen
+// Höhe eines Sprites setzen
 //========================================
 func void Sprite_SetHeightPxl(var int h, var int hg) {
     var gCSprite s; s = get(h);
@@ -308,7 +309,7 @@ func void Sprite_SetHeight(var int h, var int hg) {
 };
 
 //========================================
-// Breite und Hohe eines Sprites setzen
+// Breite und Höhe eines Sprites setzen
 //========================================
 func void Sprite_SetDimPxl(var int h, var int w, var int hg) {
     var gCSprite s; s = get(h);
@@ -387,7 +388,7 @@ func void Sprite_Render(var int h) {
 // [intern] alle Sprites rendern
 //========================================
 func void _Sprite_DoRender() {
-    if(!Hlp_IsValidNpc(hero)) { return; }; // Vielen Dank an Sektenspinner fur diesen "Hack"
+    if(!Hlp_IsValidNpc(hero)) { return; }; // Vielen Dank an Sektenspinner für diesen "Hack"
 
     zRND_XD3D_SetRenderState(D3DRS_ZENABLE, false); // Disable depthbuffer
 
