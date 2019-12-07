@@ -4,7 +4,7 @@
 //========================================
 // Talents Aivar field
 //========================================
-const int AIV_TALENT_INDEX = 89;
+const int AIV_TALENT_INDEX = 95;
 //========================================
 // Alle (?) genutzen Engineadressen
 //========================================

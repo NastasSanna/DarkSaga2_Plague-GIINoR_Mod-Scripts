@@ -45,3 +45,4 @@ func void HOOK_RbtIsObjectObstacle()
 	//UNFINISHED
 	HookEngineF_Ext(oCNpc__RbtIsObjectObstacle, 6, _On_RbtIsObjectObstacle_Before, _On_RbtIsObjectObstacle_After);
 };
+

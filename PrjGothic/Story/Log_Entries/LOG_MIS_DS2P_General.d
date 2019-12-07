@@ -21,6 +21,7 @@ var int MIS_DS2P_IslandUnderSiege;
 const string TOPIC_DS2P_IslandUnderSiege = "Остров в осаде_IslandUnderSiege";
 
 	const string TOPIC_DS2P_IslandUnderSiege_Start = "";
+	const string TOPIC_DS2P_IslandUnderSiege_AllPiratesAreDead = ""; // TO DO
 
 const int XP_MIS_IslandUnderSiege = 0;
 

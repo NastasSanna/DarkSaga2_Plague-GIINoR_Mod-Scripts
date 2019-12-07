@@ -284,7 +284,7 @@ const int AIV_TIME_UNCONSCIOUS = 91;
 const int AIV_Spell_4_Uncon = 92;
 const int AIV_Name = 93;
 const int AIV_ShieldEquipped = 94;
-//const int AIV_Name = 95; --> ג פאיכו UserConst !ÍÅ ÁÐÀÒÜ
+//const int AIV_TALENT_INDEX = 95; //--> ג LeGo !ÍÅ ÁÐÀÒÜ
 const int AIV_TALK_TRIA = 99;	//NS: ענטאכמד בוח LeGo
 
 const int AIV_WeaponChoosePrio = 96;

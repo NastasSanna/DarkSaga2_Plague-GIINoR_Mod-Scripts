@@ -49,11 +49,6 @@ func void ZS_RansackBody_End()
 				B_Say(self,other,"$SHITNOGOLD");
 			};
 		};
-		if (GB_CompetitionState > 0)
-		{
-			x = Npc_HasItems(other,ItAt_DS2P_ShadowHorn_Competition);
-			Npc_RemoveInvItems(other,ItAt_DS2P_ShadowHorn_Competition,x);
-		};
 	};	
 	Npc_PerceiveAll(self);
 	if(self.guild == GIL_NONE)

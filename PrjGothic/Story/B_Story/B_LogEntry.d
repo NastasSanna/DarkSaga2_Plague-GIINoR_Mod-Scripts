@@ -79,4 +79,8 @@ func void B_ds_LogEntry(var string topic, var int log_type, var int status, var 
 	};
 };
 
-
+func void B_LogNote(var string topic, var string entry)
+{
+	Log_CreateTopic(topic,LOG_NOTE);
+	B_ds_LogEntry(topic,LOG_NOTE,LOG_Running,entry);
+};

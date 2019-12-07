@@ -27,6 +27,8 @@ const string TOPIC_DS2P_Conspiracy = "Заговор_Conspiracy";
 
 const int XP_MIS_DS2P_Conspiracy = 0;
 
+var int Conspiracy_IsStarted; // началась пиратская сходка
+var int Skip_InConspiracy; // Скип участвует в заговоре
 
 //===================================== ДОСТАВКА ПРИПАСОВ ===============================================//
 //Статус: НЕГОТОВ
@@ -43,6 +45,7 @@ const string TOPIC_DS2P_ShippingSupplies = "Доставка припасов_ShippingSupplies";
 const int XP_MIS_ShippingSupplies_Booze = 0;	//Отдали Йорну выпивку
 const int XP_MIS_ShippingSupplies = 0;	//Отдали продукты Виоле
 
+var int Hero_KnowsDoorPassword; // ГГ узнал пароль от двери
 
 //===================================== СТАРЫЙ ЗНАКОМЫЙ =================================================//
 //Статус: НЕГОТОВ
@@ -183,6 +186,8 @@ const string TOPIC_DS2P_DamnSailor = "Проклятый моряк_DamnSailor";
 	
 const int XP_MIS_DamnSailor_Success = 0;
 
+var int Gard_ChestForced;	// попытались вскрыть сундук Гарда с алмазом
+var int Lan_BecameHuman;	// Лан стал человеком?
 
 //===================================== КОШМАРЫ ===============================================//
 //Статус: НЕГОТОВ
