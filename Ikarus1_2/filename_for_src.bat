@@ -1,0 +1,1 @@
+dir *.d /a:-d /s /b > 1.txt
