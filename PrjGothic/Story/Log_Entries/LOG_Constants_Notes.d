@@ -56,3 +56,10 @@ const string TOPIC_DS2P_ElixirForVatras = "Эликсиры для Ватраса";
 const string TOPIC_DS2P_MakingPotionsInVillage = "Изготовление зелий в деревне";
 const string TOPIC_DS2P_MariaSoups = "Супчики Марии";
 const string TOPIC_DS2P_FishFromHarok = "Рыба от Харока";
+
+const string TOPIC_DS2P_TELEPORT = "Телепорты";
+const string TOPIC_DS2P_TELEPORT_TO_CAMPCAVE = "Телепорт в подвале в деревне перенес меня в какую-то пещеру.";
+const string TOPIC_DS2P_TELEPORT_TO_RUINS = "Телепорт из пещеры на восточном побережье перенес меня в затопленные руины.";
+const string TOPIC_DS2P_TELEPORT_TO_SWAMP = "Телепорт в затопленных руинах выбросил меня посреди болота.";
+const string TOPIC_DS2P_TELEPORT_TO_LIBRARY = "Телепорт на болоте переместил меня в древнюю библиотеку на западном побережье.";
+const string TOPIC_DS2P_TELEPORT_TO_TOWN = "Телепорт из подвала библиотеки вернул меня в деревню.";

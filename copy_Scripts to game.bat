@@ -12,7 +12,7 @@ xcopy PrjGothic\AI		%p%"\Content\AI" 	/d /s /e /y
 xcopy PrjGothic\Items		%p%"\Content\Items" 	/d /s /e /y
 xcopy PrjGothic\Story		%p%"\Content\Story" 	/d /s /e /y
 
-copy PrjGothic\gothic.src	%p%"\Content\DS2_Prolog.src" /y
+copy PrjGothic\gothic.src	%p%"\Content\DS2_Plague.src" /y
 
 xcopy PrjVisualFX\VisualFX		%p%"\System\VisualFX" 	/d /s /e /y
 copy PrjVisualFX\VisualFX.src	%p%"\System\VisualFX_DSP.src" /y

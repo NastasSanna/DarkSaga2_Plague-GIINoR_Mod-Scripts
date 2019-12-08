@@ -925,8 +925,8 @@ func void B_STOP_DECOMPILATION_CRASH_L()
 };
 
 //Redleha: Миры
+const int DSG_PROLOG_ZEN = 0;	
 const int DSG_PREPROLOG_ZEN = 1;
-const int DSG_PROLOG_ZEN = 2;	
 const int DSG_ST_ZEN = 3;
 const int DSG_MAIN_ZEN = 4;
 const int DSG_LAN_DREAM_ZEN = 5; // Сон Лана

@@ -5,10 +5,10 @@ instance PC_Hero(Npc_Default)
 	guild = GIL_NONE;
 	id = 10;
 	voice = 15;
-	level = 25;
+	level = 20;
 	npcType = npctype_main;
-	exp = 162500;
-	exp_next = 175500;
+	exp = level * 500 * (level + 1) / 2;
+	exp_next = exp + (level + 1) * 500;
 	lp = 3;
 	attribute[ATR_STRENGTH] = 60;
 	attribute[ATR_DEXTERITY] = 60;
@@ -18,7 +18,7 @@ instance PC_Hero(Npc_Default)
 	attribute[ATR_HITPOINTS] = 350;
 	fight_tactic = FAI_HUMAN_MASTER;
 	Mdl_SetVisual(self,"HUMANS.MDS");
-	Mdl_SetVisualBody(self,"hum_body_Naked0",9,0,"Hum_Head_Pony",Face_N_Player,0,itar_djg_h);
+	Mdl_SetVisualBody(self,"hum_body_Naked0",9,0,"Hum_Head_Pony",Face_N_Player,0,ITAR_Vlk_M);
 	B_SetFightSkills(self,60);
 	Npc_SetTalentSkill(self,NPC_TALENT_PICKORE,0);
 	Npc_SetTalentSkill(self,NPC_TALENT_PICKLOCK,1);
@@ -38,5 +38,4 @@ instance PC_Hero(Npc_Default)
 	CreateInvItems(self,ItPo_Mana_03,1);
 	CreateInvItems(self,ItFo_Bread,5);
 	CreateInvItems(self,ItFo_Milk,5);
-	daily_routine = Rtn_Start_10;
 };

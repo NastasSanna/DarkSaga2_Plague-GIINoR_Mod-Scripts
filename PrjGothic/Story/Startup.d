@@ -63,6 +63,7 @@ func void INIT_WOR_PREPROLOG()
 //
 func void STARTUP_PROLOG()
 {
+	CurrentLevel = DSG_PROLOG_ZEN;
 	/*Вставляем ГГ, Аластера и друзей*/
 	Wld_InsertNpc(none_10_Nameless,"");
 	Wld_InsertNpc(none_11_Jack,"");
@@ -130,6 +131,7 @@ func void INIT_SUB_PROLOG()
 };
 func void INIT_PROLOG()
 {
+	CurrentLevel = DSG_PROLOG_ZEN;
 	B_InitMonsterAttitudes();
 	B_InitGuildAttitudes();
 	B_InitNpcGlobals();
