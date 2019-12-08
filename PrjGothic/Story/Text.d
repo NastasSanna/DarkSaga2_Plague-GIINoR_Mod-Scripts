@@ -1094,3 +1094,7 @@ const string TXT_Chaos_ProtAntiBounus[3] = {
 const string TXT_Chaos_AcrobatBonus = "Улучшение навыка: акробатика.";
 const string TXT_Chaos_SprintBonus = "Бонус: постоянное ускорение.";
 
+const string PRINT_No_Focus = "Нужен фокусирующий камень";
+
+const string MOBNAME_KeyHole = "Замочная скважина";
+
