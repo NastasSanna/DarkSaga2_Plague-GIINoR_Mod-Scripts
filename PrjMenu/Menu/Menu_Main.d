@@ -143,7 +143,7 @@ instance MENUITEM_MAIN_EXIT(C_MENU_ITEM_DEF)
 instance MENUITEM_MAIN_HEADLINE2(C_MENU_ITEM_DEF)
 {
 	//backpic = "menu_gothic.tga";
-	backpic = "Menu_DarkSagaPlague.tga";
+	backpic = "Menu_DarkSaga.tga";
 	posx = 100;
 	posy = 300;
 	dimx = 7900;
