@@ -264,6 +264,8 @@ var int PiratKillCount;	//NS счетчик убитых пиратов. не используется?
 var int PiratMainKillCount;	//NS счетчик убитых квестовых пиратов
 var int GGKillPirat_self_inVillage;	//NS счетчик убитых ГГ пиратов
 
+var int Windmill_Enabled; // починили мельницу и она должна крутиться
+
 //+++++++++++++++++++++++++ ПРЕСТУПЛЕНИЯ +++++++++++++++++++++++++++
 
 var int CRIME_GG_KillPirat_self_inVillage_once;	//Факт первого убийства героем любого пирата. Для первого предупреждения от Гарда.

@@ -35,7 +35,7 @@ func void init_global()
 //
 //Грузим стартовую локу с одним кораблём
 //
-func void STARTUP_WOR_PREPROLOG()
+func void STARTUP_DS2P_STARTOCEAN()
 {
 	/*Wld_InsertNpc(pre_none_10_Nameless,"");
 	Wld_InsertNpc(pre_none_11_Jack,"");
@@ -47,21 +47,21 @@ func void STARTUP_WOR_PREPROLOG()
 	Wld_InsertNpc(pre_none_17_Gorn,"");
 	Wld_InsertNpc(pre_none_18_Vatras,"");
 };
-func void INIT_SUB_WOR_PREPROLOG()
+func void INIT_SUB_DS2P_STARTOCEAN()
 {
 };
-func void INIT_WOR_PREPROLOG()
+func void INIT_DS2P_STARTOCEAN()
 {
 	B_InitMonsterAttitudes();
 	B_InitGuildAttitudes();
 	B_InitNpcGlobals();
-	INIT_SUB_WOR_PREPROLOG();
+	INIT_SUB_DS2P_STARTOCEAN();
 	//SearchNpcAndCreateSlotsForShields();
 };
 //
 //Грузим главную локу
 //
-func void STARTUP_PROLOG()
+func void STARTUP_DS2P_ATOLL()
 {
 	CurrentLevel = DSG_PROLOG_ZEN;
 	/*Вставляем ГГ, Аластера и друзей*/
@@ -126,37 +126,73 @@ func void STARTUP_PROLOG()
 	Wld_InsertNpc(Shadowbeast_Addon_Fire_Garon,"");
 	/*Вставляем монстрятину*/
 };
-func void INIT_SUB_PROLOG()
+func void INIT_SUB_DS2P_ATOLL_COAST()
 {
 };
-func void INIT_PROLOG()
+func void INIT_SUB_DS2P_ATOLL_FORT()
+{
+	Windmill_Enabled = TRUE; // TO DO by quest + timer
+	if (Windmill_Enabled == TRUE) {
+		Wld_SendTrigger("WINDMILL_ROTOR");
+	};
+};
+func void INIT_SUB_DS2P_ATOLL_CAMP()
+{
+};
+func void INIT_SUB_DS2P_ATOLL_FOREST()
+{
+};
+func void INIT_DS2P_ATOLL()
 {
 	CurrentLevel = DSG_PROLOG_ZEN;
 	B_InitMonsterAttitudes();
 	B_InitGuildAttitudes();
 	B_InitNpcGlobals();
 	B_DS2P_InitLanSkeleton();//внешность Лана
-	INIT_SUB_PROLOG();
+	INIT_SUB_DS2P_ATOLL_COAST();
+	INIT_SUB_DS2P_ATOLL_FORT();
+	INIT_SUB_DS2P_ATOLL_CAMP();
+	INIT_SUB_DS2P_ATOLL_FOREST();
 };
 
 /*======================================
             Сон Лана
 ========================================*/
 
-func void STARTUP_LAN_DREAM()
+func void STARTUP_DS2P_LAN_DREAM()
 {
 	Wld_InsertNpc(PIR_2071_DS2P_LanSkeleton_SK_Dream,""); // Лан-скелет, который стоит возле клетки
 	Wld_InsertNpc(PIR_2072_DS2P_LanSkeleton_HM_Dream,""); // Лан-человек, который стоит в клетке
 };
-func void INIT_SUB_LAN_DREAM()
+func void INIT_SUB_DS2P_LAN_DREAM()
 {
 };
-func void INIT_LAN_DREAM()
+func void INIT_DS2P_LAN_DREAM()
 {
 	B_InitMonsterAttitudes();
 	B_InitGuildAttitudes();
 	B_InitNpcGlobals();
-	INIT_SUB_LAN_DREAM();
+	INIT_SUB_DS2P_LAN_DREAM();
+};
+
+
+/*======================================
+        Храм Черепа (сон Аластера)
+========================================*/
+
+func void STARTUP_DS2P_SKULLTEMPLE()
+{
+
+};
+func void INIT_SUB_DS2P_SKULLTEMPLE()
+{
+};
+func void INIT_DS2P_SKULLTEMPLE()
+{
+	B_InitMonsterAttitudes();
+	B_InitGuildAttitudes();
+	B_InitNpcGlobals();
+	INIT_SUB_DS2P_SKULLTEMPLE();
 };
 
 //* МУСОР *//
@@ -174,4 +210,3 @@ func void INIT_Testlevel()
 	B_InitNpcGlobals();
 	INIT_SUB_Testlevel();
 };
-
