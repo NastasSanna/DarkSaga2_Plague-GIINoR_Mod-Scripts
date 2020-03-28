@@ -6628,3 +6628,43 @@ instance DRAGONBRIDGE_MAGIC_GLUE_CHILD(DRAGONBRIDGE_MAGIC_GLUE_PROTO)
 	visSizeStart_s = "20 20";
 	visSizeEndScale = 1;
 };
+
+// Магический свет в руинах
+
+instance MAGICLAMP_LIGHT(C_PARTICLEFX)
+{
+	ppsvalue = 30;
+	ppsIsLooping = 1;	// =0|1
+	ppsscalekeys_s = "1 0.9 0.8 1.0 1.1";
+	ppsfps = 0.2;
+	shptype_s = "POINT";
+	shpfor_s = "object";
+	shpoffsetvec_s = "0 0 0";
+	shpdistribtype_s = "RAND";
+	shpdim_s = "30";
+	shpmeshrender_b = 1;
+	shpscalekeys_s = "1";
+	shpscaleissmooth = 1;
+	dirmode_s = "RAND";
+	dirfor_s = "object";
+	dirmodetargetfor_s = "OBJECT";
+	dirmodetargetpos_s = "0 0 0";
+	dirangleheadvar = 180;
+	dirangleelevvar = 180;
+	velavg = 0.01;
+	lsppartavg = 1000;
+	lsppartvar = 100;
+	flygravity_s = "0 0 0";
+	visname_s = "HEAVENLIGHT.TGA";
+	visorientation_s = "VELO3D";
+	vistexisquadpoly = 1;
+	vistexanifps = 18;
+	vistexaniislooping = 1;
+	vistexcolorstart_s = "255 100 100";
+	vistexcolorend_s = "100 255 255";
+	vissizestart_s = "5 20";
+	vissizeendscale = 4;
+	visalphafunc_s = "ADD";
+	visalphastart = 255;
+	useemittersfor = 1;
+};

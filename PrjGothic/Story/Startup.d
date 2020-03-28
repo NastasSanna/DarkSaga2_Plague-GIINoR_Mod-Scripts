@@ -145,6 +145,9 @@ func void INIT_SUB_DS2P_ATOLL_CAMP()
 };
 func void INIT_SUB_DS2P_ATOLL_FOREST()
 {
+	Wld_SetMobRoutine(0, 0,"MAGICLAMP",1);
+	Wld_SetMobRoutine(20,0,"MAGICLAMP",1);
+	Wld_SetMobRoutine(4,30,"MAGICLAMP",0);
 };
 func void INIT_DS2P_ATOLL()
 {
