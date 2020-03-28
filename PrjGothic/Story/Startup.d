@@ -1,10 +1,12 @@
 
 const int LeGo_Init_Once = 0;
+const int LeGo_Init_MyFlags = LeGo_Trialoge | LeGo_AI_Function | LeGo_View | LeGo_FrameFunctions; //Trialoge requires AI_Function!
+
 func void LeGo_Init_DoIt()
 {
 	if (!LeGo_Init_Once)	{
 		MEM_InitAll();
-		LeGo_Init(LeGo_AI_Function);
+		LeGo_Init(LeGo_Init_MyFlags);
 		MoreAlphaVobs(2048); //normal: 256
 		MoreAlphaPolys(16384); //normal: 2048
 		//InstallHook_oCInfoMan_OnChoice();
@@ -13,6 +15,8 @@ func void LeGo_Init_DoIt()
 		NPC_SetLastPlayer();	//NS - 25/07/13	для переселения ГГ
 		//Hook_View();
 		Shields_Init1();
+		
+		MEM_Debug("LeGo initialized!");
 		
 		LeGo_Init_Once = TRUE;
 	};

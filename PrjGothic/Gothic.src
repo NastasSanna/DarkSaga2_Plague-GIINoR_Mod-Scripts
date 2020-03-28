@@ -189,6 +189,7 @@ _Intern\LeGo\Redleha_Other\B_MultiPageBooks.d
 Story\B_Content\B_PlayerFindItem.d
 Story\B_Content\C_DS_Time_Regenerate.d
 Items\Amul_Ring_Belt\Equip_DS_Bonus_Functions.d
+Items\IT_DSP_Bonuses.d
 Items\IT_DS_Prototype.d
 Items\Weapons\IT_DS2P_Prototypes.d
 Items\Weapons\Tuning_Addon_BeliarsWeapons.d
@@ -221,6 +222,7 @@ Items\Armor_Shield\IT_DS_Armor.d
 Items\Armor_Shield\IT_Armor.d
 Items\Armor_Shield\IT_DS2P_Armor.d
 Items\Armor_Shield\IT_DS_Shields.d
+Items\Armor_Shield\IT_DSP_SHIELDS.d
 Items\Armor_Shield\IT_Armor_G1.d
 Items\Rune_Scrolls\IT_DS_Runen.d
 Items\Rune_Scrolls\IT_Runen.d
@@ -563,6 +565,7 @@ Story\Dialog_Mobsis\DS_ArrowRaw.d
 Story\Dialog_Mobsis\DS_teleportsagaworld.d
 Story\Dialog_Mobsis\DSG_SpeakingDoor.d
 Story\Dialog_Mobsis\DSG_Sharpening.d
+Story\Dialog_Mobsis\Bookstand_DSP_TownhallSecret.d
 Story\NPC_Scripts\B_CreateAmbientInv.d
 Story\NPC_Scripts\B_GiveNpcTalents.d
 Story\NPC_Scripts\B_SetAttributesToChapter.d

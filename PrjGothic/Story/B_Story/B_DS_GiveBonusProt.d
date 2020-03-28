@@ -4,6 +4,9 @@ const int PROT_DS_POINT = 4;
 const int PROT_DS_MAGIC = 8;
 const int PROT_DS_FIRE = 16;
 
+const int PROT_DS_ALLWEAPONS = PROT_DS_BLUNT | PROT_DS_EDGE | PROT_DS_POINT;
+const int PROT_DS_ALL = PROT_DS_ALLWEAPONS | PROT_DS_MAGIC | PROT_DS_FIRE;
+
 
 
 // реальная защита ГГ может стать отрицательной => ставим в 0

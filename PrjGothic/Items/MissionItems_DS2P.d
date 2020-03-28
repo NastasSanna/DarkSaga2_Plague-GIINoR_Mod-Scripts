@@ -233,13 +233,13 @@ instance ITMI_DS2P_Shulers_Cart_KingTref(C_Item)
 	text[5] = NAME_Value;	count[5] = value;
 };
 /*--------------------------------------------------------------------------*/
-// КУЗНЕЧНЫЕ МЕХА. 
+// КУЗНЕЧНЫЕ МЕХИ. 
 // Даёт пират ^Джозеф^ для пирата ^Зедд^ по квесту "Азартный игрок"
 /*--------------------------------------------------------------------------*/
 const int Value_ForgeBellows = 100;
 instance ITMI_DS2P_ForgeBellows(C_Item)
 {
-	name = "Кузнечные меха";
+	name = "Кузнечные мехи";
 	mainflag = ITEM_KAT_NONE;
 	flags = ITEM_MULTI | ITEM_MISSION;
 	value = Value_ForgeBellows;

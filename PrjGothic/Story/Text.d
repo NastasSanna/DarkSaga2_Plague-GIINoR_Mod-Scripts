@@ -5,6 +5,7 @@ const string MOBNAME_CRATE = "ящик";
 const string MOBNAME_CHEST = "—ундук";
 	const string MOBNAME_CHEST_HUNO = "—ундук ’уно";
 	const string MOBNAME_CHEST_BAROK = "—ундук Ѕарока";
+	const string MOBNAME_CHEST_GARD = "—ундук √арда";
 const string MOBNAME_BED = " ровать";
 const string MOBNAME_DOOR = "ƒверь";
 const string MOBNAME_CAMPFIRE = "";
