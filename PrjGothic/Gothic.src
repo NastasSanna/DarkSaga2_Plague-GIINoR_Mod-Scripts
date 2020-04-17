@@ -283,7 +283,6 @@ AI\Human\C_Human\C_NpcIsDown.d
 AI\Human\C_Human\C_NpcIsToughGuy.d
 AI\Human\C_Human\C_PlayerIsFakeBandit.d
 AI\Human\C_Human\C_PlayerIsFakePirate.d
-AI\Human\C_Human\C_PlayerHasFakeGuild.d
 AI\Human\C_Human\C_BanditHelpsStoryBandit.d
 AI\Human\C_Human\C_BanditAttackBandit.d
 AI\Human\B_Human\B_LookAtNpc.d
@@ -291,7 +290,6 @@ AI\Human\B_Human\B_ResetAll.d
 Story\B_Story\B_UseItem.d
 AI\Human\B_Human\B_ValidateOther.d
 AI\Human\B_Human\B_Say_Gold.d
-AI\Human\B_Human\B_CommentFakeGuild.d
 AI\Human\B_Human\B_Say_AttackEnd.d
 AI\Human\B_Human\B_Say_AttackReason.d
 AI\Human\B_Human\B_Say_GuildGreetings.d
@@ -582,7 +580,6 @@ Story\NPC\G2NV\G2NV_17_Gorn.d
 Story\NPC\G2NV\G2NV_18_Vatras.d
 Story\NPC\G2NV\DS_20_Alaster.d
 Story\NPC\G2NV\DS_21_NONE_Marik.d
-Story\NPC\G2NV\DS_19_NONE_Gerard.d
 Story\NPC\G2NV\DS_22_SKIP.d
 Story\NPC\G2NV\DS_666_Dark.d
 Story\NPC\G2NV\_pre_G2NV\pre_G2NV_10_Nameless.d

@@ -156,13 +156,7 @@ func void B_Say_AttackEnd()
 	};
 	if(self.aivar[AIV_ATTACKREASON] == AR_GuardStopsFight)
 	{
-		if((other.guild == GIL_SLD) || (other.guild == GIL_DJG))
-		{
-		}
-		else
-		{
-			B_Say(self,other,"$THEREISNOFIGHTINGHERE");
-		};
+		B_Say(self,other,"$THEREISNOFIGHTINGHERE");
 		return;
 	};
 	if(self.aivar[AIV_ATTACKREASON] == AR_GuardCalledToThief)

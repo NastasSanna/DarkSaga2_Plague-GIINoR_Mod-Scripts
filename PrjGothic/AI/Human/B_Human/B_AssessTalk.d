@@ -30,17 +30,7 @@ func void B_AssessTalk()
 		};
 		if(C_RefuseTalk(self,other))
 		{
-			if(C_PlayerHasFakeGuild(self,other))
-			{
-				Npc_ClearAIQueue(self);
-				AI_StartState(self,ZS_CommentFakeGuild,1,"");
-				return;
-			}
-			else
-			{
-				B_Say(self,other,"$NOTNOW");
-				return;
-			};
+			B_Say(self,other,"$NOTNOW");
 		};
 	};
 	if(self.aivar[AIV_NpcStartedTalk] == FALSE)
