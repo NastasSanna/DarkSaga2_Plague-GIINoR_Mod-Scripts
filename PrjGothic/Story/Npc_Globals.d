@@ -66,7 +66,6 @@ func void B_InitNpcGlobals()
 	};
 	MARIK = Hlp_GetNpc(DS_21_MARIK);
 	Skip = Hlp_GetNpc(DS_22_SKIP);
-	Gerard = Hlp_GetNpc(DS_19_Gerard);
 	
 	// Команда из Г2НВ ====================
 	Nameless = Hlp_GetNpc(none_10_Nameless);
