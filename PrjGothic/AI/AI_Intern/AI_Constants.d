@@ -227,7 +227,7 @@ const int AF_AFTER_PLUS_DAMAGE = 3;
 
 const int AIV_CrimeAbsolutionLevel = 46;
 const int AIV_LastPlayerAR = 47;
-const int AIV_DuelLost = 48;
+const int AIV_DuelLost = 48; // не исп.
 const int AIV_ChapterInv = 49;
 const int AIV_MM_Packhunter = 50;
 

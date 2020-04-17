@@ -327,7 +327,7 @@ func void B_MagicWeaponDamage(var C_Npc oth,var C_Npc slf)
 	
 		if(Npc_HasItems(other,ItMW_Ds_KillOrks))
 		{
-			if((self.guild == GIL_VLK) || (self.guild == GIL_FRIENDLY_ORC) || (self.guild == GIL_SEPERATOR_ORC))
+			if(self.guild >= GIL_SEPERATOR_ORC)
 			{
 				if(c_OrcSlay_ready() == True)
 				{

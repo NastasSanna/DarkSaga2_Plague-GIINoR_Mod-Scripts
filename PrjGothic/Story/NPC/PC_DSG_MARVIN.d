@@ -2,7 +2,7 @@
 instance PC_DSG_MARVIN(Npc_Default)
 {
 	name[0] = "Марвин";
-	guild = GIL_VLK;
+	guild = GIL_NONE;
 	id = 3131;
 	npcType = npctype_main;
 	flags = 0;

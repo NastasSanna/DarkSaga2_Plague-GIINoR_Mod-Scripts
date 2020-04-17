@@ -1,7 +1,7 @@
 instance none_14_Milten(Npc_Default)
 {
 	name[0] = "Милтен";
-	guild = GIL_KDF;
+	guild = GIL_G2NV;
 	id = 14;
 	voice = 3;
 	flags = 0;

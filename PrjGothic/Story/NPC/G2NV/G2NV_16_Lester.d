@@ -1,7 +1,7 @@
 instance none_16_Lester(Npc_Default)
 {
 	name[0] = "Лестер";
-	guild = GIL_VLK;
+	guild = GIL_G2NV;
 	id = 16;
 	voice = 13;
 	flags = 0;

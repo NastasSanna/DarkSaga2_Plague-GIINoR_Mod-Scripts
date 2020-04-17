@@ -44,9 +44,7 @@ func void B_Say_Smalltalk(var int BS_STATE)
 	var int random;
 	var int Choice;	
 	var int Choice_DS;
-	random = Hlp_Random(120);
-	Choice = Hlp_Random(1);
-	Choice_DS = Hlp_Random(20);
+	random = Hlp_Random(105);
 	if(random < 5)
 	{
 		B_Say(self,self,"$SMALLTALK01");
@@ -130,98 +128,6 @@ func void B_Say_Smalltalk(var int BS_STATE)
 	else if(random < 105)
 	{
 		B_Say(self,self,"$SMALLTALK21");
-	}
-	else if(random < 110)
-	{
-		if((Npc_GetTrueGuild(self) == GIL_NOV) || (Npc_GetTrueGuild(self) == GIL_PAL) || (Npc_GetTrueGuild(self) == GIL_KDF))
-		{
-			if(Choice == 0)
-			{
-				B_Say(self,self,"$SMALLTALK28");
-			}
-			else
-			{
-				B_Say(self,self,"$SMALLTALK22");
-			};
-		}
-		else if((Npc_GetTrueGuild(self) == GIL_BDT) || (Npc_GetTrueGuild(self) == GIL_SLD) 
-		|| (Npc_GetTrueGuild(self) == GIL_DJG) || (Npc_GetTrueGuild(self) == GIL_PIR))
-		{
-			if(Choice == 0)
-			{
-				B_Say(self,self,"$SMALLTALK25");
-			}
-			else
-			{
-				B_Say(self,self,"$SMALLTALK22");
-			};
-		}
-		else
-		{
-			B_Say(self,self,"$SMALLTALK22");
-		};
-	}
-	else if(random < 115)
-	{
-		if((Npc_GetTrueGuild(self) == GIL_NOV) || (Npc_GetTrueGuild(self) == GIL_PAL) 
-		|| (Npc_GetTrueGuild(self) == GIL_KDF))
-		{
-			if(Choice == 0)
-			{
-				B_Say(self,self,"$SMALLTALK29");
-			}
-			else
-			{
-				B_Say(self,self,"$SMALLTALK23");
-			};
-		}
-		else if((Npc_GetTrueGuild(self) == GIL_BDT) || (Npc_GetTrueGuild(self) == GIL_SLD) 
-		|| (Npc_GetTrueGuild(self) == GIL_DJG) || (Npc_GetTrueGuild(self) == GIL_PIR))
-		{
-			if(Choice == 0)
-			{
-				B_Say(self,self,"$SMALLTALK26");
-			}
-			else
-			{
-				B_Say(self,self,"$SMALLTALK23");
-			};
-		}
-		else
-		{
-			B_Say(self,self,"$SMALLTALK23");
-		};
-	}
-	else if(random <= 120)
-	{
-		if((Npc_GetTrueGuild(self) == GIL_NOV) || (Npc_GetTrueGuild(self) == GIL_PAL) 
-		|| (Npc_GetTrueGuild(self) == GIL_KDF))
-		{
-			if(Choice == 0)
-			{
-				B_Say(self,self,"$SMALLTALK30");
-			}
-			else
-			{
-				B_Say(self,self,"$SMALLTALK24");
-			};
-		}
-		else if((Npc_GetTrueGuild(self) == GIL_BDT) || (Npc_GetTrueGuild(self) == GIL_SLD) 
-		|| (Npc_GetTrueGuild(self) == GIL_DJG) || (Npc_GetTrueGuild(self) == GIL_PIR))
-		{
-			if(Choice == 0)
-			{
-				B_Say(self,self,"$SMALLTALK27");
-			}
-			else
-			{
-				B_Say(self,self,"$SMALLTALK24");
-			};
-		}
-		else
-		{
-			B_Say(self,self,"$SMALLTALK24");
-		};
 	};
 	B_Play_RandomAni(BS_STATE);
 };

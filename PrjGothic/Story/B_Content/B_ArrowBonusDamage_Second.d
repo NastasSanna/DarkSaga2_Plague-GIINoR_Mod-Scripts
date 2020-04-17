@@ -141,10 +141,6 @@ func int Monster_is_Class(var C_NPC slf)
 	{
 		Mst_Class = MstMagic_Monster;
 	}
-	else if(slf.guild == GIL_VLK)
-	{
-		Mst_Class = MstOrc;
-	}
 	else if(slf.guild < GIL_SEPERATOR_HUM)
 	{
 		Mst_Class = MstHuman;

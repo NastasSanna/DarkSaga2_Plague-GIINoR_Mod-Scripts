@@ -1,7 +1,7 @@
 instance none_17_Gorn(Npc_Default)
 {
 	name[0] = "Горн";
-	guild = GIL_VLK;
+	guild = GIL_G2NV;
 	id = 17;
 	voice = 12;
 	flags = 0;

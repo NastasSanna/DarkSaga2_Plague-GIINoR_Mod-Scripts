@@ -22,10 +22,6 @@ func void ZS_Unconscious()
 		/*FOR SHIELD*///AI_DropShield(self);//по идеи должно быть тут.
 		self.aivar[AIV_DefeatedByPlayer] = TRUE;
 		self.aivar[AIV_LastFightAgainstPlayer] = FIGHT_LOST;
-		if((self.aivar[AIV_LastPlayerAR] == AR_NONE) && (self.aivar[AIV_DuelLost] == FALSE) && (self.guild == GIL_SLD))
-		{
-			self.aivar[AIV_DuelLost] = TRUE;
-		};
 		if(self.aivar[AIV_ArenaFight] == AF_RUNNING)
 		{
 			self.aivar[AIV_ArenaFight] = AF_AFTER;

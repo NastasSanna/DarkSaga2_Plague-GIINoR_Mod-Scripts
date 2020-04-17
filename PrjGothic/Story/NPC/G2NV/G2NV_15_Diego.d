@@ -1,7 +1,7 @@
 instance none_15_Diego(Npc_Default)
 {
 	name[0] = "Диего";
-	guild = GIL_VLK;
+	guild = GIL_G2NV;
 	id = 15;
 	voice = 11;
 	flags = 0;

@@ -3,37 +3,37 @@ func void B_SetMonsterAttitude(var int fromGuild,var int attitude,var int toGuil
 {
 	if(toGuild == GIL_SEPERATOR_HUM)
 	{
-		Wld_SetGuildAttitude(fromGuild,attitude,GIL_NONE);
-		Wld_SetGuildAttitude(fromGuild,attitude,GIL_PAL);
-		Wld_SetGuildAttitude(fromGuild,attitude,GIL_MIL);
-		Wld_SetGuildAttitude(fromGuild,attitude,GIL_VLK);
-		Wld_SetGuildAttitude(fromGuild,attitude,GIL_KDF);
-		Wld_SetGuildAttitude(fromGuild,attitude,GIL_NOV);
-		Wld_SetGuildAttitude(fromGuild,attitude,GIL_DJG);
-		Wld_SetGuildAttitude(fromGuild,attitude,GIL_SLD);
-		Wld_SetGuildAttitude(fromGuild,attitude,GIL_BAU);
-		Wld_SetGuildAttitude(fromGuild,attitude,GIL_BDT);
-		Wld_SetGuildAttitude(fromGuild,attitude,GIL_STRF);
-		Wld_SetGuildAttitude(fromGuild,attitude,GIL_OUT);
-		Wld_SetGuildAttitude(fromGuild,attitude,GIL_PIR);
-		Wld_SetGuildAttitude(fromGuild,attitude,GIL_KDW);
+		Wld_SetGuildAttitude(fromGuild,attitude,0);
+		Wld_SetGuildAttitude(fromGuild,attitude,1);
+		Wld_SetGuildAttitude(fromGuild,attitude,2);
+		Wld_SetGuildAttitude(fromGuild,attitude,3);
+		Wld_SetGuildAttitude(fromGuild,attitude,4);
+		Wld_SetGuildAttitude(fromGuild,attitude,5);
+		Wld_SetGuildAttitude(fromGuild,attitude,6);
+		Wld_SetGuildAttitude(fromGuild,attitude,7);
+		Wld_SetGuildAttitude(fromGuild,attitude,8);
+		Wld_SetGuildAttitude(fromGuild,attitude,9);
+		Wld_SetGuildAttitude(fromGuild,attitude,10);
+		Wld_SetGuildAttitude(fromGuild,attitude,11);
+		Wld_SetGuildAttitude(fromGuild,attitude,12);
+		Wld_SetGuildAttitude(fromGuild,attitude,13);
 	}
 	else if(fromGuild == GIL_SEPERATOR_HUM)
 	{
-		Wld_SetGuildAttitude(GIL_NONE,attitude,toGuild);
-		Wld_SetGuildAttitude(GIL_PAL,attitude,toGuild);
-		Wld_SetGuildAttitude(GIL_MIL,attitude,toGuild);
-		Wld_SetGuildAttitude(GIL_VLK,attitude,toGuild);
-		Wld_SetGuildAttitude(GIL_KDF,attitude,toGuild);
-		Wld_SetGuildAttitude(GIL_NOV,attitude,toGuild);
-		Wld_SetGuildAttitude(GIL_DJG,attitude,toGuild);
-		Wld_SetGuildAttitude(GIL_SLD,attitude,toGuild);
-		Wld_SetGuildAttitude(GIL_BAU,attitude,toGuild);
-		Wld_SetGuildAttitude(GIL_BDT,attitude,toGuild);
-		Wld_SetGuildAttitude(GIL_STRF,attitude,toGuild);
-		Wld_SetGuildAttitude(GIL_OUT,attitude,toGuild);
-		Wld_SetGuildAttitude(GIL_PIR,attitude,toGuild);
-		Wld_SetGuildAttitude(GIL_KDW,attitude,toGuild);
+		Wld_SetGuildAttitude(0,attitude,toGuild);
+		Wld_SetGuildAttitude(1,attitude,toGuild);
+		Wld_SetGuildAttitude(2,attitude,toGuild);
+		Wld_SetGuildAttitude(3,attitude,toGuild);
+		Wld_SetGuildAttitude(4,attitude,toGuild);
+		Wld_SetGuildAttitude(5,attitude,toGuild);
+		Wld_SetGuildAttitude(6,attitude,toGuild);
+		Wld_SetGuildAttitude(7,attitude,toGuild);
+		Wld_SetGuildAttitude(8,attitude,toGuild);
+		Wld_SetGuildAttitude(9,attitude,toGuild);
+		Wld_SetGuildAttitude(10,attitude,toGuild);
+		Wld_SetGuildAttitude(11,attitude,toGuild);
+		Wld_SetGuildAttitude(12,attitude,toGuild);
+		Wld_SetGuildAttitude(13,attitude,toGuild);
 	}
 	else
 	{

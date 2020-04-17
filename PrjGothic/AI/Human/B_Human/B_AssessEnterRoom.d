@@ -117,7 +117,7 @@ func void B_AssessPortalCollision()
 		{
 			return;
 		};
-		if(((formerportalguild == GIL_MIL) || (formerportalguild == GIL_SLD)) && (Wld_GetGuildAttitude(self.guild,formerportalguild) == ATT_FRIENDLY))
+		if(((formerportalguild == GIL_PIR) || (formerportalguild == GIL_PIR2)) && (Wld_GetGuildAttitude(self.guild,formerportalguild) == ATT_FRIENDLY))
 		{
 			B_Attack(self,other,AR_LeftPortalRoom,0);
 			return;

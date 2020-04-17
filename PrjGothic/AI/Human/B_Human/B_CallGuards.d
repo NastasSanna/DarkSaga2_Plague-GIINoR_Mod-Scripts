@@ -3,7 +3,7 @@ func int C_WantToCallGuards(var C_Npc slf)
 {
 	if(self.aivar[AIV_PARTYMEMBER] == FALSE)
 	{
-		if((slf.guild == GIL_PAL) || (slf.guild == GIL_MIL) || (slf.guild == GIL_VLK) || (slf.guild == GIL_SLD) || (slf.guild == GIL_BAU))
+		if((slf.guild == GIL_BAU) || (slf.guild == GIL_PIR) || (slf.guild == GIL_PIR2))
 		{
 			return TRUE;
 		};
@@ -24,7 +24,7 @@ func void B_CallGuards()
 	};
 	if((self.aivar[AIV_ATTACKREASON] == AR_GuildEnemy) || (self.aivar[AIV_ATTACKREASON] == AR_HumanMurderedHuman))
 	{
-		if((self.guild == GIL_MIL) || (self.guild == GIL_PAL) || (self.guild == GIL_SLD))
+		if((self.guild == GIL_PIR) || (self.guild == GIL_PIR2))
 		{
 			B_Say_Overlay(self,other,"$ALARM");
 			Npc_SendPassivePerc(self,PERC_ASSESSFIGHTSOUND,self,other);
@@ -64,7 +64,7 @@ func void B_CallGuards()
 	};
 	if(self.aivar[AIV_ATTACKREASON] == AR_ClearRoom)
 	{
-		if((self.guild == GIL_MIL) || (self.guild == GIL_PAL) || (self.guild == GIL_SLD))
+		if((self.guild == GIL_PIR) || (self.guild == GIL_PIR2))
 		{
 			B_Say_Overlay(self,other,"$ALARM");
 			Npc_SendPassivePerc(self,PERC_ASSESSFIGHTSOUND,self,other);

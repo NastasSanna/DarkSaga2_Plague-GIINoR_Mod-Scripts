@@ -29,26 +29,23 @@ func void B_RefreshAtInsert()
 		self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS_MAX];
 		if(Npc_HasEquippedWeapon(self) == FALSE)
 		{
-			if(self.guild == GIL_MIL)
+			if(self.guild == GIL_PIR || self.guild == GIL_PIR2)
+			{
+				CreateInvItems(self,ItMw_1h_Sld_Sword,1);
+			}
+			else if(self.guild == GIL_BAU)
+			{
+				CreateInvItems(self,ItMw_1h_Bau_Axe,1);
+			}
+			else if(self.guild == GIL_HUN)
+			{
+				CreateInvItems(self,ItMw_1h_Vlk_Axe,1);
+			}
+			else 
 			{
 				CreateInvItems(self,ItMw_1h_Bau_Mace,1);
 			};
-			if(self.guild == GIL_PAL)
-			{
-				CreateInvItems(self,ItMw_1h_Bau_Mace,1);
-			};
-			if(self.guild == GIL_SLD)
-			{
-				CreateInvItems(self,ItMw_1h_Bau_Mace,1);
-			};
-			if(self.guild == GIL_BAU)
-			{
-				CreateInvItems(self,ItMw_1h_Bau_Mace,1);
-			};
-			if(self.guild == GIL_NOV)
-			{
-				CreateInvItems(self,ItMw_1h_Bau_Mace,1);
-			};
+			// TO DO профессия - кузец
 		};
 	};
 };

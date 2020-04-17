@@ -1,7 +1,7 @@
 instance pre_none_13_Lee(Npc_Default)
 {
 	name[0] = "ห่";
-	guild = GIL_SLD;
+	guild = GIL_G2NV;
 	id = 1013;
 	voice = 4;
 	flags = 0;

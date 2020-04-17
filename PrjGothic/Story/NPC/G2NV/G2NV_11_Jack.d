@@ -1,7 +1,7 @@
 instance none_11_Jack(Npc_Default)
 {
 	name[0] = "Джек";
-	guild = GIL_VLK;
+	guild = GIL_G2NV;
 	id = 11;
 	voice = 14;
 	flags = NPC_FLAG_IMMORTAL;

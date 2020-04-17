@@ -5,7 +5,7 @@ func int C_WantToReactToSneaker(var C_Npc slf,var C_Npc oth)
 	{
 		return FALSE;
 	};
-	if((slf.guild == GIL_DMT) || (slf.guild == GIL_STRF) || (slf.guild == GIL_BDT))
+	if((slf.guild == GIL_DMT) || (slf.guild == GIL_BDT))
 	{
 		return FALSE;
 	};

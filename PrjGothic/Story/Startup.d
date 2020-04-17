@@ -130,8 +130,20 @@ func void STARTUP_DS2P_ATOLL()
 	Wld_InsertNpc(Shadowbeast_Addon_Fire_Garon,"");
 	/*Вставляем монстрятину*/
 };
+// Эсмеральда
+func void INIT_SUB_DS2P_ATOLL_SHIP()
+{
+	Wld_AssignRoomToGuild("BUG",GIL_G2NV);
+	Wld_AssignRoomToGuild("CAPTAIN",GIL_G2NV);
+	Wld_AssignRoomToGuild("NAVIGATION",GIL_G2NV);
+	Wld_AssignRoomToGuild("KOMBUESE",GIL_G2NV);
+};
 func void INIT_SUB_DS2P_ATOLL_COAST()
 {
+	Wld_AssignRoomToGuild("BUG",GIL_G2NV);
+	Wld_AssignRoomToGuild("CAPTAIN",GIL_G2NV);
+	Wld_AssignRoomToGuild("NAVIGATION",GIL_G2NV);
+	Wld_AssignRoomToGuild("KOMBUESE",GIL_G2NV);
 };
 func void INIT_SUB_DS2P_ATOLL_FORT()
 {
@@ -156,6 +168,7 @@ func void INIT_DS2P_ATOLL()
 	B_InitGuildAttitudes();
 	B_InitNpcGlobals();
 	B_DS2P_InitLanSkeleton();//внешность Лана
+	INIT_SUB_DS2P_ATOLL_SHIP();
 	INIT_SUB_DS2P_ATOLL_COAST();
 	INIT_SUB_DS2P_ATOLL_FORT();
 	INIT_SUB_DS2P_ATOLL_CAMP();

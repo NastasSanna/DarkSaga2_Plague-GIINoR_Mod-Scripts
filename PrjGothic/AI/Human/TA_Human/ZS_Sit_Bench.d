@@ -14,22 +14,22 @@ func void B_Detect_And_SaySmallTalk(var int BS_STATE)
 	Npc_PerceiveAll(self);
 	if(random_r <= 1)
 	{
-		if(Wld_DetectNpc(self,-1,ZS_Sit_Bench,-1) && (self.guild != GIL_VLK))
+		if(Wld_DetectNpc(self,-1,ZS_Sit_Bench,-1))
 		{
 			B_LookAndSay(BS_STATE);
 		}
-		else if(Wld_DetectNpc(self,-1,ZS_Sit_Campfire,-1) && (self.guild != GIL_VLK))
+		else if(Wld_DetectNpc(self,-1,ZS_Sit_Campfire,-1))
 		{
 			B_LookAndSay(BS_STATE);
 		};
 	}
 	else if(random_r <= 3)
 	{
-		if(Wld_DetectNpc(self,-1,ZS_Sit_Campfire,-1) && (self.guild != GIL_VLK))
+		if(Wld_DetectNpc(self,-1,ZS_Sit_Campfire,-1))
 		{
 			B_LookAndSay(BS_STATE);
 		}
-		else if(Wld_DetectNpc(self,-1,ZS_Sit_Bench,-1) && (self.guild != GIL_VLK))
+		else if(Wld_DetectNpc(self,-1,ZS_Sit_Bench,-1))
 		{
 			B_LookAndSay(BS_STATE);
 		};
@@ -81,7 +81,7 @@ func int ZS_Sit_Bench_Loop()
 		{
 			AI_PlayAniBS(self,"R_CHAIR_RANDOM_3",BS_SIT);
 		};
-		if((random <= 3) && (self.guild != GIL_VLK))
+		if((random <= 3))
 		{
 			AI_PlayAniBS(self,"R_CHAIR_RANDOM_4",BS_SIT);
 		};
