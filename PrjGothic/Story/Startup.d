@@ -140,10 +140,18 @@ func void INIT_SUB_DS2P_ATOLL_SHIP()
 };
 func void INIT_SUB_DS2P_ATOLL_COAST()
 {
-	Wld_AssignRoomToGuild("BUG",GIL_G2NV);
-	Wld_AssignRoomToGuild("CAPTAIN",GIL_G2NV);
-	Wld_AssignRoomToGuild("NAVIGATION",GIL_G2NV);
-	Wld_AssignRoomToGuild("KOMBUESE",GIL_G2NV);
+	// TO DO pirates owners
+	Wld_AssignRoomToGuild("FISHERHUT",GIL_BAU);
+	Wld_AssignRoomToGuild("MADHUT",GIL_BAU);
+	Wld_AssignRoomToGuild("HEALERHOUSEFLOOR1",GIL_BAU);
+	Wld_AssignRoomToGuild("HEALERHOUSEFLOOR2",GIL_BAU);
+	Wld_AssignRoomToGuild("BIGBAUHOUSE",GIL_BAU);
+	Wld_AssignRoomToGuild("HOUSEHUNTERS",GIL_HUN);
+	Wld_AssignRoomToGuild("BARN",GIL_BAU);
+	Wld_AssignRoomToGuild("HERDSHOUSEROOM1",GIL_BAU);
+	Wld_AssignRoomToGuild("HERDSHOUSEROOM2",GIL_BAU);
+	Wld_AssignRoomToGuild("TAVERN",GIL_PUBLIC);
+	Wld_AssignRoomToGuild("SALTCAVE",GIL_CAVE);
 };
 func void INIT_SUB_DS2P_ATOLL_FORT()
 {
@@ -151,15 +159,54 @@ func void INIT_SUB_DS2P_ATOLL_FORT()
 	if (Windmill_Enabled == TRUE) {
 		Wld_SendTrigger("WINDMILL_ROTOR");
 	};
+	
+	// TO DO pirates owners
+	Wld_AssignRoomToGuild("BAUHOUSE1",GIL_BAU);
+	Wld_AssignRoomToGuild("BAUHOUSE2",GIL_BAU);
+	Wld_AssignRoomToGuild("SMITHHOUSE",GIL_BAU);
+	Wld_AssignRoomToGuild("TOWNHALL",GIL_BAU);
+	Wld_AssignRoomToGuild("ABANDONEDHOUSE",GIL_ROOMNONE);
+	
+	Wld_AssignRoomToGuild("RESTCAVE",GIL_PIR);
+	Wld_AssignRoomToGuild("TOWNCAVE",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("CEMETERYCRYPT",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("PILLARCAVE",GIL_CAVE);
+	Wld_AssignRoomToGuild("OLDMINE",GIL_CAVE);
+	
 };
 func void INIT_SUB_DS2P_ATOLL_CAMP()
 {
+	Wld_AssignRoomToGuild("CAMPTELEPORTCAVE",GIL_CAVE);
+	Wld_AssignRoomToGuild("WATERCAVE",GIL_CAVE);
+	Wld_AssignRoomToGuild("CAMPTUNNEL",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("CAMPLEFTROOM",GIL_ROOMNONE);
+	Wld_AssignRoomToGuild("CAMPRIGHTROOM",GIL_ROOMNONE);
+	Wld_AssignRoomToGuild("CAMPDOWNCAVE",GIL_CAVE);
+	Wld_AssignRoomToGuild("DRAGONFORT",GIL_ROOMNONE);
+	Wld_AssignRoomToGuild("DRAGONFORTTUNNEL",GIL_ROOMNONE);
 };
 func void INIT_SUB_DS2P_ATOLL_FOREST()
 {
 	Wld_SetMobRoutine(0, 0,"MAGICLAMP",1);
 	Wld_SetMobRoutine(20,0,"MAGICLAMP",1);
 	Wld_SetMobRoutine(4,30,"MAGICLAMP",0);
+	
+	Wld_AssignRoomToGuild("BIDGEHOUSE",GIL_OUT);
+	Wld_AssignRoomToGuild("LIBRARY",GIL_OUT);
+	Wld_AssignRoomToGuild("LIBRARYCELLAR",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("CAVEUNDERLIBRARY",GIL_CAVE);
+	Wld_AssignRoomToGuild("FORESTHUT",GIL_HUN);
+	Wld_AssignRoomToGuild("SWAMPTEMPLE",GIL_GOBBO);
+	Wld_AssignRoomToGuild("SWAMPTEMPLECAVES",GIL_GOBBO);
+	Wld_AssignRoomToGuild("RUINSUNDERWATER",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("RUINSTEMPLE",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("RUINSLEFTROOM",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("RUINSRIGHTROOM",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("RUINSMIDROOM",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("CAVEOVERSWAMP",GIL_CAVE);
+	Wld_AssignRoomToGuild("FORESTCAVE",GIL_CAVE);
+	Wld_AssignRoomToGuild("FORESTMINE",GIL_CAVE);
+	
 };
 func void INIT_DS2P_ATOLL()
 {
