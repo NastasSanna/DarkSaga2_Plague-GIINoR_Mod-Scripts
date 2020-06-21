@@ -1,7 +1,7 @@
 instance none_18_Vatras(Npc_Default)
 {
 	name[0] = "Ватрас";
-	guild = GIL_KDW;
+	guild = GIL_G2NV;
 	id = 18;
 	voice = 5;
 	flags = NPC_FLAG_IMMORTAL;

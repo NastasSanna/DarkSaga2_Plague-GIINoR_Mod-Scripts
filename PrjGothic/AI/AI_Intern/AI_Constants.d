@@ -227,7 +227,7 @@ const int AF_AFTER_PLUS_DAMAGE = 3;
 
 const int AIV_CrimeAbsolutionLevel = 46;
 const int AIV_LastPlayerAR = 47;
-const int AIV_DuelLost = 48;
+const int AIV_DuelLost = 48; // םו טסן.
 const int AIV_ChapterInv = 49;
 const int AIV_MM_Packhunter = 50;
 
@@ -284,7 +284,7 @@ const int AIV_TIME_UNCONSCIOUS = 91;
 const int AIV_Spell_4_Uncon = 92;
 const int AIV_Name = 93;
 const int AIV_ShieldEquipped = 94;
-//const int AIV_Name = 95; --> ג פאיכו UserConst !ÍÅ ÁÐÀÒÜ
+//const int AIV_TALENT_INDEX = 95; //--> ג LeGo !ÍÅ ÁÐÀÒÜ
 const int AIV_TALK_TRIA = 99;	//NS: ענטאכמד בוח LeGo
 
 const int AIV_WeaponChoosePrio = 96;

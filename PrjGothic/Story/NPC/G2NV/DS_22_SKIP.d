@@ -2,7 +2,7 @@
 instance DS_22_SKIP(Npc_Default)
 {
 	name[0] = "Скип";
-	guild = GIL_PIR;
+	guild = GIL_PIR2;
 	id = 22;
 	voice = 8;
 	flags = FALSE;

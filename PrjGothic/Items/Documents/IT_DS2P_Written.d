@@ -1,5 +1,5 @@
 /*Карта острова (возможно в продаже у крестьян)*/
-instance ItWr_DS2P_Map_Bauer(C_Item)
+instance ItWr_DS2P_Map_Atoll(C_Item)
 {
   name = "Карта";
   mainflag = ITEM_KAT_DOCS;
@@ -8,28 +8,27 @@ instance ItWr_DS2P_Map_Bauer(C_Item)
   visual = "ItWr_Map_01.3DS";
   material = MAT_LEATHER;
   scemeName = "MAP";
-  on_state[0] = Use_DS2P_Map_Bauer;
+  on_state[0] = Use_DS2P_Map_Atoll;
   description = "Карта острова";
-  text[0] = "Эту карту составили";
-	text[1] = "в лагере фермеров.";
+  text[0] = "Эту карту составили местные жители";
   text[5] = NAME_Value;
   count[5] = value;
 };
-func void Use_DS2P_Map_Bauer()
+func void Use_DS2P_Map_Atoll()
 {
 	var int Document;
 	if(Npc_IsPlayer(self))
 	{
-		B_SetPlayerMap(ItWr_DS2P_Map_Bauer);
+		B_SetPlayerMap(ItWr_DS2P_Map_Atoll);
 	};
 	Document = Doc_CreateMap();
 	Doc_SetPages(Document,1);
-	Doc_SetPage(Document,0,"MAP_DS2P_BAUERS.tga",TRUE);
-	Doc_SetLevel(Document,"World_DS2_Prolog.zen");
-	Doc_SetLevelCoords(Document,-17687,31000,74157,-37000);
+	Doc_SetPage(Document,0,"DSP_MAP_ATOLL.tga",TRUE);
+	Doc_SetLevel(Document,"DSP\DS2P_ATOLL.zen");
+	Doc_SetLevelCoords(Document,-32000,41000,39000,-29000);
 	Doc_Show(Document);
 };
-instance ItWr_DS2P_Map_Tamir(C_Item)
+instance ItWr_DS2P_Map_Tamir(C_Item) // UNFINISHED - сама карта
 {
 	name = "Карта";
 	mainflag = ITEM_KAT_DOCS;
@@ -54,13 +53,13 @@ func void Use_DS2P_Map_Tamir()
 	};
 	Document = Doc_CreateMap();
 	Doc_SetPages(Document,1);
-	Doc_SetPage(Document,0,"MAP_DS2P_TAMIR.tga",TRUE);
-	Doc_SetLevel(Document,"World_DS2_Prolog.zen");
-	Doc_SetLevelCoords(Document,-17687,31000,74157,-37000);
+	Doc_SetPage(Document,0,"DSP_MAP_ATOLL.tga",TRUE);
+	Doc_SetLevel(Document,"DSP\DS2P_ATOLL.zen");
+	Doc_SetLevelCoords(Document,-32000,41000,39000,-29000);
 	Doc_Show(Document);
 };
 // Карта с местоположением сундука Зедда по квесту "Компромат на Зедда"
-instance ItWr_DS2P_ZeddCompromise_Map(C_Item)
+instance ItWr_DS2P_ZeddCompromise_Map(C_Item) // UNFINISHED - сама карта
 {
 	name = "Карта";
 	mainflag = ITEM_KAT_DOCS;
@@ -84,13 +83,13 @@ func void Use_DS2P_ZeddCompromise_Map()
 	};
 	Document = Doc_CreateMap();
 	Doc_SetPages(Document,1);
-	Doc_SetPage(Document,0,"MAP_DS2P_TAMIR.tga",TRUE); // UNFINISHED - сама карта
-	Doc_SetLevel(Document,"World_DS2_Prolog.zen");
-	Doc_SetLevelCoords(Document,-17687,31000,74157,-37000);
+	Doc_SetPage(Document,0,"DSP_MAP_ATOLL.tga",TRUE);
+	Doc_SetLevel(Document,"DSP\DS2P_ATOLL.zen");
+	Doc_SetLevelCoords(Document,-32000,41000,39000,-29000);
 	Doc_Show(Document);
 };
 //Карта сокровищ Лана-скелета
-instance ItWr_DS2P_Map_LanSkeleton(C_Item)
+instance ItWr_DS2P_Map_LanSkeleton(C_Item) // UNFINISHED - сама карта
 {
 	name = "Карта";
 	mainflag = ITEM_KAT_DOCS;
@@ -115,9 +114,9 @@ func void Use_DS2P_Map_LanSkeleton()
 	};
 	Document = Doc_CreateMap();
 	Doc_SetPages(Document,1);
-	Doc_SetPage(Document,0,"MAP_DS2P_LANSKELETON.tga",TRUE);
-	Doc_SetLevel(Document,"World_DS2_Prolog.zen");
-	Doc_SetLevelCoords(Document,-17687,31000,74157,-37000);
+	Doc_SetPage(Document,0,"DSP_MAP_ATOLL.tga",TRUE);
+	Doc_SetLevel(Document,"DSP\DS2P_ATOLL.zen");
+	Doc_SetLevelCoords(Document,-32000,41000,39000,-29000);
 	Doc_Show(Document);
 };
 //Список материалов для ковки с ценой в золоте

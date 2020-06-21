@@ -1,32 +1,15 @@
-var int Tamir_Monster_Unconscious_Count;
-func int C_DropUnconscious()
+
+/* NPC после драки
+ * TRUE - без создания 
+ * FALSE - упал замертво */
+func int C_DropUnconscious(var C_NPC slf, var C_NPC oth)
 {
-	if(other.guild > GIL_SEPERATOR_HUM)
-	{
-		if((C_NpcIs(self, BAU_105_DS2P_Tamir)) && (MIS_DS2P_TamirChoice == LOG_Running))
-		{
-			if(Tamir_Monster_Unconscious_Count <= 2)
-			{
-				Tamir_Monster_Unconscious_Count += 1;
-				return TRUE;
-			}
-			else
-			{
-				return FALSE;
-			};			
-		};			
+	if (oth.guild >= GIL_SEPERATOR_HUM && oth.guild <= GIL_SEPERATOR_ORC) {
 		return FALSE;
 	};
-	if((other.guild == GIL_DMT) || (other.guild == GIL_BDT) || (other.aivar[AIV_DropDeadAndKill] == TRUE))
+	if((C_NpcGetAttitude(slf,oth) != ATT_HOSTILE) && oth.aivar[AIV_DropDeadAndKill] == FALSE)
 	{
-		return FALSE;
-	};
-	if(self.guild < GIL_SEPERATOR_HUM)
-	{
-		if((self.guild != GIL_DMT) && (self.guild != GIL_BDT) && (self.aivar[AIV_DropDeadAndKill] == FALSE))
-		{
-			return TRUE;
-		};
+		return TRUE;
 	};
 	return FALSE;
 };

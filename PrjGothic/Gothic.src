@@ -32,19 +32,22 @@ _Intern\Ikarus_1_2_Rus\float_Rus.d
 _Intern\Ikarus_1_2_Rus\Float32ToString.d
 _Intern\Ikarus_1_2_Rus\IntToHex.d
 _Intern\Ikarus_1_2_Rus\Ikarus_DS2_Constants.d
-_Intern\LeGo\EngineAdr.d
+_Intern\LeGo\Misc.d
+_Intern\LeGo\EngineAdr_G2.d
 _Intern\LeGo\Timer.d
 _Intern\LeGo\Userconst.d
 _Intern\LeGo\ItemHelper.d
 _Intern\LeGo\StringBuilder.d
 _Intern\LeGo\Locals.d
 _Intern\LeGo\BinaryMachines.d
-_Intern\LeGo\HookEngine.d
 _Intern\LeGo\_Hashtable.d
+_Intern\LeGo\HookEngine.d
+_Intern\LeGo\HookDaedalus.d
 _Intern\LeGo\PermMem.d
-_Intern\LeGo\PermMem_Structs.d
-_Intern\LeGo\EventHandler.d
 _Intern\LeGo\List.d
+_Intern\LeGo\PermMem_Structs.d
+_Intern\LeGo\Queue.d
+_Intern\LeGo\EventHandler.d
 _Intern\LeGo\Anim8.d
 _Intern\LeGo\FrameFunctions.d
 _Intern\LeGo\ConsoleCommands.d
@@ -64,12 +67,14 @@ _Intern\LeGo\Dialoggestures.d
 _Intern\LeGo\Focusnames.d
 _Intern\LeGo\Gamestate.d
 _Intern\LeGo\Render.d
+_Intern\LeGo\Draw3D.d
 _Intern\LeGo\Saves.d
 _Intern\LeGo\Int64.d
 _Intern\LeGo\Sprite.d
 _Intern\LeGo\Hashtable.d
 _Intern\LeGo\LeGo.d
 _Intern\LeGo\Appl\math.d
+_Intern\LeGo\MyFunctions\HookEngine_Ext.d
 _Intern\Functions.d
 _Intern\LeGo\MyFunctions\Mob_Container.d
 _Intern\LeGo\MyFunctions\Npc_Functions.d
@@ -184,6 +189,7 @@ _Intern\LeGo\Redleha_Other\B_MultiPageBooks.d
 Story\B_Content\B_PlayerFindItem.d
 Story\B_Content\C_DS_Time_Regenerate.d
 Items\Amul_Ring_Belt\Equip_DS_Bonus_Functions.d
+Items\IT_DSP_Bonuses.d
 Items\IT_DS_Prototype.d
 Items\Weapons\IT_DS2P_Prototypes.d
 Items\Weapons\Tuning_Addon_BeliarsWeapons.d
@@ -216,6 +222,7 @@ Items\Armor_Shield\IT_DS_Armor.d
 Items\Armor_Shield\IT_Armor.d
 Items\Armor_Shield\IT_DS2P_Armor.d
 Items\Armor_Shield\IT_DS_Shields.d
+Items\Armor_Shield\IT_DSP_SHIELDS.d
 Items\Armor_Shield\IT_Armor_G1.d
 Items\Rune_Scrolls\IT_DS_Runen.d
 Items\Rune_Scrolls\IT_Runen.d
@@ -276,7 +283,6 @@ AI\Human\C_Human\C_NpcIsDown.d
 AI\Human\C_Human\C_NpcIsToughGuy.d
 AI\Human\C_Human\C_PlayerIsFakeBandit.d
 AI\Human\C_Human\C_PlayerIsFakePirate.d
-AI\Human\C_Human\C_PlayerHasFakeGuild.d
 AI\Human\C_Human\C_BanditHelpsStoryBandit.d
 AI\Human\C_Human\C_BanditAttackBandit.d
 AI\Human\B_Human\B_LookAtNpc.d
@@ -284,7 +290,6 @@ AI\Human\B_Human\B_ResetAll.d
 Story\B_Story\B_UseItem.d
 AI\Human\B_Human\B_ValidateOther.d
 AI\Human\B_Human\B_Say_Gold.d
-AI\Human\B_Human\B_CommentFakeGuild.d
 AI\Human\B_Human\B_Say_AttackEnd.d
 AI\Human\B_Human\B_Say_AttackReason.d
 AI\Human\B_Human\B_Say_GuildGreetings.d
@@ -523,8 +528,8 @@ AI\Human\TA_Human\ZS_StandWall.d
 AI\Human\TA_Human\ZS_WoodCutter.d
 AI\Human\TA_Human\ZS_DS_LaughAt_GG.d
 AI\Human\TA_Human\ZS_Sleep_Campfire.d
+Story\Dialoge\DIA_Proto.d
 Story\B_Story\B_BuildLearnString.d
-Story\B_Story\B_EndProductionDialog.d
 Story\B_Story\B_DS_DecreaseHeroHealth.d
 Story\B_Story\B_GetLearnCostTalent.d
 Story\B_Story\B_GetLearnCostAttribute.d
@@ -558,6 +563,7 @@ Story\Dialog_Mobsis\DS_ArrowRaw.d
 Story\Dialog_Mobsis\DS_teleportsagaworld.d
 Story\Dialog_Mobsis\DSG_SpeakingDoor.d
 Story\Dialog_Mobsis\DSG_Sharpening.d
+Story\Dialog_Mobsis\Bookstand_DSP_TownhallSecret.d
 Story\NPC_Scripts\B_CreateAmbientInv.d
 Story\NPC_Scripts\B_GiveNpcTalents.d
 Story\NPC_Scripts\B_SetAttributesToChapter.d
@@ -574,7 +580,6 @@ Story\NPC\G2NV\G2NV_17_Gorn.d
 Story\NPC\G2NV\G2NV_18_Vatras.d
 Story\NPC\G2NV\DS_20_Alaster.d
 Story\NPC\G2NV\DS_21_NONE_Marik.d
-Story\NPC\G2NV\DS_19_NONE_Gerard.d
 Story\NPC\G2NV\DS_22_SKIP.d
 Story\NPC\G2NV\DS_666_Dark.d
 Story\NPC\G2NV\_pre_G2NV\pre_G2NV_10_Nameless.d
@@ -717,6 +722,7 @@ Story\NPC\DSG_NonHuman\Gobbo_DS2P_RaDaPo.d
 Story\NPC\DSG_NonHuman\Wolf_DS2P_TaKoPi.d
 Story\NPC\DSG_NonHuman\Orc_DS2P_RakTarak.d
 Story\NPC\DSG_NonHuman\Orc_DS2P_ArTush.d
+Story\NPC\DSG_NonHuman\Dragon_Talan.d
 Story\B_Story\B_ClearDeadTrader.d
 Story\B_GiveTradeInv\B_ClearRuneInv.d
 Story\B_GiveTradeInv\B_TraderSwap.d
@@ -772,9 +778,7 @@ Story\B_Story\B_UseFakeScroll.d
 Story\B_Story\b_DS_UseFakeRune.d
 Story\B_Story\B_InitGuildAttitudes.d
 Story\B_Story\B_Kapitelwechsel.d
-Story\B_Story\B_DSG_Bauers_AboutStolenIron.d
 Story\B_Story\C_DSG_Cave4MillIsClear.d
-Story\B_Story\B_DSG_LansCageOpen.d
 Story\Dialog_Mobsis\BookstandKloster.d
 Story\Dialog_Mobsis\BookstandKDW_Addon.d
 Story\Dialoge\DIA_Bauers\DIA_BAU_100_DSG_KADAR.d
@@ -795,7 +799,6 @@ Story\Dialoge\DIA_Bauers\DIA_BAU_114_DS2P_Tom.d
 Story\Dialoge\DIA_Bauers\DIA_BAU_115_DS2P_Jinn.d
 Story\Dialoge\DIA_Bauers\DIA_BAU_116_DS2P_Fart.d
 Story\Dialoge\DIA_Bauers\DIA_BAU_117_DS2P_Garon.d
-Story\Dialoge\DIA_G2NV\dia_DS_19_NONE_Gerard.d
 Story\Dialoge\DIA_G2NV\dia_DS_22_SKIP.d
 Story\Dialoge\DIA_G2NV\dia_DS_21_NONE_Marik.d
 Story\Dialoge\DIA_G2NV\DIA_DS_666_Dark.d
@@ -841,10 +844,6 @@ Story\Dialoge\DIA_Gobbo\DIA_Dragon_Talan.d
 Story\Dialoge\DIA_Other\DIA_OUT_400_DS2P_Ekor.d
 Story\Dialoge\DIA_pc_marvin.d
 Story\Dialoge\DIA_FH.d
-Story\B_DSG_TeachersInfos\B_DSG_Cimm_Teach_Alchemy.d
-Story\B_DSG_TeachersInfos\B_DSG_Tamir_Teach_Hunt.d
-Story\B_DSG_TeachersInfos\B_DSG_Ekor_Teach_Alchemy.d
-Story\B_DSG_TeachersInfos\B_DSG_JaAfFar_Teach_Dex_Theft.d
 Story\B_AssignAmbientInfos\B_Video.d
 AI\Monster\C_Monster\C_NpcIsMonsterMage.d
 AI\Monster\C_Monster\C_PredatorFoundPrey.d
@@ -880,7 +879,7 @@ AI\Monster\ZS_Monster\ZS_MM_ThreatenEnemy.d
 Story\Events\B_Function_Touch_And_Get_Killed.d
 Story\Events\B_GiveStuntBonus.d
 Story\Events\EVT_DS2P_GardChestOpen.d
-Story\B_Story\B_DSG_InitLanSkeleton.d
+Story\B_Story\B_DS2P_InitLanSkeleton.d
 Story\Events\B_DSG_TimePotions_Effect.d
 Story\Events\B_DS2P_CheckHeroHasItems.d
 Story\Events\ds_time.d

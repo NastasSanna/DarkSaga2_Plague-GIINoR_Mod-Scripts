@@ -143,10 +143,7 @@ func void B_AssessFightSound()
 	if(((other.aivar[AIV_ATTACKREASON] == AR_GuardStopsFight) || (other.aivar[AIV_ATTACKREASON] == AR_ReactToDamage) 
 	|| (other.aivar[AIV_ATTACKREASON] == AR_ReactToWeapon)) && (Npc_GetAttitude(self,other) == ATT_FRIENDLY))
 	{
-		if(((other.guild == GIL_SLD) || (other.guild == GIL_DJG) || (other.guild == GIL_NONE)) && ((victim.guild == GIL_SLD) || (victim.guild == GIL_DJG) || (victim.guild == GIL_NONE)))
-		{
-		}
-		else if(!Npc_IsPlayer(other) && !Npc_IsPlayer(victim))
+		if(!Npc_IsPlayer(other) && !Npc_IsPlayer(victim))
 		{
 		}
 		else
@@ -158,10 +155,7 @@ func void B_AssessFightSound()
 	if(((victim.aivar[AIV_ATTACKREASON] == AR_GuardStopsFight) || (victim.aivar[AIV_ATTACKREASON] == AR_ReactToDamage) 
 	|| (victim.aivar[AIV_ATTACKREASON] == AR_ReactToWeapon)) && (Npc_GetAttitude(self,victim) == ATT_FRIENDLY))
 	{
-		if(((other.guild == GIL_SLD) || (other.guild == GIL_DJG) || (other.guild == GIL_NONE)) && ((victim.guild == GIL_SLD) || (victim.guild == GIL_DJG) || (victim.guild == GIL_NONE)))
-		{
-		}
-		else if(!Npc_IsPlayer(other) && !Npc_IsPlayer(victim))
+		if(!Npc_IsPlayer(other) && !Npc_IsPlayer(victim))
 		{
 		}
 		else
@@ -171,7 +165,8 @@ func void B_AssessFightSound()
 		};
 	};
 	if(((other.aivar[AIV_ATTACKREASON] == AR_NONE) || (other.aivar[AIV_ATTACKREASON] == AR_KILL)) 
-	&& ((victim.aivar[AIV_ATTACKREASON] == AR_NONE) || (victim.aivar[AIV_ATTACKREASON] == AR_KILL)) && (self.guild == GIL_MIL))
+		&& ((victim.aivar[AIV_ATTACKREASON] == AR_NONE) || (victim.aivar[AIV_ATTACKREASON] == AR_KILL))
+		&& ((self.guild == GIL_PIR) || (self.guild == GIL_PIR2)))
 	{
 		if((Npc_GetAttitude(self,other) == ATT_FRIENDLY) && (Npc_GetAttitude(self,victim) != ATT_FRIENDLY))
 		{

@@ -36,7 +36,7 @@ INSTANCE SA_Saturas(Npc_Default)
 	// ------ Kampf-Talente ------																		
 	B_SetFightSkills (self, 80); 
 	*/
-	guild = GIL_MIL;
+	guild = GIL_NONE;
 	id = 99;
 	voice = 9;
 

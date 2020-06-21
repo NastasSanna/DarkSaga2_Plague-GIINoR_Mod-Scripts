@@ -3,14 +3,14 @@
 \***********************************/
 
 //========================================
-// [intern] Alias zu AI_Function	/ Приравнивание 
+// [intern] Alias zu AI_Function
 //========================================
 func void _AI_Function(var c_npc slf, var string fnc) {
-   AI_PlayAni(slf, ConcatStrings("CALL ", fnc));
+    AI_PlayAni(slf, ConcatStrings("CALL ", fnc));
 };
 
 //========================================
-// Verzцgert eine Funktion aufrufen / Задержка вызова функции.
+// Verzцgert eine Funktion aufrufen
 //========================================
 func void AI_Function (var c_npc slf, var func function) {
     _AI_Function(slf, IntToString(MEM_GetFuncID(function)));
@@ -136,3 +136,4 @@ func void _AI_FUNCTION_EVENT() {
     };
     MEM_CallByID(fnc);
 };
+

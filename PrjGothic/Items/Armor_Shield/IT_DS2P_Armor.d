@@ -34,7 +34,7 @@ instance ITAR_BAU_DS2P_BABE(ITAR_DS_Proto)		//Одежда крестьянки (юбка) для Никки
 //-----------------------------------------------------
 instance ITAR_DS2P_Ekor(ITAR_DS_Proto)		//Одежда Экора (отшельника)
 {
-	name = "Одежда отшельника";	visual = "ItAr_CorAngar.3DS";	visual_change = "HUM_DS2P_EKOR_ARMOR.ASC";
+	name = "Одежда отшельника";	visual = "ItAr_CorAngar.3DS";	visual_change = "ARMOR_DS_FER_MAGE.ASC";
 	description = name;
 	protection[PROT_EDGE] = 50;	protection[PROT_BLUNT] = 50;	protection[PROT_POINT] = 50;
 	protection[PROT_FIRE] = 50;	protection[PROT_MAGIC] = 50;

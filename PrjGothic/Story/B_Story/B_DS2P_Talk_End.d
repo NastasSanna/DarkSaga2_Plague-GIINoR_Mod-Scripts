@@ -9,6 +9,7 @@ func void B_DS2P_Talk_End(var C_NPC slf, var C_Npc oth)
 		B_InitNpcGlobals();	//Инициализируем всех НПС
 		B_TradeSwapBack(self); //NS - 01/05/15 меням инвентарь торговца на обычный
 		
+		/* // TO DO
 		//Сбрасываем счетчик дней между разговорами c Джеком
 		if(Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(none_11_Jack))
 		{
@@ -72,6 +73,7 @@ func void B_DS2P_Talk_End(var C_NPC slf, var C_Npc oth)
 		{
 			MIS_DS2P_FuriousAncestors_Stage = MIS_DS2P_FuriousAncestors_TsaHaNauhRemembered;
 		};
+		*/
 	};
 };
 

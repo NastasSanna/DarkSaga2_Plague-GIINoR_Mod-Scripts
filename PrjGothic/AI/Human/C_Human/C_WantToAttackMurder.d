@@ -1,7 +1,7 @@
 
 func int C_WantToAttackMurder(var C_Npc slf,var C_Npc oth)
 {
-	if((slf.guild == GIL_DMT) || (slf.guild == GIL_STRF) || (slf.guild == GIL_DJG) || (slf.guild == GIL_BDT) || (slf.guild == GIL_NONE))
+	if((slf.guild == GIL_DMT) || (slf.guild == GIL_BDT) || (slf.guild == GIL_NONE))
 	{
 		return FALSE;
 	};

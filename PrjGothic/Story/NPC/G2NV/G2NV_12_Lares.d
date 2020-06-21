@@ -1,7 +1,7 @@
 instance none_12_Lares(Npc_Default)
 {
 	name[0] = "Ларес";
-	guild = GIL_VLK;
+	guild = GIL_G2NV;
 	id = 12;
 	voice = 9;
 	flags = 0;

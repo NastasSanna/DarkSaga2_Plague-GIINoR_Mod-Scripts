@@ -1,7 +1,7 @@
 /***********************************\
               READ-ONLY
 \***********************************/
-// Folgende Konstanten d?rfen NICHT ver?ndert, nur verwendet werden.
+// Folgende Konstanten dürfen NICHT verändert, nur verwendet werden.
 
 //========================================
 // Anim8
@@ -76,14 +76,14 @@ const int CUR_WheelDown  = 4;
                MODIFY
 \***********************************/
 // Folgende Konstanten dienen nicht als Parameter sondern als Vorgaben.
-// Sie d?rfen frei ver?ndert werden.
+// Sie dürfen frei verändert werden.
 
 //========================================
 // Bloodsplats
 //========================================
 const int BLOODSPLAT_NUM = 15; // Maximale Anzahl auf dem Screen
 const int BLOODSPLAT_TEX = 6;  // Maximale Anzahl an Texturen ( "BLOODSPLAT" + texID + ".TGA" )
-const int BLOODSPLAT_DAM = 7;  // Schadensmultiplikator bzgl. der Texturgr??e ( damage * 2^BLOODSPLAT_DAM )
+const int BLOODSPLAT_DAM = 7;  // Schadensmultiplikator bzgl. der Texturgröße ( damage * 2^BLOODSPLAT_DAM )
 
 //========================================
 // Cursor
@@ -91,9 +91,14 @@ const int BLOODSPLAT_DAM = 7;  // Schadensmultiplikator bzgl. der Texturgr??e ( 
 const string Cursor_Texture   = "CURSOR.TGA"; // Genutzte Textur, LeGo stellt eine "CURSOR.TGA" bereit
 
 //========================================
+// Buffs
+//========================================
+const int Buffs_DisplayForHero = 1;
+
+//========================================
 // Interface
 //========================================
-const string Print_LineSeperator = "~"; // Sollte man lieber nicht ?ndern
+const string Print_LineSeperator = "~"; // Sollte man lieber nicht ändern
 
 /* ==== PrintS ==== */
 // <<Virtuelle Positionen>>
@@ -110,9 +115,9 @@ const int    PF_WaitTime    = 3000;    // Zeit die gewartet wird, bis wieder aus
 const string PF_Font        = "FONT_OLD_10_WHITE.TGA"; //Verwendete Schriftart
 
 //========================================
-// Names
+// Talents
 //========================================
-//const int AIV_Name = 89; // Genutzte AI-Var
+const int AIV_TALENT = AIV_TALENT_INDEX; // Genutzte AI-Var
 
 //========================================
 // Dialoggestures
@@ -121,3 +126,9 @@ const string PF_Font        = "FONT_OLD_10_WHITE.TGA"; //Verwendete Schriftart
 //   DIAG_Prefix + AniName + DIAG_Suffix + ((rand() % (Max - (Min - 1))) + Min).ToString("00");
 const string DIAG_Prefix = "DG_";
 const string DIAG_Suffix = "_";
+
+//========================================
+// Buffs
+//========================================
+const int Buff_FadeOut = 1; // Deactivate fade-out by setting this to 0
+

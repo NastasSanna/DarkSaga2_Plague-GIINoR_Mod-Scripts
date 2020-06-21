@@ -7,10 +7,7 @@ func int C_RefuseTalk(var C_Npc slf,var C_Npc oth)
 	};
 	if((slf.aivar[AIV_TalkedToPlayer] == FALSE) && (Npc_GetDistToWP(slf,slf.wp) > 500))
 	{
-	};
-	if(C_PlayerHasFakeGuild(slf,oth) && (self.flags != NPC_FLAG_IMMORTAL))
-	{
-		return TRUE;
+		return FALSE;
 	};
 	return FALSE;
 };

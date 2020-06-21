@@ -9,7 +9,7 @@ var func MultiBook_PrintFunc;
 //================================================================
 func void MultiBook_Show()
 {
-	MEM_Debug(IntToString(MultiBook_Page));
+	MEM_Debug(ConcatStrings("Book page: ", IntToString(MultiBook_Page)));
 	if (MultiBook_Page < 0)	{
 		MultiBook_Page = 0;
 	}

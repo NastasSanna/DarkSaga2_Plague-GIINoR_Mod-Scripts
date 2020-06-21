@@ -43,8 +43,7 @@ func void PC_SpeakingDoor_Info()
 	Info_AddChoice(PC_SpeakingDoor, "Новохудоносор.", PC_SpeakingDoor_Novohodonosor);
 	Info_AddChoice(PC_SpeakingDoor, "Пароль.", PC_SpeakingDoor_Parol);
 	Info_AddChoice(PC_SpeakingDoor, "Ты кто?", PC_SpeakingDoor_WhoAreU);
-	if ((Hero_KnowsDoorPassword == TRUE)
-		&& (Npc_KnowsInfo(other,DIA_Jorn_GiveSupplies) || Npc_IsDead(Jorn)))
+	if (Hero_KnowsDoorPassword == TRUE)
 	{
 		Info_AddChoice(PC_SpeakingDoor, "Яркендар", PC_SpeakingDoor_Jarkendar);
 	};

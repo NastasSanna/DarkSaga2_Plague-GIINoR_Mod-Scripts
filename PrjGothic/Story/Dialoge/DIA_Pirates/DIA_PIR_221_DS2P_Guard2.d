@@ -3,17 +3,10 @@
 //*NS - 19/06/2013
 ***************************************************************/
 
-instance DIA_Guard2_EXIT(C_Info)
+instance DIA_Guard2_EXIT(DIA_Proto_End)
 {
 	npc = PIR_221_DS2P_Guard2;
-	nr = 999;
-	permanent = TRUE;
-	condition = DIA_Guard2_EXIT_condition;	
-	information = DIA_Guard2_EXIT_info;
-	description = Dialog_Ende;
 };
-func int DIA_Guard2_EXIT_condition(){	return TRUE;};
-func void DIA_Guard2_EXIT_info(){	AI_StopProcessInfos(self);};
 
 //--------------------------
 

@@ -210,29 +210,40 @@ const int LOG_Running = 1;
 const int LOG_SUCCESS = 2;
 const int LOG_FAILED = 3;
 const int LOG_OBSOLETE = 4;
-const int ATT_FRIENDLY = 3;
-const int ATT_NEUTRAL = 2;
-const int ATT_ANGRY = 1;
-const int ATT_HOSTILE = 0;
-const int GIL_NONE = 0;
-const int GIL_HUMAN = 1;
-const int GIL_PAL = 1;
-const int GIL_MIL = 2;
-const int GIL_VLK = 3;
-const int GIL_KDF = 4;
-const int GIL_NOV = 5;
-const int GIL_DJG = 6;
-const int GIL_SLD = 7;
-const int GIL_BAU = 8;
-const int GIL_BDT = 9;
-const int GIL_STRF = 10;
-const int GIL_DMT = 11;
-const int GIL_OUT = 12;
-const int GIL_PIR = 13;
-const int GIL_KDW = 14;
-const int GIL_EMPTY_D = 15; //НЕ ИСПОЛЬЗОВАТЬ!
-const int GIL_PUBLIC = 15;
-const int GIL_SEPERATOR_HUM = 16;
+
+//Типы отношений (внутр.)
+const int ATT_FRIENDLY			= 3;		//дружественное
+const int ATT_NEUTRAL			= 2;		//нейтральное
+const int ATT_ANGRY				= 1;		//натянутое
+const int ATT_HOSTILE			= 0;		//враждебное
+const int ATT_NONE				= -1;		//не задано
+
+//Индексы гильдий
+// люди
+const int GIL_OUTDOOR	= -1;	//улица //NS: Wld_GetPlayerPortalGuild() = 0 на улице, а Npc_GetPortalGuild(npc) = -1
+// сюжетные гильдии
+const int GIL_NONE 		= 0;	//без гильдии
+const int GIL_HUMAN 	= 0;	//люди
+const int GIL_G2NV 		= 1;	//команда Безымянного
+const int GIL_PIR 		= 2;	//пираты на стороне Гарда
+const int GIL_PIR2 		= 3;	//пираты на стороне Грега
+const int GIL_BAU 		= 4;	//местные крестьяне
+const int GIL_HUN 		= 5;	//местные охотники
+const int GIL_OUT 		= 6;	//вне гильдий (местные отшельники)
+// а кто ГГ?
+const int GIL_PAL		= 7;	//паладин
+const int GIL_KDF		= 8;	//маг огня
+const int GIL_DJG		= 9;	//охотник на драконов
+// прочие гильдии
+const int GIL_BDT	    = 10;	//бандит, враг всем
+const int GIL_DMT	    = 11;	//проклятый, злобный призрак и т.п., враг всем
+const int GIL_CAVE		= 12; 	//пещера, дикая (для помещений - порталов)
+const int GIL_DUNGEON	= 13; 	//подземелье, подвал, склеп (для помещений - порталов)
+const int GIL_ROOMNONE	= 14;	//помещение никому не принадлежит (заходи кто хошь, бери что хошь)
+const int GIL_PUBLIC 	= 15; 	//публичное помещение (заходи, но ничего не трогай)
+
+const int GIL_SEPERATOR_HUM = 16; // не использовать!
+// монстры
 const int GIL_MEATBUG = 17;
 const int GIL_SHEEP = 18;
 const int GIL_GOBBO = 19;
@@ -275,7 +286,9 @@ const int GIL_SummonedGuardian = 54;
 const int GIL_SummonedZombie = 55;
 const int GIL_DS_PIRANHA = 56;
 const int GIL_DS_RABBIT = 57;
+
 const int GIL_SEPERATOR_ORC = 58;
+
 const int GIL_ORC = 59;
 const int GIL_FRIENDLY_ORC = 60;
 const int GIL_UNDEADORC = 61;
@@ -925,8 +938,8 @@ func void B_STOP_DECOMPILATION_CRASH_L()
 };
 
 //Redleha: Миры
+const int DSG_PROLOG_ZEN = 0;	
 const int DSG_PREPROLOG_ZEN = 1;
-const int DSG_PROLOG_ZEN = 2;	
 const int DSG_ST_ZEN = 3;
 const int DSG_MAIN_ZEN = 4;
 const int DSG_LAN_DREAM_ZEN = 5; // Сон Лана

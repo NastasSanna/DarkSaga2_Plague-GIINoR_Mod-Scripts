@@ -15,11 +15,12 @@ instance ItWr_DS2P_ZeddDiary(C_Item)
 };
 func void Use_DS2P_ZeddDiary()
 {
-	if (Hero_IsReadZeddDiary == FALSE)
+	// TO DO
+	/*if (Hero_IsReadZeddDiary == FALSE)
 	{
 		B_DSG_Log_OpenClose(TOPIC_DS2P_CompromiseZedd,LOG_MISSION,LOG_Running,TOPIC_DS2P_CompromiseZedd_Diary);
 		Hero_IsReadZeddDiary = TRUE;
-	};
+	};*/
 	var int nDocID;
 	nDocID = Doc_Create();
 	Doc_SetPages(nDocID,2);

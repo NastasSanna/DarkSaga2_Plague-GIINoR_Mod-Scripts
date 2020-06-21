@@ -143,7 +143,7 @@ func void Hook_View_Text11(){	MEM_SendToSpy(zERR_TYPE_FAULT,"Hook_View_Text11");
 func void Hook_View_Text12(){	MEM_SendToSpy(zERR_TYPE_FAULT,"Hook_View_Text12");};
 func void Hook_View_Text13(){	MEM_SendToSpy(zERR_TYPE_FAULT,"Hook_View_Text13");};
 
-var int EDX;
+//var int EDX;
 func void Hook_ocViewDialogItem_Render(){	
 	if(!xOnce)
 	{

@@ -10,10 +10,7 @@ func void ZS_RunToWP()
 		AI_GotoWP(self,self.wp);
 	};
 	AI_AlignToWP(self);
-	if(self.guild != GIL_VLK)
-	{
-		AI_PlayAni(self,"T_STAND_2_HGUARD");
-	};
+	AI_PlayAni(self,"T_STAND_2_HGUARD");
 };
 
 func int ZS_RunToWP_Loop()
@@ -24,10 +21,7 @@ func int ZS_RunToWP_Loop()
 		random = Hlp_Random(2);
 		if(random == 0)
 		{
-			if(self.guild != GIL_VLK)
-			{
-				AI_PlayAni(self,"T_HGUARD_LOOKAROUND");
-			};
+			AI_PlayAni(self,"T_HGUARD_LOOKAROUND");
 		};		
 		Npc_SetStateTime(self,0);
 	};

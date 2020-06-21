@@ -1,6 +1,5 @@
 
-const int SmallTalkFreq = 4;
-var int SmallTalkFreq_Multi;
+const int SmallTalkFreq = 10;
 
 func void ZS_Smalltalk()
 {
@@ -15,17 +14,9 @@ func void ZS_Smalltalk()
 
 func int ZS_Smalltalk_Loop()
 {
-	if(self.guild == GIL_VLK)
-	{
-		SmallTalkFreq_Multi = 3;
-	}
-	else
-	{
-		SmallTalkFreq_Multi = 2;
-	};
 	if(Npc_IsOnFP(self,"SMALLTALK"))
 	{
-		if(Npc_GetStateTime(self) >= (SmallTalkFreq * SmallTalkFreq_Multi))
+		if(Npc_GetStateTime(self) >= SmallTalkFreq)
 		{
 			Npc_PerceiveAll(self);
 			if(Wld_DetectNpc(self,-1,ZS_Smalltalk,-1))

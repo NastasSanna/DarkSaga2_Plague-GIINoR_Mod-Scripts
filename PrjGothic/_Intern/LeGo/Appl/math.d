@@ -6,7 +6,7 @@ func int dotproduct(var int x1, var int y1, var int x2, var int y2)  {
     return +addf(mulf(x1,x2), mulf(y1,y2));
 };
 
-const int phi = 1070141312; // PI/2
+/*const int phi = 1070141312; // PI/2
 
 func int atan2f(var int x, var int y) {
     const int _atan2f = 8123804; //0x7BF59C
@@ -73,6 +73,7 @@ func int cos(var int angle) {
     return +sin(subf(phi, angle));
 };
 
+*/
 
 // ---------------------------------------------------------------------
 

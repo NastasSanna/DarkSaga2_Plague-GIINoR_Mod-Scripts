@@ -31,7 +31,7 @@ func void EquipWeapon (var C_NPC slf, var int ItemInst) {
         return;
     };
 
-    if (item.flags & ITEM_ACTIVE)
+    if (item.flags & ITEM_ACTIVE_LEGO)
     && (!EquipWeapon_TogglesEquip) {
         /* calling EquipWeapon would unequip the weapon. */
         MEM_Info ("EquipWeapon: This weapon is already equipped. Ignoring request.");
@@ -91,7 +91,7 @@ func void DiaCAM_Disable() {
 //========================================
 func void DiaCAM_Enable() {
     MemoryProtectionOverride(zCAICamera__StartDialogCam, 4);
-    MEM_WriteInt(zCAICamera__StartDialogCam, 275316586);
+    MEM_WriteInt(zCAICamera__StartDialogCam, zCAICamera__StartDialogCam_oldInstr);
 };
 
 
@@ -99,14 +99,20 @@ func void DiaCAM_Enable() {
 // [intern] Variablen
 //========================================
 var int TRIA_NpcPtr[TRIA_MaxNPC]; // Sammlung aller Teilnehmer
-var int TRIA_Running;             // Lauft ein Trialog?
-var int TRIA_CPtr;                // Zahler fur die Sammlung
+var int TRIA_Running;             // Läuft ein Trialog?
+var int TRIA_CPtr;                // Zähler für die Sammlung
 var int TRIA_Last;                // Der Npc der zuletzt gesprochen hat
 var int TRIA_Self;                // Pointer auf self
-var string TRIA_Camera;           // Lauft eine Kamerafahrt?
+var string TRIA_Camera;           // Läuft eine Kamerafahrt?
 
 func void ZS_TRIA() {};
-func int ZS_TRIA_Loop() { return LOOP_CONTINUE; };
+func int ZS_TRIA_Loop() {
+    if (InfoManager_hasFinished()) { // Im Zustand bleiben bis Dialog fertig
+        return LOOP_END;
+    } else {
+        return LOOP_CONTINUE;
+    };
+};
 
 //========================================
 // Npcs aufeinander warten lassen
@@ -152,27 +158,26 @@ class _TRIA_fltWrapper {
 func void _TRIA_Copy(var int n0, var int n1) {
     var c_npc np0; np0 = MEM_PtrToInst(n0);
     var c_npc np1; np1 = MEM_PtrToInst(n1);
+    var oCNpc onp0; onp0 = MEM_PtrToInst(n0);
+    var oCNpc onp1; onp1 = MEM_PtrToInst(n1);
     var int a0; a0 = Npc_GetArmor(np0);
     var int a1; a1 = Npc_GetArmor(np1);
-    var _TRIA_fltWrapper fn0; fn0 = MEM_PtrToInst(n0+1968);
-    var _TRIA_fltWrapper fn1; fn1 = MEM_PtrToInst(n1+1968);
-	//ïåðåíåñåíî ñþäà
-    Npc_RemoveInvItem(np0, a0);
-    Npc_RemoveInvItem(np1, a1);
-	//*/
-    MEM_SwapBytes(n0+60,   n1+60,   64);      // trafo
-    MEM_SwapBytes(n0+292,  n1+292,  604-292); // name, voice..
-    MEM_SwapBytes(n0+1884, n1+1884, 20);      // bitfield
-    MEM_SwapBytes(n0+1908, n1+1908, 76);      // visuals
-    MEM_SwapBytes(n0+260,  n1+260,  20);
-    MEM_SwapBytes(n0+204,  n1+204,   4);
+    var _TRIA_fltWrapper fn0; fn0 = MEM_PtrToInst(_@(onp0.model_scale));
+    var _TRIA_fltWrapper fn1; fn1 = MEM_PtrToInst(_@(onp1.model_scale));
+    MEM_SwapBytes(n0+60,                       n1+60,                      64);                          // trafo
+    MEM_SwapBytes(n0+MEM_NpcName_Offset,       n1+MEM_NpcName_Offset,      MEMINT_SwitchG1G2(272, 312)); // name, voice
+    MEM_SwapBytes(_@(onp0.bitfield),           _@(onp1.bitfield),          20);                          // bitfield
+    MEM_SwapBytes(_@s(onp0.mds_name),          _@s(onp1.mds_name),         76);                          // visuals
+	MEM_SwapBytes(_@(onp0._zCVob_bitfield),    _@(onp1._zCVob_bitfield),   20);                          // vob bitfield
+	MEM_SwapBytes(_@(onp0._zCVob_visualAlpha), _@(onp1._zCVob_visualAlpha), 4);
     Mdl_SetModelScale(np0, fn0.f0, fn0.f1, fn0.f2);
     Mdl_SetModelScale(np1, fn1.f0, fn1.f1, fn1.f2);
     Mdl_SetModelFatness(np0, fn0.f3);
     Mdl_SetModelFatness(np1, fn1.f3);
     _TRIA_UpdateVisual(np0, a1);
     _TRIA_UpdateVisual(np1, a0);
-	//îòñþäà
+    Npc_RemoveInvItem(np0, a0);
+    Npc_RemoveInvItem(np1, a1);
     var int mw0; mw0 = Npc_GetMeleeWeapon(np0);
     var int rw0; rw0 = Npc_GetRangedWeapon(np0);
     var int mw1; mw1 = Npc_GetMeleeWeapon(np1);
@@ -199,7 +204,7 @@ func void _TRIA_CopyNpc(var int slf) {
     else {
         _TRIA_Copy(TRIA_Self, TRIA_Last);
         _TRIA_Copy(TRIA_Self, slf);
-   };
+    };
     TRIA_Last = slf;
 };
 
@@ -217,20 +222,20 @@ func void _TRIA_InitNPC(var c_npc slf) {
 };
 
 //========================================
-// Npc in das Gesprach einladen
+// Npc in das Gespräch einladen
 //========================================
 func void TRIA_Invite(var c_npc slf) {
     if(TRIA_Running) {
-        MEM_Warn("TRIA_Invite: Der Trialog lauft bereits.");
+        MEM_Warn("TRIA_Invite: Der Trialog läuft bereits.");
         return;
     };
     if(TRIA_CPtr == TRIA_MaxNPC) {
-        MEM_Error("TRIA_Invite: Zu viele Npcs. Erhohe bitte TRIA_MaxNPC.");
+        MEM_Error("TRIA_Invite: Zu viele Npcs. Erhöhe bitte TRIA_MaxNPC.");
         return;
     };
     if(Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(hero)
     || Hlp_GetInstanceID(slf) == Hlp_GetInstanceID(self)) {
-        MEM_Warn("TRIA_Invite: Der Held und/oder Self konnen nicht eingeladen werden. Sie sind bereits anwesend.");
+        MEM_Warn("TRIA_Invite: Der Held und/oder Self können nicht eingeladen werden. Sie sind bereits anwesend.");
         return;
     };
     if((Npc_GetDistToNpc(slf, hero) > truncf(MEM_ReadInt(SPAWN_INSERTRANGE_Address)))
@@ -248,7 +253,7 @@ func void TRIA_Invite(var c_npc slf) {
 //========================================
 func void TRIA_Start() {
     if(TRIA_Running) {
-        MEM_Warn("TRIA_Start: Es lauft bereits ein Trialog.");
+        MEM_Warn("TRIA_Start: Es läuft bereits ein Trialog.");
         return;
     };
     var int i; i = 0;
@@ -260,7 +265,7 @@ func void TRIA_Start() {
         MEM_StackPos.position = p;
     };
 
-   // Npc_ClearAIQueue(self); //Mit diesem Befehl beendet sich der Dialog nicht richtig, daher auskommentiert. Ich habe Angst, dass ich irgendwas anderes kaputt gemacht habe, aber bisher konnte ich keine Probleme feststellen.
+    // Npc_ClearAIQueue(self); //Mit diesem Befehl beendet sich der Dialog nicht richtig, daher auskommentiert. Ich habe Angst, dass ich irgendwas anderes kaputt gemacht habe, aber bisher konnte ich keine Probleme feststellen.
     Npc_ClearAIQueue(hero);
     Ai_Output(hero,self,"");
 
@@ -285,7 +290,7 @@ func void TRIA_Barrier() {
     TRIA_Wait();
     var int i; i = !1;
     var int j; j = 0;
-    var c_npc last; last = MEM_PtrToInst(MEM_ReadStatArr(TRIA_NpcPtr, TRIA_CPtr)); // Ist immer self, aber so ist es verstandlicher
+    var c_npc last; last = MEM_PtrToInst(MEM_ReadStatArr(TRIA_NpcPtr, TRIA_CPtr)); // Ist immer self, aber so ist es verständlicher
     var int p; p = MEM_StackPos.position;
     if(i < TRIA_CPtr) {
         var c_npc curr; curr = MEM_PtrToInst(MEM_ReadStatArr(TRIA_NpcPtr, i));
@@ -301,7 +306,7 @@ func void TRIA_Barrier() {
 };
 
 //========================================
-// Den nachsten Npc als "self" setzen
+// Den nächsten Npc als "self" setzen
 //========================================
 func void TRIA_Next(var c_npc n0) {
     if(!TRIA_Running) {
@@ -309,7 +314,7 @@ func void TRIA_Next(var c_npc n0) {
         return;
     };
     if(Hlp_GetInstanceID(n0) == Hlp_GetInstanceID(hero)) {
-        MEM_Warn("TRIA_Next: 'hero' ist kein erlaubter Parameter fur diese Funktion.");
+        MEM_Warn("TRIA_Next: 'hero' ist kein erlaubter Parameter für diese Funktion.");
         return;
     };
 
@@ -362,7 +367,7 @@ func void _TRIA_Uncam(var string evt) {
 };
 
 //========================================
-// Trialog abschlie?en
+// Trialog abschließen
 //========================================
 func void TRIA_Finish() {
     if(!TRIA_Running) {
@@ -388,3 +393,4 @@ func void _TRIA_Finish() {
     TRIA_Running = 0;
     TRIA_CPtr = 0;
 };
+

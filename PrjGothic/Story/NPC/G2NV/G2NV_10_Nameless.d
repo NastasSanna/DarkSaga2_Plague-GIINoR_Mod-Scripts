@@ -1,7 +1,7 @@
 instance none_10_Nameless(Npc_Default)
 {
 	name[0] = "Безымянный";
-	guild = GIL_NONE;
+	guild = GIL_G2NV;
 	id = 10;
 	voice = 15;
 	level = 25;

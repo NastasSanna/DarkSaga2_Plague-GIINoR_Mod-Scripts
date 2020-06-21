@@ -5,6 +5,7 @@ const string MOBNAME_CRATE = "Ящик";
 const string MOBNAME_CHEST = "Сундук";
 	const string MOBNAME_CHEST_HUNO = "Сундук Хуно";
 	const string MOBNAME_CHEST_BAROK = "Сундук Барока";
+	const string MOBNAME_CHEST_GARD = "Сундук Гарда";
 const string MOBNAME_BED = "Кровать";
 const string MOBNAME_DOOR = "Дверь";
 const string MOBNAME_CAMPFIRE = "";
@@ -151,22 +152,22 @@ const string MOBNAME_GR_PEASANT2 = "Таверна";
 
 const string TXT_GUILDS[66] =
 {
-	"Нет гильдии",
-	"Паладин",
-	"Ополчение",
-	"Орк",
-	"Маг",
-	"Послушник",
-	"Охотник на драконов",
-	"Наемник орков",
-	"Фермер",
-	"Бандит",
-	"Каторжник",
-	"Ищущий",
-	"Land Dweller",
-	"Пират",
-	"Маг воды",
-	"Охотник",
+	"Нет гильдии",		//GIL_NONE
+	"Моя команда",		//GIL_G2NV
+	"Пират",			//GIL_PIR
+	"Пират",			//GIL_PIR2
+	"Крестьянин",		//GIL_BAU
+	"Охотник на драконов",//GIL_HUN
+	"Наемник орков",	//GIL_OUT
+	"Паладин",			//GIL_PAL
+	"Маг огня",			//GIL_KDF
+	"Охотник на драконов",//GIL_DJG
+	"Бандит",			//GIL_BDT
+	"Проклятый",		//GIL_DMT
+	"Пещера",			//GIL_CAVE
+	"Подземелье",		//GIL_DUNGEON
+	"Ничье",			//GIL_ROOMNONE
+	"Общественное",		//GIL_PUBLIC
 	"",
 	"Мясной жук",
 	"Овца",
@@ -1093,4 +1094,8 @@ const string TXT_Chaos_ProtAntiBounus[3] = {
 
 const string TXT_Chaos_AcrobatBonus = "Улучшение навыка: акробатика.";
 const string TXT_Chaos_SprintBonus = "Бонус: постоянное ускорение.";
+
+const string PRINT_No_Focus = "Нужен фокусирующий камень";
+
+const string MOBNAME_KeyHole = "Замочная скважина";
 

@@ -233,13 +233,13 @@ instance ITMI_DS2P_Shulers_Cart_KingTref(C_Item)
 	text[5] = NAME_Value;	count[5] = value;
 };
 /*--------------------------------------------------------------------------*/
-// КУЗНЕЧНЫЕ МЕХА. 
+// КУЗНЕЧНЫЕ МЕХИ. 
 // Даёт пират ^Джозеф^ для пирата ^Зедд^ по квесту "Азартный игрок"
 /*--------------------------------------------------------------------------*/
 const int Value_ForgeBellows = 100;
 instance ITMI_DS2P_ForgeBellows(C_Item)
 {
-	name = "Кузнечные меха";
+	name = "Кузнечные мехи";
 	mainflag = ITEM_KAT_NONE;
 	flags = ITEM_MULTI | ITEM_MISSION;
 	value = Value_ForgeBellows;
@@ -682,10 +682,11 @@ func void Use_DS2P_EkorSpisok()
 	Doc_PrintLine(nDocID,0,"2 колбасы");
 	Doc_PrintLine(nDocID,0,"1 сыр");
 	Doc_PrintLine(nDocID,0,"");
-	if(!EkorStartDialogChoice)
-	{
-		Doc_PrintLine(nDocID,0,"1000 золотых монет");
-	};
+	// TO DO
+	//if(!Ekor_StartDialogChoice)
+	//{
+	//	Doc_PrintLine(nDocID,0,"1000 золотых монет");
+	//};
 	Doc_PrintLine(nDocID,0,"");
 	Doc_Show(nDocID);
 };
@@ -718,7 +719,7 @@ func void Use_DS2P_VatrasSpisok_4MagicSword()
 	Doc_PrintLine(nDocID,0,"");
 	Doc_SetFont(nDocID,0,FONT_Book);
 	Doc_PrintLine(nDocID,0,"");
-	/*//Это надо обсудить*///UNFINISH
+	/*//Это надо обсудить*/// TO DO
 	Doc_PrintLine(nDocID,0,"3 куска магической руды");	
 	Doc_PrintLine(nDocID,0,"1 жир крысокрота");
 	Doc_PrintLine(nDocID,0,"1 язык огненной ящерицы");

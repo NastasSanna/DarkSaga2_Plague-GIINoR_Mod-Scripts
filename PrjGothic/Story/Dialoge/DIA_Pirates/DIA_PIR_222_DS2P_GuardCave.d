@@ -3,17 +3,10 @@
 //*NS - 01/07/2013
 ***************************************************************/
 
-instance DIA_GuardCave_EXIT(C_Info)
+instance DIA_GuardCave_EXIT(DIA_Proto_End)
 {
 	npc = PIR_222_DS2P_GuardCave;
-	nr = 999;
-	permanent = TRUE;
-	condition = DIA_GuardCave_EXIT_condition;	
-	information = DIA_GuardCave_EXIT_info;
-	description = Dialog_Ende;
 };
-func int DIA_GuardCave_EXIT_condition(){	return TRUE;};
-func void DIA_GuardCave_EXIT_info(){	AI_StopProcessInfos(self);};
 
 //--------------------------
 instance DIA_GuardCave_GoAhead(C_Info)

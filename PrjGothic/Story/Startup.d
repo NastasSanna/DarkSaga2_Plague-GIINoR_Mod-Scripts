@@ -1,10 +1,12 @@
 
 const int LeGo_Init_Once = 0;
+const int LeGo_Init_MyFlags = LeGo_Trialoge | LeGo_AI_Function | LeGo_View | LeGo_FrameFunctions; //Trialoge requires AI_Function!
+
 func void LeGo_Init_DoIt()
 {
 	if (!LeGo_Init_Once)	{
 		MEM_InitAll();
-		LeGo_Init(LeGo_AI_Function);
+		LeGo_Init(LeGo_Init_MyFlags);
 		MoreAlphaVobs(2048); //normal: 256
 		MoreAlphaPolys(16384); //normal: 2048
 		//InstallHook_oCInfoMan_OnChoice();
@@ -13,6 +15,8 @@ func void LeGo_Init_DoIt()
 		NPC_SetLastPlayer();	//NS - 25/07/13	для переселения ГГ
 		//Hook_View();
 		Shields_Init1();
+		
+		MEM_Debug("LeGo initialized!");
 		
 		LeGo_Init_Once = TRUE;
 	};
@@ -35,7 +39,7 @@ func void init_global()
 //
 //Грузим стартовую локу с одним кораблём
 //
-func void STARTUP_WOR_PREPROLOG()
+func void STARTUP_DS2P_STARTOCEAN()
 {
 	/*Wld_InsertNpc(pre_none_10_Nameless,"");
 	Wld_InsertNpc(pre_none_11_Jack,"");
@@ -47,22 +51,23 @@ func void STARTUP_WOR_PREPROLOG()
 	Wld_InsertNpc(pre_none_17_Gorn,"");
 	Wld_InsertNpc(pre_none_18_Vatras,"");
 };
-func void INIT_SUB_WOR_PREPROLOG()
+func void INIT_SUB_DS2P_STARTOCEAN()
 {
 };
-func void INIT_WOR_PREPROLOG()
+func void INIT_DS2P_STARTOCEAN()
 {
 	B_InitMonsterAttitudes();
 	B_InitGuildAttitudes();
 	B_InitNpcGlobals();
-	INIT_SUB_WOR_PREPROLOG();
+	INIT_SUB_DS2P_STARTOCEAN();
 	//SearchNpcAndCreateSlotsForShields();
 };
 //
 //Грузим главную локу
 //
-func void STARTUP_PROLOG()
+func void STARTUP_DS2P_ATOLL()
 {
+	CurrentLevel = DSG_PROLOG_ZEN;
 	/*Вставляем ГГ, Аластера и друзей*/
 	Wld_InsertNpc(none_10_Nameless,"");
 	Wld_InsertNpc(none_11_Jack,"");
@@ -125,36 +130,136 @@ func void STARTUP_PROLOG()
 	Wld_InsertNpc(Shadowbeast_Addon_Fire_Garon,"");
 	/*Вставляем монстрятину*/
 };
-func void INIT_SUB_PROLOG()
+// Эсмеральда
+func void INIT_SUB_DS2P_ATOLL_SHIP()
 {
+	Wld_AssignRoomToGuild("BUG",GIL_G2NV);
+	Wld_AssignRoomToGuild("CAPTAIN",GIL_G2NV);
+	Wld_AssignRoomToGuild("NAVIGATION",GIL_G2NV);
+	Wld_AssignRoomToGuild("KOMBUESE",GIL_G2NV);
 };
-func void INIT_PROLOG()
+func void INIT_SUB_DS2P_ATOLL_COAST()
 {
+	// TO DO pirates owners
+	Wld_AssignRoomToGuild("FISHERHUT",GIL_BAU);
+	Wld_AssignRoomToGuild("MADHUT",GIL_BAU);
+	Wld_AssignRoomToGuild("HEALERHOUSEFLOOR1",GIL_BAU);
+	Wld_AssignRoomToGuild("HEALERHOUSEFLOOR2",GIL_BAU);
+	Wld_AssignRoomToGuild("BIGBAUHOUSE",GIL_BAU);
+	Wld_AssignRoomToGuild("HOUSEHUNTERS",GIL_HUN);
+	Wld_AssignRoomToGuild("BARN",GIL_BAU);
+	Wld_AssignRoomToGuild("HERDSHOUSEROOM1",GIL_BAU);
+	Wld_AssignRoomToGuild("HERDSHOUSEROOM2",GIL_BAU);
+	Wld_AssignRoomToGuild("TAVERN",GIL_PUBLIC);
+	Wld_AssignRoomToGuild("SALTCAVE",GIL_CAVE);
+};
+func void INIT_SUB_DS2P_ATOLL_FORT()
+{
+	Windmill_Enabled = TRUE; // TO DO by quest + timer
+	if (Windmill_Enabled == TRUE) {
+		Wld_SendTrigger("WINDMILL_ROTOR");
+	};
+	
+	// TO DO pirates owners
+	Wld_AssignRoomToGuild("BAUHOUSE1",GIL_BAU);
+	Wld_AssignRoomToGuild("BAUHOUSE2",GIL_BAU);
+	Wld_AssignRoomToGuild("SMITHHOUSE",GIL_BAU);
+	Wld_AssignRoomToGuild("TOWNHALL",GIL_BAU);
+	Wld_AssignRoomToGuild("ABANDONEDHOUSE",GIL_ROOMNONE);
+	
+	Wld_AssignRoomToGuild("RESTCAVE",GIL_PIR);
+	Wld_AssignRoomToGuild("TOWNCAVE",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("CEMETERYCRYPT",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("PILLARCAVE",GIL_CAVE);
+	Wld_AssignRoomToGuild("OLDMINE",GIL_CAVE);
+	
+};
+func void INIT_SUB_DS2P_ATOLL_CAMP()
+{
+	Wld_AssignRoomToGuild("CAMPTELEPORTCAVE",GIL_CAVE);
+	Wld_AssignRoomToGuild("WATERCAVE",GIL_CAVE);
+	Wld_AssignRoomToGuild("CAMPTUNNEL",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("CAMPLEFTROOM",GIL_ROOMNONE);
+	Wld_AssignRoomToGuild("CAMPRIGHTROOM",GIL_ROOMNONE);
+	Wld_AssignRoomToGuild("CAMPDOWNCAVE",GIL_CAVE);
+	Wld_AssignRoomToGuild("DRAGONFORT",GIL_ROOMNONE);
+	Wld_AssignRoomToGuild("DRAGONFORTTUNNEL",GIL_ROOMNONE);
+};
+func void INIT_SUB_DS2P_ATOLL_FOREST()
+{
+	Wld_SetMobRoutine(0, 0,"MAGICLAMP",1);
+	Wld_SetMobRoutine(20,0,"MAGICLAMP",1);
+	Wld_SetMobRoutine(4,30,"MAGICLAMP",0);
+	
+	Wld_AssignRoomToGuild("BIDGEHOUSE",GIL_OUT);
+	Wld_AssignRoomToGuild("LIBRARY",GIL_OUT);
+	Wld_AssignRoomToGuild("LIBRARYCELLAR",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("CAVEUNDERLIBRARY",GIL_CAVE);
+	Wld_AssignRoomToGuild("FORESTHUT",GIL_HUN);
+	Wld_AssignRoomToGuild("SWAMPTEMPLE",GIL_GOBBO);
+	Wld_AssignRoomToGuild("SWAMPTEMPLECAVES",GIL_GOBBO);
+	Wld_AssignRoomToGuild("RUINSUNDERWATER",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("RUINSTEMPLE",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("RUINSLEFTROOM",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("RUINSRIGHTROOM",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("RUINSMIDROOM",GIL_DUNGEON);
+	Wld_AssignRoomToGuild("CAVEOVERSWAMP",GIL_CAVE);
+	Wld_AssignRoomToGuild("FORESTCAVE",GIL_CAVE);
+	Wld_AssignRoomToGuild("FORESTMINE",GIL_CAVE);
+	
+};
+func void INIT_DS2P_ATOLL()
+{
+	CurrentLevel = DSG_PROLOG_ZEN;
 	B_InitMonsterAttitudes();
 	B_InitGuildAttitudes();
 	B_InitNpcGlobals();
 	B_DS2P_InitLanSkeleton();//внешность Лана
-	INIT_SUB_PROLOG();
+	INIT_SUB_DS2P_ATOLL_SHIP();
+	INIT_SUB_DS2P_ATOLL_COAST();
+	INIT_SUB_DS2P_ATOLL_FORT();
+	INIT_SUB_DS2P_ATOLL_CAMP();
+	INIT_SUB_DS2P_ATOLL_FOREST();
 };
 
 /*======================================
             Сон Лана
 ========================================*/
 
-func void STARTUP_LAN_DREAM()
+func void STARTUP_DS2P_LAN_DREAM()
 {
 	Wld_InsertNpc(PIR_2071_DS2P_LanSkeleton_SK_Dream,""); // Лан-скелет, который стоит возле клетки
 	Wld_InsertNpc(PIR_2072_DS2P_LanSkeleton_HM_Dream,""); // Лан-человек, который стоит в клетке
 };
-func void INIT_SUB_LAN_DREAM()
+func void INIT_SUB_DS2P_LAN_DREAM()
 {
 };
-func void INIT_LAN_DREAM()
+func void INIT_DS2P_LAN_DREAM()
 {
 	B_InitMonsterAttitudes();
 	B_InitGuildAttitudes();
 	B_InitNpcGlobals();
-	INIT_SUB_LAN_DREAM();
+	INIT_SUB_DS2P_LAN_DREAM();
+};
+
+
+/*======================================
+        Храм Черепа (сон Аластера)
+========================================*/
+
+func void STARTUP_DS2P_SKULLTEMPLE()
+{
+
+};
+func void INIT_SUB_DS2P_SKULLTEMPLE()
+{
+};
+func void INIT_DS2P_SKULLTEMPLE()
+{
+	B_InitMonsterAttitudes();
+	B_InitGuildAttitudes();
+	B_InitNpcGlobals();
+	INIT_SUB_DS2P_SKULLTEMPLE();
 };
 
 //* МУСОР *//
@@ -172,4 +277,3 @@ func void INIT_Testlevel()
 	B_InitNpcGlobals();
 	INIT_SUB_Testlevel();
 };
-

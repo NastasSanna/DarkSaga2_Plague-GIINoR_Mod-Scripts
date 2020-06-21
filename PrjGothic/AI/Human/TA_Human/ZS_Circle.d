@@ -26,27 +26,6 @@ func int ZS_Circle_Loop()
 			AI_PlayAni(self,"T_PRACTICEMAGIC5");
 		};
 	}
-	else if(self.guild == GIL_KDW)
-	{
-		randyKDW = Hlp_Random(2500);
-		randyKDW_Lightstar = Hlp_Random(2);
-		if(Npc_GetStateTime(self) > randyKDW)
-		{
-			AI_AlignToWP(self);
-			Npc_SetStateTime(self,0);
-			Wld_PlayEffect("FX_EarthQuake",self,self,0,0,0,FALSE);
-			AI_PlayAni(self,"T_PRACTICEMAGIC5");
-			Wld_PlayEffect("spellFX_RingRitual2",ItMi_AmbossEffekt_Addon,ItMi_AmbossEffekt_Addon,0,0,0,FALSE);
-			if(randyKDW_Lightstar == 0)
-			{
-				Wld_PlayEffect("spellFX_RingRitual1",ItMi_AmbossEffekt_Addon,ItMi_AmbossEffekt_Addon,0,0,0,FALSE);
-			}
-			else if(randyKDW_Lightstar == 1)
-			{
-				Wld_PlayEffect("spellFX_LIGHTSTAR_RingRitual",ItMi_AmbossEffekt_Addon,ItMi_AmbossEffekt_Addon,0,0,0,FALSE);
-			};
-		};
-	}
 	else
 	{
 		randy = Hlp_Random(1000);

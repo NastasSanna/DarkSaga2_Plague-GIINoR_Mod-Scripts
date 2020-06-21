@@ -25,20 +25,6 @@ func void ZS_Talk()
 	{
 		TalkTo = Hlp_GetNpc(self.aivar[AIV_TALK_TRIA]);	// а с кем?
 	};
-	//*/
-	//*NS - 10/07/13
-	if (C_NpcIs(self, Pir_204_DS2P_Karah) && !Npc_KnowsInfo(other,DIA_Karah_Start))
-	{
-		If((Npc_WasInState(self,ZS_DSG_Practice_RangedWeapon) && (self.aivar[AIV_LASTTARGET] != 0)))
-		{
-			pos_y_ds_log = 0;
-			AI_ProcessInfos(self);
-			zsTalkBugfix = FALSE;
-			AI_ProcessInfos(self);
-			return;
-		};
-	};
-	//*/
 	if(self.guild < GIL_SEPERATOR_HUM)
 	{
 		AI_RemoveWeapon(self);

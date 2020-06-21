@@ -49,7 +49,7 @@ instance ItMw_DS2P_ViperSting(ItMw_1H_Sword)
 //=========================
 //"Меч Гуруна" - дает Ца-Ха-Наух за квест "Защита для маленьких 
 // UNFINISHED визуал
-// Меч гоблинский, поэтмоу условие на ловкость, а не силу
+// Меч гоблинский, поэтому условие на ловкость, а не силу
 //==================
 const int Value_ItMw_DS2P_1H_GurunSword = 900;
 const int Damage_ItMw_DS2P_1H_GurunSword = 100;
@@ -93,3 +93,45 @@ instance ItMw_DS2P_2H_JosephAxe(ItMw_1H_Sword)
 	count[3] = cond_value[2];
 	count[5] = value;
 };
+//=========================
+//"Челнок смерти"
+//=========================
+const int Value_ItMw_DSP_WeaverSword = 500;
+const int Damage_ItMw_DSP_WeaverSword = 70;
+const int Range_ItMw_DSP_WeaverSword = 75;
+const int Cond_ItMw_DSP_WeaverSword = 65;
+
+instance ItMw_DSP_WeaverSword(ItMw_1H_Sword)
+{
+	flags = ITEM_MISSION;
+	name = "Челнок смерти";
+	description = name;
+	visual = "ItMw_DS_Sword_03.3DS";
+	text[1] = "Легкий и быстрый, как ткацкий челнок.";
+	
+	damageTotal = Damage_ItMw_DSP_WeaverSword;
+	range = Range_ItMw_DSP_WeaverSword;
+	count[2] = damageTotal;
+	
+	cond_value[2] = Cond_ItMw_DSP_WeaverSword;
+	count[3] = cond_value[2];
+	
+	value = 150;
+	count[5] = value;
+	
+	on_equip 				= Equip_ItMw_DSP_WeaverSword;
+	on_unequip 				= UnEquip_ItMw_DSP_WeaverSword;
+};
+func void Equip_ItMw_DSP_WeaverSword()
+{
+	Bonus_WeaverSword_Equipped = TRUE;
+	GiveBonus_WeaverComplect();
+};
+func void UnEquip_ItMw_DSP_WeaverSword()
+{
+	Bonus_WeaverSword_Equipped = FALSE;
+	GiveBonus_WeaverComplect();
+};
+
+
+
