@@ -111,7 +111,7 @@ func void ZS_Dead()
 	if(Npc_IsPlayer(other))
 	{
 		self.aivar[AIV_KilledByPlayer] = TRUE;
-		if(C_DropUnconscious(self, other))
+		if(C_DropUnconscious())
 		{
 			MadKillerCount += 1;
 		};

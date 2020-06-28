@@ -879,6 +879,7 @@ AI\Monster\ZS_Monster\ZS_MM_ThreatenEnemy.d
 Story\Events\B_Function_Touch_And_Get_Killed.d
 Story\Events\B_GiveStuntBonus.d
 Story\Events\EVT_DS2P_GardChestOpen.d
+Story\Events\EVT_DS2P_StatuesTrap.d
 Story\B_Story\B_DS2P_InitLanSkeleton.d
 Story\Events\B_DSG_TimePotions_Effect.d
 Story\Events\B_DS2P_CheckHeroHasItems.d
