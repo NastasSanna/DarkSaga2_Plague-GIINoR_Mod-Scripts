@@ -181,9 +181,10 @@ func void INIT_SUB_DS2P_ATOLL_CAMP()
 	Wld_AssignRoomToGuild("CAMPTUNNEL",GIL_DUNGEON);
 	Wld_AssignRoomToGuild("CAMPLEFTROOM",GIL_ROOMNONE);
 	Wld_AssignRoomToGuild("CAMPRIGHTROOM",GIL_ROOMNONE);
-	Wld_AssignRoomToGuild("CAMPDOWNCAVE",GIL_CAVE);
-	Wld_AssignRoomToGuild("DRAGONFORT",GIL_ROOMNONE);
-	Wld_AssignRoomToGuild("DRAGONFORTTUNNEL",GIL_ROOMNONE);
+	// удалены из-за неудачной конфигурации поверхности
+	//Wld_AssignRoomToGuild("CAMPDOWNCAVE",GIL_CAVE);
+	//Wld_AssignRoomToGuild("DRAGONFORT",GIL_ROOMNONE);
+	//Wld_AssignRoomToGuild("DRAGONFORTTUNNEL",GIL_ROOMNONE);
 };
 func void INIT_SUB_DS2P_ATOLL_FOREST()
 {
