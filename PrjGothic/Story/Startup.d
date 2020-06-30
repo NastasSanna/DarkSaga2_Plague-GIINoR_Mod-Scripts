@@ -47,9 +47,9 @@ func void STARTUP_DS2P_STARTOCEAN()
 	Wld_InsertNpc(pre_none_13_Lee,"");
 	Wld_InsertNpc(pre_none_14_Milten,"");
 	Wld_InsertNpc(pre_none_15_Diego,"");
-	Wld_InsertNpc(pre_none_16_Lester,"");*/
+	Wld_InsertNpc(pre_none_16_Lester,"");
 	Wld_InsertNpc(pre_none_17_Gorn,"");
-	Wld_InsertNpc(pre_none_18_Vatras,"");
+	Wld_InsertNpc(pre_none_18_Vatras,"");*/
 };
 func void INIT_SUB_DS2P_STARTOCEAN()
 {
@@ -68,7 +68,7 @@ func void INIT_DS2P_STARTOCEAN()
 func void STARTUP_DS2P_ATOLL()
 {
 	CurrentLevel = DSG_PROLOG_ZEN;
-	/*Вставляем ГГ, Аластера и друзей*/
+	/*Вставляем ГГ, Аластера и друзей/
 	Wld_InsertNpc(none_10_Nameless,"");
 	Wld_InsertNpc(none_11_Jack,"");
 	Wld_InsertNpc(none_12_Lares,"");
@@ -77,8 +77,8 @@ func void STARTUP_DS2P_ATOLL()
 	Wld_InsertNpc(none_15_Diego,"");
 	Wld_InsertNpc(none_16_Lester,"");
 	Wld_InsertNpc(none_17_Gorn,"");
-	Wld_InsertNpc(none_18_Vatras,"");
-	/*Вставляем пиратов*/
+	Wld_InsertNpc(none_18_Vatras,"");*/
+	/*Вставляем пиратов/
 	Wld_InsertNpc(PIR_200_DS2P_GARD,"");
 	Wld_InsertNpc(PIR_201_DS2P_Greg,"");
 	Wld_InsertNpc(PIR_202_DS2P_Symon,"");
@@ -91,8 +91,8 @@ func void STARTUP_DS2P_ATOLL()
 	Wld_InsertNpc(PIR_209_DS2P_Vales,"");
 	Wld_InsertNpc(PIR_210_DS2P_Jorn,"");
 	Wld_InsertNpc(PIR_211_DS2P_Ado,"");
-	Wld_InsertNpc(PIR_215_DS2P_Hobo,"");
-	/*Вставляем крестьян*/
+	Wld_InsertNpc(PIR_215_DS2P_Hobo,"");*/
+	/*Вставляем крестьян/
 	Wld_InsertNpc(BAU_100_DS2P_KADAR,"");
 	Wld_InsertNpc(BAU_101_DS2P_HAROK,"");
 	Wld_InsertNpc(Bau_102_DS2P_Dil,"");
@@ -109,25 +109,25 @@ func void STARTUP_DS2P_ATOLL()
 	Wld_InsertNpc(BAU_113_DS2P_Gustav,"");
 	Wld_InsertNpc(BAU_114_DS2P_Tom,"");
 	Wld_InsertNpc(BAU_115_DS2P_Jinn,"");
-	Wld_InsertNpc(BAU_116_DS2P_Fart,"");
-	/*Вставляем остальных*/
+	Wld_InsertNpc(BAU_116_DS2P_Fart,"");*/
+	/*Вставляем остальных/
 	Wld_InsertNpc(OUT_400_DS2P_Ekor,"");
 	Wld_InsertNpc(OUT_401_DS2P_Izmar,"");
 	Wld_InsertNpc(Orc_DS2P_ArTush,"");
-	Wld_InsertNpc(Orc_DS2P_RakTarak,"");
-	/*Вставляем гоблинов*/
+	Wld_InsertNpc(Orc_DS2P_RakTarak,"");*/
+	/*Вставляем гоблинов/
 	Wld_InsertNpc(Gobbo_DS2P_JaAfFar,"");
 	Wld_InsertNpc(Gobbo_DS2P_KuLa,"");
 	Wld_InsertNpc(Gobbo_DS2P_RaDaPo,"");
 	Wld_InsertNpc(Gobbo_DS2P_TsaHaNauh,"");
-	Wld_InsertNpc(Gobbo_DS2P_YahYah,"");
+	Wld_InsertNpc(Gobbo_DS2P_YahYah,"");*/
 	//Wld_InsertNpc(Swampshark_DS2P_LargeSnake,""); NS - вырезан
-	/*Вставляем нежить в склепе с гранитом*/
+	/*Вставляем нежить в склепе с гранитом/
 	Wld_InsertNpc(Skeleton_Lord_DS2P_GraniteGrave,"");
-	Wld_InsertNpc(Skeleton_Ghost_Mage_DS2P_GraniteGrave,"");
+	Wld_InsertNpc(Skeleton_Ghost_Mage_DS2P_GraniteGrave,"");*/
 	// UNFINISHED еще зомби и скелеты
-	/*Вставляем квестового огненного мракориса ("Внук рыбака")*/
-	Wld_InsertNpc(Shadowbeast_Addon_Fire_Garon,"");
+	/*Вставляем квестового огненного мракориса ("Внук рыбака")/
+	Wld_InsertNpc(Shadowbeast_Addon_Fire_Garon,"");*/
 	/*Вставляем монстрятину*/
 };
 // Эсмеральда
