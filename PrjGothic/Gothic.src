@@ -177,6 +177,7 @@ Story\B_Content\B_Upgrade_Hero_HackChance.d
 Story\Dialog_Mobsis\B_PlayerMap.d
 AI\Human\B_Human\B_Say.d
 AI\Human\B_Human\B_Say_Overlay.d
+AI\Human\C_Human\C_NpcIsHero.d
 Story\Log_Entries\B_CloseTopic.d
 Story\Log_Entries\B_CheckLog.d
 Story\B_Story\b_ds_closetopic.d
@@ -232,6 +233,7 @@ Items\Rune_Scrolls\IT_Addon_Scrolls.d
 Items\Food_Potion\IT_DS2P_Food.d
 Items\Food_Potion\IT_Food.d
 Items\Food_Potion\IT_Plants.d
+Items\Food_Potion\IT_DS2P_Plants.d
 Items\Food_Potion\IT_DS2P_Potion_NoLearn.d
 Items\Food_Potion\IT_DSG_Potion_Time.d
 Items\Food_Potion\IT_DSG_Plants.d
@@ -306,7 +308,6 @@ AI\Human\C_Human\C_NpcHasAttackReasonToKill.d
 AI\Human\C_Human\C_NpcBelongsTo.d
 AI\Human\C_Human\C_DropUnconscious.d
 AI\Human\C_Human\C_NpcRansacksAlways.d
-AI\Human\C_Human\C_NpcIsHero.d
 AI\Human\C_Human\C_NpcIsUndead.d
 AI\Human\C_Human\C_NpcIsEvil.d
 AI\Human\C_Human\C_RefuseTalk.d

@@ -24,5 +24,5 @@ func void EVT_STATUESTRAP_ORC()
 // гоблин
 func void EVT_STATUESTRAP_GOBBO()
 {
-	Wld_InsertNpc(Gobbo_Skeleton, EVT_StatuesTrap_InsertPoint);
+	Wld_InsertNpc(Gobbo_BerserkSkeleton, EVT_StatuesTrap_InsertPoint);
 };

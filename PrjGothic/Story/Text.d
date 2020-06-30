@@ -584,6 +584,7 @@ const string NAME_DS_Prot_EdgeAndPointAndMagicAndFire = "Защита от оружия, стрел
 const string NAME_Prot_Fire = "Защита от огня:";
 const string NAME_Prot_Magic = "Защита от магии:";
 const string NAME_DS_Prot_MagicAndFire = "Защита от магии и огня:";
+const string NAME_AntiBonus_HP = "Урон здоровью:";
 const string NAME_Bonus_HP = "Прибавка к здоровью:";
 const string NAME_Bonus_Mana = "Прибавка к мане:";
 const string NAME_Bonus_HP_DS = "Прибавка к здоровью (в %) :";
