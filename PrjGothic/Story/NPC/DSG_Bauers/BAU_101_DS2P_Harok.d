@@ -19,6 +19,7 @@ instance BAU_101_DS2P_Harok(Npc_Default)
 };
 func void Rtn_Start_101()		//обычный дома: ест, спит, рыбачит
 {
+	//TA_Smalltalk(19,10,21,15,"DP_COAST_FISHERHUT_OUT_02"); //Джек, если он на берегу
 };
 func void Rtn_GaronTalk_101()		//стоит рядом с Гароном, чтобы были оба наготове для триалога
 {

@@ -25,8 +25,8 @@ instance PC_Hero(Npc_Default)
 	Npc_SetTalentSkill(self,NPC_TALENT_PICKPOCKET,1);
 	Npc_SetTalentSkill(self,NPC_TALENT_SNEAK,1);
 	Npc_SetTalentSkill(self,NPC_TALENT_C,24);
-	EquipItem(self,ItMw_2H_Special_04);
-	EquipItem(self,ItRw_Crossbow_H_02);
+	EquipItem(self,ItMw_1H_Blessed_02);
+	EquipItem(self,ItRw_Crossbow_M_01);
 	CreateInvItems(self,ItRw_Arrow,20);
 	CreateInvItems(self,ItRw_Bolt_01,20);
 	CreateInvItems(self,ItKe_Lockpick,2);

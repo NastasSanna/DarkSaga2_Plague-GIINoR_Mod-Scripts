@@ -583,15 +583,6 @@ Story\NPC\G2NV\DS_20_Alaster.d
 Story\NPC\G2NV\DS_21_NONE_Marik.d
 Story\NPC\G2NV\DS_22_SKIP.d
 Story\NPC\G2NV\DS_666_Dark.d
-Story\NPC\G2NV\_pre_G2NV\pre_G2NV_10_Nameless.d
-Story\NPC\G2NV\_pre_G2NV\pre_G2NV_11_Jack.d
-Story\NPC\G2NV\_pre_G2NV\pre_G2NV_12_Lares.d
-Story\NPC\G2NV\_pre_G2NV\pre_G2NV_13_Lee.d
-Story\NPC\G2NV\_pre_G2NV\pre_G2NV_14_Milten.d
-Story\NPC\G2NV\_pre_G2NV\pre_G2NV_15_Diego.d
-Story\NPC\G2NV\_pre_G2NV\pre_G2NV_16_Lester.d
-Story\NPC\G2NV\_pre_G2NV\pre_G2NV_17_Gorn.d
-Story\NPC\G2NV\_pre_G2NV\pre_G2NV_18_Vatras.d
 Story\NPC\G2NV\SA_Saturas.d
 Story\NPC\DSG_Bauers\BAU_100_DS2P_Kadar.d
 Story\NPC\DSG_Bauers\BAU_101_DS2P_Harok.d
@@ -803,7 +794,7 @@ Story\Dialoge\DIA_Bauers\DIA_BAU_117_DS2P_Garon.d
 Story\Dialoge\DIA_G2NV\dia_DS_22_SKIP.d
 Story\Dialoge\DIA_G2NV\dia_DS_21_NONE_Marik.d
 Story\Dialoge\DIA_G2NV\DIA_DS_666_Dark.d
-Story\Dialoge\DIA_G2NV\dia_G2NV_10_Nameless.d
+Story\Dialoge\DIA_G2NV\dia_DS_20_Alaster.d
 Story\Dialoge\DIA_G2NV\dia_G2NV_11_Jack.d
 Story\Dialoge\DIA_G2NV\dia_G2NV_12_Lares.d
 Story\Dialoge\DIA_G2NV\dia_G2NV_13_Lee.d

@@ -1,4 +1,4 @@
 instance DIA_Jack_EXIT(DIA_Proto_End)
 {
-	npc = none_11_Jack;
+	npc = G2NV_11_Jack;
 };

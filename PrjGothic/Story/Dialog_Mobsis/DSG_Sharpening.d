@@ -134,7 +134,7 @@ func int B_DSG_GetWeapon_Array_byFlag(var int itmFlag)
 ////////////////////////////////////////////////
 instance PC_Sharpening(C_Info)
 {
-	npc = /*PC_Hero*/pre_none_18_Vatras;
+	npc = /*PC_Hero*/G2NV_18_Vatras;
 	condition = PC_Sharpening_Condition;
 	information = PC_Sharpening_Info;
 	permanent = TRUE;

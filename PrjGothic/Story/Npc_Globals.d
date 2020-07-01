@@ -3,7 +3,7 @@ var C_Npc MARIK;
 var C_Npc Skip;
 var C_Npc Gerard;
 // Команда из Г2НВ
-var C_Npc Nameless;
+var C_Npc Alaster;
 var C_Npc Jack;
 var C_Npc Lares;
 var C_Npc Lee;
@@ -68,15 +68,15 @@ func void B_InitNpcGlobals()
 	Skip = Hlp_GetNpc(DS_22_SKIP);
 	
 	// Команда из Г2НВ ====================
-	Nameless = Hlp_GetNpc(none_10_Nameless);
-	Jack = Hlp_GetNpc(none_11_Jack);
-	Lares = Hlp_GetNpc(none_12_Lares);
-	Lee = Hlp_GetNpc(none_13_Lee);
-	Milten = Hlp_GetNpc(none_14_Milten);
-	Diego = Hlp_GetNpc(none_15_Diego);
-	Lester = Hlp_GetNpc(none_16_Lester);
-	Gorn = Hlp_GetNpc(none_17_Gorn);
-	Vatras = Hlp_GetNpc(none_18_Vatras);
+	Alaster = Hlp_GetNpc(DS_20_Alaster);
+	Jack = Hlp_GetNpc(G2NV_11_Jack);
+	Lares = Hlp_GetNpc(G2NV_12_Lares);
+	Lee = Hlp_GetNpc(G2NV_13_Lee);
+	Milten = Hlp_GetNpc(G2NV_14_Milten);
+	Diego = Hlp_GetNpc(G2NV_15_Diego);
+	Lester = Hlp_GetNpc(G2NV_16_Lester);
+	Gorn = Hlp_GetNpc(G2NV_17_Gorn);
+	Vatras = Hlp_GetNpc(G2NV_18_Vatras);
 	
 	// Крестьяне ==========================
 	Kadar = Hlp_GetNpc(BAU_100_DS2P_KADAR);
