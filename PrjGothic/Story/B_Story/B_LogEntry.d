@@ -51,7 +51,7 @@ func void B_ds_LogEntry(var string topic, var int log_type, var int status, var 
 		{
 			concatString1 = ConcatStrings(" вест Ф",topic);
 			concatString1 = ConcatStrings(concatString1,"Ф: ");
-			concatString1 = ConcatStrings(concatString1,"задание отклонено или устарело");
+			concatString1 = ConcatStrings(concatString1,"задание отменено");
 			AI_PrintScreen(concatString1,-1,YPOS_LOGENTRY + pos_y_ds_log + pos_dy_ds_log,FONT_ScreenSmall_Green_HI,4);
 		};
 	}

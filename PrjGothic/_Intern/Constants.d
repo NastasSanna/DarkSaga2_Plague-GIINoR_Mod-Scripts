@@ -7,9 +7,9 @@ const string FONT_Book = "FONT_10_BOOK.TGA";
 const string FONT_BookHeadline = "FONT_20_BOOK.TGA";
 
 //Redleha: добавленные шрифты
-const string FONT_ScreenSmall_Green_HI = "FONT_OLD_10_Green_HI.TGA";
-const string FONT_ScreenSmall_Red_HI = "FONT_OLD_10_Red_HI.TGA";
-const string FONT_ScreenSmall_Yellow_HI = "FONT_OLD_10_Yellow_HI.TGA";
+const string FONT_ScreenSmall_Green_HI = "FONT_OLD_10_GREEN_HI.TGA";
+const string FONT_ScreenSmall_Red_HI = "FONT_OLD_10_RED_HI.TGA";
+const string FONT_ScreenSmall_Yellow_HI = "FONT_OLD_10_YELLOW_HI.TGA";
 const string FONT_POISON = "FONT_DS_OLD_20_GREEN.TGA";
 const string FONT_POISONLINE = "FONT_OLD_20_GREENMY1.TGA";
 

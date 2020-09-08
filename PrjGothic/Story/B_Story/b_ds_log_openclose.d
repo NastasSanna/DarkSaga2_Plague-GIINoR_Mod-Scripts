@@ -56,9 +56,9 @@ func void B_DSG_Log_OpenClose(var string topic, var int log_type, var int log_st
 		
 		var_MisName = STR_Split(topic, "_" , 1); 											//отрезаем значащее имя топика от имени топика.
 		var_MisName = ConcatStrings(CONST_str_MIS_MOD, var_MisName);	//Складываем MIS_DSG_ + TOPICNAME = MIS_DSG_TOPICNAME;
-		PrintScreen(var_MisName,1,3,Font_ScreenSmall,1);
+		MEM_Debug(var_MisName);
 		topic = STR_Split(topic, "_" , 0);	//Отрезаем слово, которое является именем миссии в дневнике (на русском :) )
-		PrintScreen(topic,1,5,Font_ScreenSmall,1);
+		MEM_Debug(topic);
 		
 		sym_varMisName = MEM_GetParserSymbol(var_MisName);
 		if(sym_varMisName)
@@ -84,30 +84,12 @@ func void B_DSG_Log_OpenClose(var string topic, var int log_type, var int log_st
 	};
 	if(log_type == LOG_MISSION)
 	{
-		if(log_status == LOG_Running)
+		if(log_status == LOG_Running && !Log_GetTopicStatus(topic))
 		{
-			if(!Log_GetTopicStatus(topic))
-			{
-				Log_CreateTopic(topic,log_type);
-				Log_SetTopicStatus(topic,log_status);
-			};
-			B_ds_LogEntry(topic,log_type,log_status,topictext);
-		}
-		else if(log_status == LOG_SUCCESS)
-		{
-			B_ds_LogEntry(topic,log_type,log_status,topictext);
-			Log_SetTopicStatus(topic,log_status);
-		}
-		else if(log_status == LOG_FAILED)
-		{
-			B_ds_LogEntry(topic,log_type,log_status,topictext);
-			Log_SetTopicStatus(topic,log_status);
-		}
-		else if(log_status == LOG_OBSOLETE)
-		{
-			B_ds_LogEntry(topic,log_type,log_status,topictext);
-			Log_SetTopicStatus(topic,LOG_OBSOLETE);
+			Log_CreateTopic(topic,log_type);
 		};
+		Log_SetTopicStatus(topic,log_status);
+		B_ds_LogEntry(topic,log_type,log_status,topictext);
 	}
 	else if(log_type == LOG_NOTE)
 	{

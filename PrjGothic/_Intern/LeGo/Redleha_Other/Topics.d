@@ -183,18 +183,18 @@ func void Topics_UpdateAllTargets() {
 
 func int Log_GetTopicStatus(var string name) {
 	const int logMan = 11191608; //0xaac538
-   var zCList list; list = _^(logMan);
-   
-   while(list.next);
-      list = _^(list.next);
-      
-      if (list.data) {
+	var zCList list; list = _^(logMan);
+
+	while(list.next);
+	  list = _^(list.next);
+	  
+	  if (list.data) {
 		  MEM_Debug(MEM_ReadString(list.data));
 			if (Hlp_StrCmp(MEM_ReadString(list.data), name)) {
 				return MEM_ReadInt(list.data + 24);
-         };
-      };
-   end;
-	return -1;	//NS - 31/03/2016 если еще нет открытых миссий
+		 };
+	  };
+	end;
+	return 0;	//NS - 31/03/2016 если еще нет открытых миссий
 };
 

@@ -54,3 +54,54 @@ instance DIA_Speaker_dlg(C_INFO)
 };
 
 */
+
+/*
+//===================================================
+instance DIA_Who_What(C_Info)
+{
+	npc = Who;								nr = 1;
+	condition = DIA_Who_What_Cond;
+	information = DIA_Who_What_Info;
+	description = "";
+	permanent = TRUE;
+	important = TRUE;
+};
+func int DIA_Who_What_Cond()
+{
+	if ()	{
+		return TRUE;
+	};
+};
+func void DIA_Who_What_Info()
+{
+		AI_Output(other,self,"DIA_Who_What_15_00");	//
+	AI_Output(self,other,"DIA_Who_What_99_01");	//
+	B_ds_LogEntry(TOPIC_Topik,LOG_MISSION,LOG_Running,TOPIC_Topik_Entry);
+	B_LogNote(TOPIC_Topik,TOPIC_Topik_Note);
+};
+*/
+
+
+/*
+//===================================================
+instance DIA_Who_Trade(C_Info)
+{
+	npc = Who;								nr = 1000;
+	condition = DIA_Who_Trade_Cond;
+	information = DIA_Who_Trade_Info;
+	description = "";
+	trade = TRUE;
+
+};
+func int DIA_Who_Trade_Cond()
+{
+	if (Who_Trade)	{
+		return TRUE;
+	};
+};
+func void DIA_Who_Trade_Info()
+{
+		AI_Output(other,self,"DIA_Who_Trade_15_00");	//
+	AI_Output(self,other,"DIA_Who_Trade_99_01");	//
+};
+*/
