@@ -13,8 +13,16 @@ instance Gobbo_DS2P_TsaHaNauh(Mst_Default_DS_Gobbo_Berserk)
 	name[0] = "÷‡-’‡-Õ‡Ûı";
 	id = 1901;
 	npcType = NPCTYPE_MAIN;
-	aivar[AIV_EnemyOverride] = TRUE;
 	aivar[AIV_StoryFlags] = AIV_StoryFlag_SwampGoblin;
 	B_SetVisuals_Gobbo_Chief();
 	Npc_SetToFightMode(self,ItMw_Schwert1);
+	
+	daily_routine = Rtn_Start_1901;
 };
+
+func void Rtn_Start_1901()
+{
+	TA_SitOrk(8,0,21,0,"DP_FOREST_SWAMPTEMPLE_TRONE");
+	TA_SitOrk(21,0,8,0,"DP_FOREST_SWAMPTEMPLE_TRONE");
+};
+

@@ -116,12 +116,30 @@ func void STARTUP_DS2P_ATOLL()
 	Wld_InsertNpc(Orc_DS2P_ArTush,"");
 	Wld_InsertNpc(Orc_DS2P_RakTarak,"");*/
 	Wld_InsertNpc(Dragon_Talan,"DRAGON");
-	/*Вставляем гоблинов/
-	Wld_InsertNpc(Gobbo_DS2P_JaAfFar,"");
-	Wld_InsertNpc(Gobbo_DS2P_KuLa,"");
-	Wld_InsertNpc(Gobbo_DS2P_RaDaPo,"");
-	Wld_InsertNpc(Gobbo_DS2P_TsaHaNauh,"");
-	Wld_InsertNpc(Gobbo_DS2P_YahYah,"");*/
+	//*Вставляем гоблинов/
+	Wld_InsertNpc(Gobbo_DS2P_JaAfFar,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_KuLa,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_RaDaPo,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_TsaHaNauh,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_YahYah,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_ChiefGuard_1,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_ChiefGuard_2,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_withYahYah_1,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_withYahYah_2,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_Young,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_Young,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_Young,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_Young,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_Young,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_Old,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_Green_01,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_Green_02,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_Black_01,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_Black_01,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_Black_02,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_Black_03,"GOBBOVIL");
+	Wld_InsertNpc(Gobbo_DS2P_Black_04,"GOBBOVIL");
+	//*/
 	//Wld_InsertNpc(Swampshark_DS2P_LargeSnake,""); NS - вырезан
 	/*Вставляем нежить в склепе с гранитом/
 	Wld_InsertNpc(Skeleton_Lord_DS2P_GraniteGrave,"");

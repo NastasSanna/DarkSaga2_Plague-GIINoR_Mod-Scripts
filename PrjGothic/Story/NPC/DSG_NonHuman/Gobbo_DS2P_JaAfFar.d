@@ -6,7 +6,6 @@ instance Gobbo_DS2P_JaAfFar(Mst_Default_Gobbo_Green)
 	name[0] = "Джа-Аф-Фар";
 	id = 1906;
 	npcType = NPCTYPE_MAIN;
-	aivar[AIV_EnemyOverride] = TRUE;
 	aivar[AIV_StoryFlags] = AIV_StoryFlag_SwampGoblin;
 	B_SetVisuals_Gobbo_Green();
 	Npc_SetToFightMode(self,ItMw_1h_Bau_Mace);
@@ -18,8 +17,8 @@ const string WP_JaAfFar_Mill = "DP_";	//UNFINISHED - где Джа-Аф-Фар прячется у м
 
 func void Rtn_Start_1906()
 {
-	TA_SitOrk(8,0,22,0, "");
-	TA_SitOrk(22,0,8,0, "");
+	TA_Stand_WP(8,0,22,0, "DP_FOREST_SWAMPTEMPLE_ROOM05_02");
+	TA_Sit_Campfire(22,0,8,0, "DP_FOREST_SWAMPTEMPLE_ROOM05_02");
 };
 func void Rtn_Follow_1906()
 {

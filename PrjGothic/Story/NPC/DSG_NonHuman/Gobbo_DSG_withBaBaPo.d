@@ -4,6 +4,7 @@
 
 instance Gobbo_withBaBaPo_1(Mst_Default_Gobbo_Warrior)
 {
+	id = 1910;
 	aivar[AIV_StoryFlags] = AIV_StoryFlag_SwampGoblin;
 	B_SetVisuals_Gobbo_Warrior();
 	Npc_SetToFightMode(self,ItMw_1h_Misc_Axe);
@@ -12,6 +13,7 @@ instance Gobbo_withBaBaPo_1(Mst_Default_Gobbo_Warrior)
 
 instance Gobbo_withBaBaPo_2(Mst_Default_Gobbo_Warrior)
 {
+	id = 1911;
 	aivar[AIV_StoryFlags] = AIV_StoryFlag_SwampGoblin;
 	B_SetVisuals_Gobbo_Warrior();
 	Npc_SetToFightMode(self,ItMw_1h_Misc_Axe);
