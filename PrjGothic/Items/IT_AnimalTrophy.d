@@ -336,7 +336,7 @@ instance ItAt_ShadowFur(C_Item)
 
 instance ItAt_SharkSkin(C_Item)
 {
-	name = "Ўкура речного черв€";
+	name = "Ўкура болотного зме€";
 	mainflag = ITEM_KAT_NONE;
 	flags = ITEM_MULTI;
 	value = Value_SharkSkin;
@@ -401,7 +401,7 @@ instance ItAt_ShadowHorn(C_Item)
 
 instance ItAt_SharkTeeth(C_Item)
 {
-	name = "«убы речного черв€";
+	name = "«убы болотного зме€";
 	mainflag = ITEM_KAT_NONE;
 	flags = ITEM_MULTI;
 	value = Value_SharkTeeth;

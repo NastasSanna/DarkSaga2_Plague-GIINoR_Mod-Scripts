@@ -21,9 +21,23 @@ func int ZS_SitOrk_loop()
 {
 	if(self.aivar[AIV_TAPOSITION] == NOTINPOS)
 	{
-		AI_AligntoWP(self);
-		AI_PlayAniBS(self,"T_STAND_2_SIT",BS_SIT);
-		self.aivar[AIV_TAPOSITION] = ISINPOS;
+		if(Wld_IsFPAvailable(self,"SIT"))
+		{
+			AI_GotoFP(self,"SIT");
+			AI_Standup(self);
+			AI_AlignToFP(self);
+		}
+		else if(Npc_IsOnFP(self,"SIT"))
+		{
+			AI_AlignToFP(self);
+			AI_PlayAniBS(self,"T_STAND_2_SIT",BS_SIT);
+		}
+		else
+		{
+			AI_AligntoWP(self);
+			AI_PlayAniBS(self,"T_STAND_2_SIT",BS_SIT);
+			self.aivar[AIV_TAPOSITION] = ISINPOS;
+		};
 	};
 	return LOOP_CONTINUE;
 };

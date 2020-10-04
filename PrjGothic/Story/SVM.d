@@ -3244,6 +3244,8 @@ instance SVM_18(C_SVM)
 	YouDisturbedMySlumber = "SVM_18_YouDisturbedMySlumber";	//(злобный рык) Ар-р-ргх!
 };
 
+// UNFINISHED 19 - голос гоблинов
+
 instance SVM_19(C_SVM)
 {
 	DieEnemy = "SVM_19_DieEnemy";	//(шипит) Вот он!

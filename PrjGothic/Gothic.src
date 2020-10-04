@@ -711,6 +711,11 @@ Story\NPC\DSG_NonHuman\Gobbo_DS2P_YahYah.d
 Story\NPC\DSG_NonHuman\Gobbo_DS2P_withYahYah.d
 Story\NPC\DSG_NonHuman\Gobbo_DS2P_TsaHaNauh.d
 Story\NPC\DSG_NonHuman\Gobbo_DS2P_RaDaPo.d
+Story\NPC\DSG_NonHuman\Gobbo_DS2P_ChiefGuard.d
+Story\NPC\DSG_NonHuman\Gobbo_DS2P_Youngs.d
+Story\NPC\DSG_NonHuman\Gobbo_DS2P_Old.d
+Story\NPC\DSG_NonHuman\Gobbo_DS2P_Green.d
+Story\NPC\DSG_NonHuman\Gobbo_DS2P_Black.d
 Story\NPC\DSG_NonHuman\Wolf_DS2P_TaKoPi.d
 Story\NPC\DSG_NonHuman\Orc_DS2P_RakTarak.d
 Story\NPC\DSG_NonHuman\Orc_DS2P_ArTush.d
@@ -730,6 +735,7 @@ Story\Dialoge\DIA_Addon_WispDetector.d
 Story\B_Story\B_DS_BuildString_TeachPayment.d
 Story\B_Story\C_DS2P_HasPirateNews.d
 Story\B_Story\B_DS2P_Talk_End.d
+Story\B_Story\B_DS2P_GobboVillage.d
 AI\Human\ZS_Human\ZS_ClearRoom.d
 AI\Human\ZS_Human\ZS_Dead.d
 AI\Human\ZS_Human\ZS_Flee.d

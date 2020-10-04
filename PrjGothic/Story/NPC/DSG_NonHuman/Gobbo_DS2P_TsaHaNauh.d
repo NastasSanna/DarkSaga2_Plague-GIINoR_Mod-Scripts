@@ -22,7 +22,7 @@ instance Gobbo_DS2P_TsaHaNauh(Mst_Default_DS_Gobbo_Berserk)
 
 func void Rtn_Start_1901()
 {
-	TA_SitOrk(8,0,21,0,"DP_FOREST_SWAMPTEMPLE_TRONE");
-	TA_SitOrk(21,0,8,0,"DP_FOREST_SWAMPTEMPLE_TRONE");
+	TA_Min(self,8,0,21,0,ZS_MM_Rtn_Sit,"DP_FOREST_SWAMPTEMPLE_TRONE");
+	TA_Min(self,21,0,8,0,ZS_MM_Rtn_Sit,"DP_FOREST_SWAMPTEMPLE_TRONE");
 };
 

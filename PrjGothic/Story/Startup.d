@@ -130,7 +130,6 @@ func void STARTUP_DS2P_ATOLL()
 	Wld_InsertNpc(Gobbo_DS2P_Young,"GOBBOVIL");
 	Wld_InsertNpc(Gobbo_DS2P_Young,"GOBBOVIL");
 	Wld_InsertNpc(Gobbo_DS2P_Young,"GOBBOVIL");
-	Wld_InsertNpc(Gobbo_DS2P_Young,"GOBBOVIL");
 	Wld_InsertNpc(Gobbo_DS2P_Old,"GOBBOVIL");
 	Wld_InsertNpc(Gobbo_DS2P_Green_01,"GOBBOVIL");
 	Wld_InsertNpc(Gobbo_DS2P_Green_02,"GOBBOVIL");

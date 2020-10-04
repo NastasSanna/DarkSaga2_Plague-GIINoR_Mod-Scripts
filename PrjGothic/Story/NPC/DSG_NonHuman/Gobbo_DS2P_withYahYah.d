@@ -13,8 +13,8 @@ instance Gobbo_withYahYah_1(Mst_Default_DS_Gobbo_Berserk)
 
 func void Rtn_Start_1914()
 {
-	TA_Stand_WP(8,0,21,0,"DP_FOREST_GOBBOVIL_02_TENT");
-	TA_SitOrk(21,0,8,0,"DP_FOREST_GOBBOVIL_02_TENT");
+	TA_Min(self,8,0,21,0,ZS_MM_Rtn_Sit,"DP_FOREST_GOBBOVIL_02_TENT");
+	TA_Min(self,21,0,8,0,ZS_MM_Rtn_Sit,"DP_FOREST_GOBBOVIL_02_TENT");
 };
 
 instance Gobbo_withYahYah_2(Mst_Default_DS_Gobbo_Berserk)
@@ -29,8 +29,8 @@ instance Gobbo_withYahYah_2(Mst_Default_DS_Gobbo_Berserk)
 
 func void Rtn_Start_1915()
 {
-	TA_Stand_WP(8,0,21,0,"DP_FOREST_GOBBOVIL_02_TENT");
-	TA_SitOrk(21,0,8,0,"DP_FOREST_GOBBOVIL_02_TENT");
+	TA_Min(self,8,0,21,0,ZS_MM_Rtn_Sit,"DP_FOREST_GOBBOVIL_02_TENT");
+	TA_Min(self,21,0,8,0,ZS_MM_Rtn_Sit,"DP_FOREST_GOBBOVIL_02_TENT");
 };
 
 

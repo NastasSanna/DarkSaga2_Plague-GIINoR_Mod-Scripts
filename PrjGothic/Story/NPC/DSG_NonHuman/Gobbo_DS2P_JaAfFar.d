@@ -17,8 +17,8 @@ const string WP_JaAfFar_Mill = "DP_";	//UNFINISHED - где ƒжа-јф-‘ар пр€четс€ у м
 
 func void Rtn_Start_1906()
 {
-	TA_Stand_WP(8,0,22,0, "DP_FOREST_SWAMPTEMPLE_ROOM05_02");
-	TA_Sit_Campfire(22,0,8,0, "DP_FOREST_SWAMPTEMPLE_ROOM05_02");
+	TA_Min(self,8,0,22,0,ZS_MM_Rtn_Rest,"DP_FOREST_SWAMPTEMPLE_ROOM05_02");
+	TA_Min(self,22,0,8,0,ZS_MM_Rtn_Sit,"DP_FOREST_SWAMPTEMPLE_ROOM05_CAMPFIRE");
 };
 func void Rtn_Follow_1906()
 {
