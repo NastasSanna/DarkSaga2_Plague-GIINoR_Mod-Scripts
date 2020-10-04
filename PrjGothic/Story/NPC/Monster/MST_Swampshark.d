@@ -1,7 +1,7 @@
 
 prototype Mst_Default_Swampshark(C_Npc)
 {
-	name[0] = "Речной червь";
+	name[0] = "Болотный змей";
 	guild = GIL_SWAMPSHARK;
 	aivar[AIV_MM_REAL_ID] = ID_SWAMPSHARK;
 	level = 22;
@@ -27,11 +27,11 @@ func void B_SetVisuals_Swampshark()
 {
 	Mdl_SetVisual(self,"Swampshark.mds");
 	Mdl_SetVisualBody(self,"Swa_Body",DEFAULT,DEFAULT,"",DEFAULT,DEFAULT,-1);
+	Mdl_SetModelFatness(self, -8);
 };
 instance Swampshark(Mst_Default_Swampshark)
 {
 	B_SetVisuals_Swampshark();
-	Mdl_SetModelScale(self,0.5,0.5,0.5);
 	Npc_SetToFistMode(self);
 };
 //Болотный змей – Большая Змея или Га-ра-боль (разумный змей на болотах)
