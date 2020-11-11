@@ -303,3 +303,11 @@ var int SCUsed_TELEPORTER_CAMPCAVE;
 var int SCUsed_TELEPORTER_RUINS;
 var int SCUsed_TELEPORTER_SWAMP;
 var int SCUsed_TELEPORTER_LIBRARY;
+
+// Follow States
+const int FollowState_None = 0;
+const int FollowState_Follows = 1;
+const int FollowState_Waits = 2;
+const int FollowState_Finished = -1;
+
+var int TaKoPi_FollowState;

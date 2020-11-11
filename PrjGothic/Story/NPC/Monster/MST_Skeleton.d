@@ -286,6 +286,40 @@ instance Axe_Skeleton(Mst_Default_Skeleton)
 	CreateInvItems(self,ItMw_2H_Axe_L_01,1);
 };
 
+// from Mushroomers ============================================
+
+instance Skeleton_Bow(Mst_Default_Skeleton)
+{
+	name[0] = "Скелет-лучник";
+	B_SetVisuals_Skeleton();
+	EquipItem(self,ItMw_1h_MISC_Sword);
+	EquipItem(self,ItRw_Sld_Bow);
+	CreateInvItems(self,ItRw_Arrow, 10);
+	CreateInvItems(self,ItAt_SkeletonBone,1);
+};
+
+instance Skeleton_CBow(Mst_Default_Skeleton)
+{
+	name[0] = "Скелет-арбалетчик";
+	B_SetVisuals_Skeleton();
+	EquipItem(self,ItMw_1h_Misc_Axe);
+	EquipItem(self,ItRw_Crossbow_M_01);
+	CreateInvItems(self,ItRw_Bolt_01, 10);
+	CreateInvItems(self,ItAt_SkeletonBone,1);
+};
+
+instance Skeleton_Miner(Mst_Default_Skeleton)
+{
+	name[0] = "Скелет шахтера";
+	protection[PROT_BLUNT] += 20;
+	protection[PROT_EDGE] += 20;
+	protection[PROT_POINT] += 20;
+	B_SetVisuals_Lesser_Skeleton();
+	Mdl_SetVisualBody(self,"Ske_Prisoner",DEFAULT,DEFAULT,"",DEFAULT,DEFAULT,-1);
+	EquipItem(self,ItMw_2H_Axe_L_01);
+	CreateInvItems(self,ItAt_SkeletonBone,1);
+};
+
 //new from redleha
 
 func void ZS_Skel_ZOMBIE()

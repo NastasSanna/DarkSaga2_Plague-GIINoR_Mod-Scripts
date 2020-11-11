@@ -777,6 +777,7 @@ Story\B_Story\b_DS_UseFakeRune.d
 Story\B_Story\B_InitGuildAttitudes.d
 Story\B_Story\B_Kapitelwechsel.d
 Story\B_Story\C_DSG_Cave4MillIsClear.d
+Story\B_Story\C_TryStealWealth_FromHero.d
 Story\Dialog_Mobsis\BookstandKloster.d
 Story\Dialog_Mobsis\BookstandKDW_Addon.d
 Story\Dialoge\DIA_Bauers\DIA_BAU_100_DSG_KADAR.d
@@ -868,6 +869,7 @@ AI\Monster\RTN_Monster\ZS_MM_Rtn_Swim.d
 AI\Monster\RTN_Monster\ZS_MM_InCage.d
 AI\Monster\RTN_Monster\ZS_MM_AllScheduler.d
 AI\Monster\RTN_Monster\ZS_MM_Rtn_SleepZombie.d
+AI\Monster\ZS_Monster\ZS_Skeleton_Down.d
 AI\Monster\ZS_Monster\ZS_MM_Attack.d
 AI\Monster\ZS_Monster\ZS_MM_EatBody.d
 AI\Monster\ZS_Monster\ZS_MM_Flee.d

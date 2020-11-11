@@ -139,6 +139,13 @@ func void STARTUP_DS2P_ATOLL()
 	Wld_InsertNpc(Gobbo_DS2P_Black_03,"GOBBOVIL");
 	Wld_InsertNpc(Gobbo_DS2P_Black_04,"GOBBOVIL");
 	//*/
+	//*Кладбище/
+	Wld_InsertNpc(Skeleton_Bow,"FP_STAND_CAGEDSKELET_01");
+	Wld_InsertNpc(Skeleton_Bow,"FP_STAND_CAGEDSKELET_02");
+	Wld_InsertNpc(Skeleton_CBow,"FP_STAND_CAGEDSKELET_03");
+	Wld_InsertNpc(Skeleton_GraveKeeper_Emerald,"DP_FOREST_SWAMPTEMPLE_KEEPER_EMERALD");
+	Wld_InsertNpc(Skeleton_GraveKeeper_Topaz,"DP_FOREST_SWAMPTEMPLE_KEEPER_TOPAZ");
+	//*/
 	//Wld_InsertNpc(Swampshark_DS2P_LargeSnake,""); NS - вырезан
 	/*Вставляем нежить в склепе с гранитом/
 	Wld_InsertNpc(Skeleton_Lord_DS2P_GraniteGrave,"");

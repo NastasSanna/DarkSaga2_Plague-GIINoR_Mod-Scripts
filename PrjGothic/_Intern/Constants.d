@@ -246,7 +246,7 @@ const int GIL_SEPERATOR_HUM = 16; // не использовать!
 // монстры
 const int GIL_MEATBUG = 17;
 const int GIL_SHEEP = 18;
-const int GIL_GOBBO = 19;
+const int GIL_DSG_LARVA = 19;	//Её пока нет, и наверно, не будет
 const int GIL_GOBBO_SKELETON = 20;
 const int GIL_SUMMONED_GOBBO_SKELETON = 21;
 const int GIL_SCAVENGER = 22;
@@ -258,7 +258,6 @@ const int GIL_WOLF = 27;
 const int GIL_SUMMONED_WOLF = 28;
 const int GIL_MINECRAWLER = 29;
 const int GIL_LURKER = 30;
-const int GIL_SKELETON = 31;
 const int GIL_SUMMONED_SKELETON = 32;
 const int GIL_SKELETON_MAGE = 33;
 const int GIL_ZOMBIE = 34;
@@ -281,7 +280,6 @@ const int GIL_SWAMPGOLEM = 50;
 const int GIL_Stoneguardian = 51;
 const int GIL_Gargoyle = 52;
 const int GIL_Keiler = 53;	//GIL_Empty_A
-const int GIL_DSG_LARVA = 999;	//Её пока нет, и наверно, не будет
 const int GIL_SummonedGuardian = 54;
 const int GIL_SummonedZombie = 55;
 const int GIL_DS_PIRANHA = 56;
@@ -293,9 +291,8 @@ const int GIL_ORC = 59;
 const int GIL_FRIENDLY_ORC = 60;
 const int GIL_UNDEADORC = 61;
 const int GIL_DRACONIAN = 62;
-const int GIL_EMPTY_X = 63;
-const int GIL_EMPTY_Y = 64;
-const int GIL_EMPTY_Z = 65;
+const int GIL_SKELETON = 63;
+const int GIL_GOBBO = 64;
 const int GIL_MAX = 66;
 
 class C_GILVALUES

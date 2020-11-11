@@ -62,3 +62,25 @@ instance Skeleton_Lord_DS2P_GraniteGrave(Mst_Skeleton_Lord)
 	B_SetVisuals_Skeleton_Lord();
 	EquipItem(self,ItMw_Zweihaender2);
 };
+// Стражи кладбища
+instance Skeleton_GraveKeeper_Emerald(Mst_Skeleton_Lord)
+{
+	name[0] = "Призрачный страж";
+	flags = NPC_FLAG_GHOST | NPC_FLAG_IMMORTAL;
+	effect = "SPELLFX_VIOLETFIREARMOR";
+	B_SetVisuals_Skeleton_Lord();
+	EquipItem(self,ItMw_Zweihaender2);
+	protection[PROT_MAGIC] = -1;
+	CreateInvItems(self,ItKe_Emerald,1);
+};
+instance Skeleton_GraveKeeper_Topaz(Mst_Skeleton_Lord)
+{
+	name[0] = "Призрачный страж";
+	flags = NPC_FLAG_GHOST | NPC_FLAG_IMMORTAL;
+	effect = "SPELLFX_VIOLETFIREARMOR";
+	B_SetVisuals_Skeleton_Lord();
+	EquipItem(self,ItMw_Zweihaender2);
+	protection[PROT_MAGIC] = -1;
+	CreateInvItems(self,ItKe_Topaz,1);
+};
+

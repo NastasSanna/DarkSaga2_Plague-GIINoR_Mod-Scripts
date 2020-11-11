@@ -26,7 +26,12 @@ func void B_RefreshAtInsert()
 	
 	if((self.guild < GIL_SEPERATOR_HUM) && (Hlp_GetInstanceID(self) != Hlp_GetInstanceID(her)))
 	{
-		self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS_MAX];
+		if (self.aivar[REAL_HITPOINTS_MAX] > 0 && self.aivar[REAL_HITPOINTS_MAX] < self.attribute[ATR_HITPOINTS_MAX]) {
+			self.attribute[ATR_HITPOINTS] = self.aivar[REAL_HITPOINTS_MAX];
+		}
+		else {
+			self.attribute[ATR_HITPOINTS] = self.attribute[ATR_HITPOINTS_MAX];
+		};
 		if(Npc_HasEquippedWeapon(self) == FALSE)
 		{
 			if(self.guild == GIL_PIR || self.guild == GIL_PIR2)

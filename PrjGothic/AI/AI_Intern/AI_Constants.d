@@ -264,11 +264,12 @@ const int AIV_StoryFlags = 74; //NS - 08/03/16 различные квестовые флаги, можно 
 const int AIV_StoryBandit_Esteban = 75;
 
 const int AIV_WhirlwindStateTime = 76;
-const int AIV_InflateStateTime = 77;
-const int AIV_SwarmStateTime = 78;
-const int AIV_SuckEnergyStateTime = 79;
-const int AIV_FollowDist = 80;
+const int AIV_InflateStateTime = 76;
+const int AIV_SwarmStateTime = 76;
+const int AIV_SuckEnergyStateTime = 76;
+const int AIV_FollowDist = 77;
 
+const int REAL_HITPOINTS_MAX = 80;
 const int REAL_STRENGTH = 81;
 const int REAL_DEXTERITY = 82;
 const int REAL_MANA_MAX = 83;
