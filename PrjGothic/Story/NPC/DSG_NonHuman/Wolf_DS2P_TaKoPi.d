@@ -6,17 +6,20 @@ instance Wolf_DS2P_TaKoPi(Mst_Default_Wolf)
 	name[0] = "Та-Ко-Пи";
 	guild = GIL_WOLF;	//TEST NEEDED - чтобы не нападал на гоблинов
 	aivar[AIV_MM_REAL_ID] = ID_WOLF;
+	aivar[AIV_StoryFlags] = AIV_StoryFlag_SwampGoblin;
 	B_SetAttitude(self,ATT_FRIENDLY);
 	B_SetVisuals_Wolf();
 	Npc_SetToFistMode(self);
 	CreateInvItems(self,ItFoMuttonRaw,1);
-	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX] / 2;	//волк ранен
+	//волк ранен
+	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX] / 2;
+	aivar[REAL_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] / 2;
 	daily_routine = Rtn_Start_2801;
 };
 
-const string WP_TaKoPi_Lost = "VILLAGE";	//UNFINISHED - где стоит потерянный Та-Ко-Пи
+const string WP_TaKoPi_Lost = "DP_FOREST_TAKOPILOST";	//UNFINISHED - где стоит потерянный Та-Ко-Пи
 const string WP_TaKoPi_Wait = "DP_WAIT_TAKOPI";	//UNFINISHED - где Та-Ко-Пи ждет ГГ
-const string WP_TaKoPi_Home = "";	//UNFINISHED - где Та-Ко-Пи живет у Ку-Ла
+const string WP_TaKoPi_Home = "DP_FOREST_GOBBOVIL_03_WOLF";	//UNFINISHED - где Та-Ко-Пи живет у Ку-Ла
 
 func void Rtn_Start_2801()
 {
@@ -33,7 +36,7 @@ func void Rtn_Wait_2801()
 	TA_SitOrk(8,0,22,0, WP_TaKoPi_Wait);
 	TA_SitOrk(22,0,8,0, WP_TaKoPi_Wait);
 };
-//вернули домой - UNFINISHED с Ку-Ла
+//вернули домой - UNFINISHED с Ку-Ла иногда уходит охотиться
 func void Rtn_Home_2801()
 {
 	TA(self, 8,22, ZS_MM_Rtn_Roam, WP_TaKoPi_Home);

@@ -1,5 +1,6 @@
 
 const string TOPIC_Teacher = "Обучение";
+const string TOPIC_Trader = "Торговля";
 
 const string TOPIC_TalentSmith = "Кузнечное дело";
 const string TOPIC_TalentRunes = "Руны";

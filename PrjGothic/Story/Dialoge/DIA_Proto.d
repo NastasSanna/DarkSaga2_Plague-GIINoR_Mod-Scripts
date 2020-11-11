@@ -76,7 +76,7 @@ func void DIA_Who_What_Info()
 {
 		AI_Output(other,self,"DIA_Who_What_15_00");	//
 	AI_Output(self,other,"DIA_Who_What_99_01");	//
-	B_ds_LogEntry(TOPIC_Topik,LOG_MISSION,LOG_Running,TOPIC_Topik_Entry);
+	B_DSG_Log_OpenClose(TOPIC_Topik,LOG_MISSION,LOG_Running,TOPIC_Topik_Entry);
 	B_LogNote(TOPIC_Topik,TOPIC_Topik_Note);
 };
 */
@@ -104,4 +104,20 @@ func void DIA_Who_Trade_Info()
 		AI_Output(other,self,"DIA_Who_Trade_15_00");	//
 	AI_Output(self,other,"DIA_Who_Trade_99_01");	//
 };
+*/
+
+/*
+func void DIA_Who_What_Menu() {
+	//Выбор варианта (несколько):
+	Info_ClearChoices(DIA_Who_What);
+	Info_AddChoice(DIA_Who_What, Dialog_Back, DIA_Who_What_Back);
+	if () {
+		Info_AddChoice(DIA_Who_What, "Option 3", DIA_Who_What_Option3);
+	};
+	Info_AddChoice(DIA_Who_What, "Option 2", DIA_Who_What_Option2);
+	Info_AddChoice(DIA_Who_What, "Option 1", DIA_Who_What_Option1);
+}
+func void DIA_Who_What_Back() {
+	Info_ClearChoices(DIA_Who_What);
+}
 */

@@ -5,7 +5,7 @@
 func void B_SetVisuals_Gobbo_Hunter()
 {
 	Mdl_SetVisual(self,"Gobbo.mds");
-	Mdl_SetVisualBody(self,"Gob_HunterBody",1,DEFAULT,"",DEFAULT,DEFAULT,-1);
+	Mdl_SetVisualBody(self,"Gob_HunterBody",4,DEFAULT,"",DEFAULT,DEFAULT,-1);
 };
 
 instance Gobbo_DS2P_KuLa(Mst_Default_Gobbo_Warrior)
@@ -20,6 +20,13 @@ instance Gobbo_DS2P_KuLa(Mst_Default_Gobbo_Warrior)
 };
 
 func void Rtn_Start_1905()
+{
+	TA_Min(self,8,0,21,0,ZS_MM_Rtn_Rest,"DP_FOREST_GOBBOVIL_03_TENT");
+	TA_Min(self,21,0,8,0,ZS_MM_Rtn_Sit,"DP_FOREST_GOBBOVIL_03_TENT");
+};
+
+// UNFINISHED - иногда уходит охотиться
+func void Rtn_Hunt_1905()
 {
 	TA_Min(self,8,0,21,0,ZS_MM_Rtn_Rest,"DP_FOREST_GOBBOVIL_03_TENT");
 	TA_Min(self,21,0,8,0,ZS_MM_Rtn_Sit,"DP_FOREST_GOBBOVIL_03_TENT");

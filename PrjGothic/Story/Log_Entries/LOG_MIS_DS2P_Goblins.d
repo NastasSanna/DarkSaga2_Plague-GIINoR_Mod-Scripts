@@ -164,8 +164,6 @@ const int XP_MIS_MissingFriend_Success = 1000;
 const int XP_MIS_MissingFriend_Healed = 100;//вылечили волка
 var int XP_MIS_MissingFriend_Healed_Once; //единоразово! нельзя бить и лечить бесконечно
 
-const string WP_MissingFriend_Wolf = ""; //UNFINISHED wp/fp для спауна волка
-
 var int TaKoPi_Follows;	//следует ли Та-Ко-Пи за игроком в данный момент
 
 
@@ -215,8 +213,7 @@ const string TOPIC_DS2P_QuirkyThief_NoGuard = "Охраны на мельнице больше нет. На
 const string TOPIC_DS2P_QuirkyThief_SuccessNoGuard = "Джа-Аф-Фар обрадовался новости. Оказывается, муку он ворует не для себя, а для всего племени. Некоторым людям бы у него поучиться...";
 
 
-var int MIS_DS2P_QuirkyThief_Sum;	//сколько Джа-Аф-Фар у нас украл
-var int MIS_DS2P_QuirkyThief_StealBack;	//ГГ украл свое золото назад
+var int MIS_DS2P_QuirkyThief_Round;	//Какой раз своровали друг у друга (чет. - ГГ, нечет. - Джа-Аф-фар)
 var int MIS_DS2P_QuirkyThief_FlourSteal_Stage;	//отвлекаем охранника
 	const int MIS_DS2P_QuirkyThief_FlourSteal_Pre	= 1;	//готовимся идти
 	const int MIS_DS2P_QuirkyThief_FlourSteal_GoTo	= 2;	//ведем Джа-Аф-Фара
@@ -375,3 +372,10 @@ const string TOPIC_GobboVillage_HelloChief = "Охранник Ях-Ях велел говорить с во
 const string TOPIC_GobboVillage_RaDaPoNeedsStings = "Шаману Ра-Да-По нужны жала кровавых мух, жвала полевых жуков и луговой горец.";
 const string TOPIC_GobboVillage_BecameGobbo = "Меня приняли в племя гоблинов.";
 const string TOPIC_GobboVillage_Exile = "Меня изгнали из деревни гоблинов. Теперь никто из гоблинов со мной не заговорит.";
+
+const string TOPIC_GobboVillage_Trade_KuLa = "Гоблин-охотник Ку-Ла продает различные трофеи.";
+const string TOPIC_GobboVillage_Teach_KuLa = "Гоблин Ку-Ла может научить меня добывать трофеи.";
+
+var int Gobbo_DS2P_KuLa_Trade;
+var int Gobbo_DS2P_KuLa_Teach;
+
