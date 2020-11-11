@@ -301,3 +301,166 @@ instance DRAGON_BLUE_EYE_RIGHT(C_PARTICLEFX)
 	visalphastart = 150;
 	useemittersfor = 0;
 };
+
+
+// ћагический свет в библиотеке
+
+instance MAGICLAMP_RED(C_PARTICLEFX)
+{
+	ppsvalue = 25;
+	ppsscalekeys_s = "1";
+	ppsislooping = 1;
+	ppsissmooth = 1;
+	ppsfps = 1;
+	shptype_s = "SPHERE";
+	shpfor_s = "object";
+	shpoffsetvec_s = "0 -0.0002 0";
+	shpdistribtype_s = "RAND";
+	shpisvolume = 1;
+	shpdim_s = "22";
+	shpscalekeys_s = "1";
+	shpscaleislooping = 1;
+	shpscaleissmooth = 1;
+	shpscalefps = 1;
+	dirmode_s = "TARGET";
+	dirfor_s = "object";
+	dirmodetargetfor_s = "OBJECT";
+	dirmodetargetpos_s = "0 0 0";
+	dirangleheadvar = 180;
+	dirangleelevvar = 180;
+	velavg = 0.001;
+	velvar = 0.01;
+	lsppartavg = 500;
+	lsppartvar = 100;
+	flygravity_s = "0 0 0";
+	flycolldet_b = 0;
+	visname_s = "FIREFLARE.TGA";
+	visorientation_s = "NONE";
+	vistexanifps = 12;
+	vistexaniislooping = 1;
+	vistexcolorstart_s = "255 60 60";
+	vistexcolorend_s = "220 0 0";
+	vissizestart_s = "25 25";
+	vissizeendscale = 2;
+	visalphafunc_s = "ADD";
+	visalphastart = 200;
+};
+
+// ядовитый туман
+
+instance POISONFOG_SOURCE(C_PARTICLEFX)
+{
+	ppsvalue = 10;
+	ppsscalekeys_s = "1.0";
+	ppsislooping = 1;
+	ppsissmooth = 1;
+	shptype_s = "BOX";
+	shpfor_s = "WORLD";
+	shpoffsetvec_s = "0 50 0";
+	shpdistribtype_s = "WALK";
+	shpdistribwalkspeed = 0.1;
+	shpisvolume = 1;
+	shpdim_s = "50 50 50";
+	shpscalekeys_s = "1";
+	shpscaleislooping = 1;
+	shpscaleissmooth = 1;
+	shpscalefps = 2;
+	dirmode_s = "DIR";
+	dirangleheadvar = 50;
+	dirangleelev = 0;
+	dirangleelevvar = 20;
+	velavg = 0;
+	lsppartavg = 5500;
+	lsppartvar = 800;
+	flygravity_s = "0 -0.00003 0";
+	visname_s = "GREENSMOKE.TGA";
+	visorientation_s = "NONE";
+	vistexisquadpoly = 1;
+	vistexanifps = 5;
+	vistexaniislooping = 2;
+	vistexcolorstart_s = "140 150 145";
+	vistexcolorend_s = "255 255 255";
+	vissizestart_s = "50 50";
+	vissizeendscale = 3;
+	visalphafunc_s = "BLEND";
+	visalphastart = 150;
+	visalphaend = 100;
+};
+
+instance POISONFOG_LIGHT(C_PARTICLEFX)
+{
+	ppsvalue = 20;
+	ppsscalekeys_s = "1.0 1.1 1.1 1.0 0.9 1.0 0.9";
+	ppsislooping = 1;
+	ppsissmooth = 1;
+	shptype_s = "BOX";
+	shpfor_s = "WORLD";
+	shpoffsetvec_s = "0 0 0";
+	shpdistribtype_s = "WALK";
+	shpdistribwalkspeed = 0.1;
+	shpisvolume = 1;
+	shpdim_s = "1000 30 1000";
+	shpscalekeys_s = "1";
+	shpscaleislooping = 1;
+	shpscaleissmooth = 1;
+	shpscalefps = 2;
+	dirmode_s = "DIR";
+	dirangleheadvar = 50;
+	dirangleelev = 0;
+	dirangleelevvar = 20;
+	velavg = 0;
+	lsppartavg = 5500;
+	lsppartvar = 800;
+	flygravity_s = "0 -0.000001 0";
+	visname_s = "GREENSMOKE.TGA";
+	visorientation_s = "NONE";
+	vistexisquadpoly = 1;
+	vistexanifps = 5;
+	vistexaniislooping = 2;
+	vistexcolorstart_s = "140 150 145";
+	vistexcolorend_s = "255 255 255";
+	vissizestart_s = "50 50";
+	vissizeendscale = 3;
+	visalphafunc_s = "BLEND";
+	visalphastart = 150;
+	visalphaend = 100;
+};
+
+instance POISONFOG_HEAVY(C_PARTICLEFX)
+{
+	ppsvalue = 50;
+	ppsscalekeys_s = "1.0 1.2 1.1 1.0 0.9 0.9 1.0 0.9";
+	ppsislooping = 1;
+	ppsissmooth = 1;
+	shptype_s = "BOX";
+	shpfor_s = "WORLD";
+	shpoffsetvec_s = "0 50 0";
+	shpdistribtype_s = "WALK";
+	shpdistribwalkspeed = 0.1;
+	shpisvolume = 1;
+	shpdim_s = "200 40 200";
+	shpscalekeys_s = "1";
+	shpscaleislooping = 1;
+	shpscaleissmooth = 1;
+	shpscalefps = 2;
+	dirmode_s = "DIR";
+	dirangleheadvar = 50;
+	dirangleelev = 0;
+	dirangleelevvar = 20;
+	velavg = 0;
+	lsppartavg = 5500;
+	lsppartvar = 800;
+	flygravity_s = "0 -0.000001 0";
+	visname_s = "GREENSMOKE.TGA";
+	visorientation_s = "NONE";
+	vistexisquadpoly = 1;
+	vistexanifps = 5;
+	vistexaniislooping = 2;
+	vistexcolorstart_s = "140 150 145";
+	vistexcolorend_s = "255 255 255";
+	vissizestart_s = "50 50";
+	vissizeendscale = 3;
+	visalphafunc_s = "BLEND";
+	visalphastart = 150;
+	visalphaend = 100;
+};
