@@ -322,7 +322,7 @@ instance MAGICLAMP_RED(C_PARTICLEFX)
 	shpscaleislooping = 1;
 	shpscaleissmooth = 1;
 	shpscalefps = 1;
-	dirmode_s = "TARGET";
+	dirmode_s = "OBJECT";
 	dirfor_s = "object";
 	dirmodetargetfor_s = "OBJECT";
 	dirmodetargetpos_s = "0 0 0";
@@ -348,48 +348,9 @@ instance MAGICLAMP_RED(C_PARTICLEFX)
 
 // ядовитый туман
 
-instance POISONFOG_SOURCE(C_PARTICLEFX)
+PROTOTYPE POISONFOG(C_PARTICLEFX)
 {
 	ppsvalue = 10;
-	ppsscalekeys_s = "1.0";
-	ppsislooping = 1;
-	ppsissmooth = 1;
-	shptype_s = "BOX";
-	shpfor_s = "WORLD";
-	shpoffsetvec_s = "0 50 0";
-	shpdistribtype_s = "WALK";
-	shpdistribwalkspeed = 0.1;
-	shpisvolume = 1;
-	shpdim_s = "50 50 50";
-	shpscalekeys_s = "1";
-	shpscaleislooping = 1;
-	shpscaleissmooth = 1;
-	shpscalefps = 2;
-	dirmode_s = "DIR";
-	dirangleheadvar = 50;
-	dirangleelev = 0;
-	dirangleelevvar = 20;
-	velavg = 0;
-	lsppartavg = 5500;
-	lsppartvar = 800;
-	flygravity_s = "0 -0.00003 0";
-	visname_s = "GREENSMOKE.TGA";
-	visorientation_s = "NONE";
-	vistexisquadpoly = 1;
-	vistexanifps = 5;
-	vistexaniislooping = 2;
-	vistexcolorstart_s = "140 150 145";
-	vistexcolorend_s = "255 255 255";
-	vissizestart_s = "50 50";
-	vissizeendscale = 3;
-	visalphafunc_s = "BLEND";
-	visalphastart = 150;
-	visalphaend = 100;
-};
-
-instance POISONFOG_LIGHT(C_PARTICLEFX)
-{
-	ppsvalue = 20;
 	ppsscalekeys_s = "1.0 1.1 1.1 1.0 0.9 1.0 0.9";
 	ppsislooping = 1;
 	ppsissmooth = 1;
@@ -426,41 +387,81 @@ instance POISONFOG_LIGHT(C_PARTICLEFX)
 	visalphaend = 100;
 };
 
-instance POISONFOG_HEAVY(C_PARTICLEFX)
+instance POISONFOG_SOURCE(POISONFOG)
 {
-	ppsvalue = 50;
-	ppsscalekeys_s = "1.0 1.2 1.1 1.0 0.9 0.9 1.0 0.9";
-	ppsislooping = 1;
-	ppsissmooth = 1;
-	shptype_s = "BOX";
-	shpfor_s = "WORLD";
-	shpoffsetvec_s = "0 50 0";
-	shpdistribtype_s = "WALK";
-	shpdistribwalkspeed = 0.1;
-	shpisvolume = 1;
+	ppsvalue = 10;
+	ppsscalekeys_s = "1.0";
+	shpdim_s = "50 50 50";
+	flygravity_s = "0 -0.000003 0";
+};
+
+instance POISONFOG_LIGHT(POISONFOG)
+{
+	ppsvalue = 90;
+	shpdim_s = "1000 30 1000";
+};
+
+instance POISONFOG_HEAVY(POISONFOG)
+{
+	ppsvalue = 30;
 	shpdim_s = "200 40 200";
-	shpscalekeys_s = "1";
-	shpscaleislooping = 1;
-	shpscaleissmooth = 1;
-	shpscalefps = 2;
-	dirmode_s = "DIR";
-	dirangleheadvar = 50;
-	dirangleelev = 0;
-	dirangleelevvar = 20;
-	velavg = 0;
-	lsppartavg = 5500;
-	lsppartvar = 800;
-	flygravity_s = "0 -0.000001 0";
-	visname_s = "GREENSMOKE.TGA";
+};
+
+// √оловоломка с 4 цветами - огоньки
+
+
+prototype PUZZLE_COLORS(C_PARTICLEFX)
+{
+	ppsvalue = 5;
+	ppsscalekeys_s = "1.0";
+	ppsissmooth = 1;
+	ppsislooping = 1;
+	ppsfps = 1;
+	shptype_s = "SPHERE";
+	shpfor_s = "OBJECT";
+	shpoffsetvec_s = "0 0 0";
+	shpisvolume = 1;
+	shpdim_s = "20";
+	// ƒвижение частиц ----------------------------------------------
+	// направление полета частицы
+	dirMode_s = "TARGET";			// ="NONE,RAND,DIR,TARGET,MESH"
+	// к чему относитс€ угол полета
+	dirModeTargetFor_s = "WORLD";	// ="world,object"
+	// ÷ентр колеса. „етко прив€заны к месту!
+	dirModeTargetPos_s = "8000 -270 34000";	// ="x y z"
+	// средн€€ скорость и дисперси€ скорости
+	velAvg = 0.015;
+	velVar = 0.001;
+	lsppartavg = 9500;
+	lsppartvar = 500;
+	flygravity_s = "0 0 0";
+	visname_s = "FlareStar.tga";
 	visorientation_s = "NONE";
 	vistexisquadpoly = 1;
-	vistexanifps = 5;
-	vistexaniislooping = 2;
-	vistexcolorstart_s = "140 150 145";
-	vistexcolorend_s = "255 255 255";
-	vissizestart_s = "50 50";
-	vissizeendscale = 3;
-	visalphafunc_s = "BLEND";
-	visalphastart = 150;
-	visalphaend = 100;
+	vistexanifps = 10;
+	vistexaniislooping = 1;
+	vissizestart_s = "60 60";
+	vissizeendscale = 0.1;
+	visalphafunc_s = "ADD";
+	visalphastart = 255;
+};
+instance PUZZLE_COLORS_RED(PUZZLE_COLORS)
+{
+	vistexcolorstart_s = "200 0 0";
+	vistexcolorend_s = "100 0 0";
+};
+instance PUZZLE_COLORS_YELLOW(PUZZLE_COLORS)
+{
+	vistexcolorstart_s = "200 200 0";
+	vistexcolorend_s = "100 100 0";
+};
+instance PUZZLE_COLORS_AZURE(PUZZLE_COLORS)
+{
+	vistexcolorstart_s = "0 200 200";
+	vistexcolorend_s = "0 100 100";
+};
+instance PUZZLE_COLORS_VIOLET(PUZZLE_COLORS)
+{
+	vistexcolorstart_s = "100 0 200";
+	vistexcolorend_s = "50 0 100";
 };
