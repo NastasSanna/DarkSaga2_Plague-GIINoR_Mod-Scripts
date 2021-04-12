@@ -330,14 +330,10 @@ const string NAME_SPL_PalMediumHeal = "Среднее исцеление";
 const string NAME_SPL_PalRepelEvil = "Изгнание зла";
 const string NAME_SPL_PalFullHeal = "Большое исцеление";
 const string NAME_SPL_PalDestroyEvil = "Уничтожение зла";
-const string NAME_SPL_PalTeleportSecret = "В царство смерти";
-const string NAME_SPL_TeleportSeaport = "Телепорт из царства смерти";
-const string NAME_SPL_TeleportMonastery = "Странное заклинание";
+const string NAME_SPL_DSP_TeleportForestTower = "Телепорт к башне в лесу";
+const string NAME_SPL_DSP_TeleportFortTower= "Телепорт к башне возле города";
+const string NAME_SPL_DSP_TeleportCampTower = "Телепорт к башне у реки";
 
-const string NAME_SPL_TeleportFarm = "Телепорт к лендлорду";
-const string NAME_SPL_TeleportOC = "Телепорт в замок";
-const string NAME_SPL_TeleportOWDemonTower = "Телепорт в древнюю демоническую башню";
-const string NAME_SPL_TeleportTaverne = "Телепорт к таверне";
 const string NAME_Rune_DS_Bad = "Испорченная руна перемещения";
 
 const string NAME_SPL_TeleportXardas = "Телепорт к Ксардасу";

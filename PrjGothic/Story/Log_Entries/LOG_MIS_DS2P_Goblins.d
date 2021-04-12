@@ -214,16 +214,8 @@ const string TOPIC_DS2P_QuirkyThief_SuccessNoGuard = "Джа-Аф-Фар обрадовался нов
 
 
 var int MIS_DS2P_QuirkyThief_Round;	//Какой раз своровали друг у друга (чет. - ГГ, нечет. - Джа-Аф-фар)
-var int MIS_DS2P_QuirkyThief_FlourSteal_Stage;	//отвлекаем охранника
-	const int MIS_DS2P_QuirkyThief_FlourSteal_Pre	= 1;	//готовимся идти
-	const int MIS_DS2P_QuirkyThief_FlourSteal_GoTo	= 2;	//ведем Джа-Аф-Фара
-	const int MIS_DS2P_QuirkyThief_FlourSteal_CameTo	= 3;	//пришли в деревню, надо отвлекать охранника
-	const int MIS_DS2P_QuirkyThief_FlourSteal_GuardDown	= 4;	//охранник в отключке
-	const int MIS_DS2P_QuirkyThief_FlourSteal_GotIt	= 5;	//Джа-Аф-Фар забрал мешок
-	const int MIS_DS2P_QuirkyThief_FlourSteal_GoBack	= 6;	//ведем его обратно
-	const int MIS_DS2P_QuirkyThief_FlourSteal_Finished	= 7;	//все готово!
-	const int MIS_DS2P_QuirkyThief_FlourSteal_Late	= 8;	//не успели дойти до утра
 var int MIS_DS2P_QuirkyThief_GuardMill;	//отвлекаем охранника
+var int MIS_DS2P_QuirkyThief_GuardMill_Down;	//успешно отвлекли охранника
 
 const int XP_MIS_QuirkyThief_Revenge1 = 100;
 const int XP_MIS_QuirkyThief_Round2 = 200;
@@ -322,7 +314,11 @@ const int XP_MIS_OrcInTrouble_BoozeGot = 200;
 const int XP_MIS_OrcInTrouble_Success = 1500;
 
 
+var int ArTush_AgreedToHelp;	//Ар-Туш исцелен
 var int ArTush_Healed;	//Ар-Туш исцелен
+var int ArTush_Die_Day;	//когда Ар-Туш умрет без лекарства
+const int ArTush_Die_DaysLeft = 2;	//через 2 дня после разговора
+const int ArTush_Die_DaysBonus = 1;	//1 доп. день если дать лечебное зелье
 
 
 //===================================== ЗАЩИТА ДЛЯ МАЛЕНЬКИХ ===============================================//
@@ -356,6 +352,7 @@ const int XP_MIS_Protection4LittleOnes_Arrived = 1000;
 const int XP_MIS_Protection4LittleOnes_ArrivedOne = 500;
 const int XP_MIS_Protection4LittleOnes_Success = 1000;
 
+var int Orcs_Agreed;	//ведем орков в деревню
 var int Orcs_Follow;	//ведем орков в деревню
 var int Orcs_Wait;	//орки нас ждут
 var int Orcs_CameToGobbos;	//орки пришли в деревню гоблинов
@@ -375,7 +372,9 @@ const string TOPIC_GobboVillage_Exile = "Меня изгнали из деревни гоблинов. Тепер
 
 const string TOPIC_GobboVillage_Trade_KuLa = "Гоблин-охотник Ку-Ла продает различные трофеи.";
 const string TOPIC_GobboVillage_Teach_KuLa = "Гоблин Ку-Ла может научить меня добывать трофеи.";
+const string TOPIC_GobboVillage_Teach_JaAfFar = "Гоблин-воришка Джа-Аф-Фар может научить меня навыкам вора и повысить ловкость.";
 
 var int Gobbo_DS2P_KuLa_Trade;
 var int Gobbo_DS2P_KuLa_Teach;
+var int Gobbo_DS2P_JaAfFar_Teach;
 

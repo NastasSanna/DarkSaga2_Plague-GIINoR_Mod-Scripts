@@ -230,6 +230,7 @@ Items\Rune_Scrolls\IT_Runen.d
 Items\Rune_Scrolls\IT_Scrolls.d
 Items\Rune_Scrolls\IT_Addon_Runes.d
 Items\Rune_Scrolls\IT_Addon_Scrolls.d
+Items\Rune_Scrolls\IT_DSP_Runen.d
 Items\Food_Potion\IT_DS2P_Food.d
 Items\Food_Potion\IT_Food.d
 Items\Food_Potion\IT_Plants.d
@@ -778,6 +779,8 @@ Story\B_Story\B_InitGuildAttitudes.d
 Story\B_Story\B_Kapitelwechsel.d
 Story\B_Story\C_DSG_Cave4MillIsClear.d
 Story\B_Story\C_TryStealWealth_FromHero.d
+Story\B_Story\C_NpcHasAlcohol.d
+Story\Events\EVT_DS2P_OrcInTrouble.d
 Story\Dialog_Mobsis\BookstandKloster.d
 Story\Dialog_Mobsis\BookstandKDW_Addon.d
 Story\Dialoge\DIA_Bauers\DIA_BAU_100_DSG_KADAR.d
@@ -883,6 +886,7 @@ Story\Events\EVT_DS2P_StatuesTrap.d
 Story\B_Story\B_DS2P_InitLanSkeleton.d
 Story\Events\B_DSG_TimePotions_Effect.d
 Story\Events\B_DS2P_CheckHeroHasItems.d
+Story\Events\EVT_DS2P_ColorPuzzle.d
 Story\Events\ds_time.d
 Story\Events\Parse_It.d
 AI\Test_Scripts\CharacterHelper.d

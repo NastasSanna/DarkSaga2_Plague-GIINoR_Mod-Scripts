@@ -21,7 +21,7 @@ instance Orc_DS2P_RakTarak(Npc_Default)
 	daily_routine = Rtn_Guarding_1601;
 	Mdl_SetVisual(self,"Orc.mds");
 	Mdl_SetVisualBody(self,"Orc_BodyWarrior",DEFAULT,DEFAULT,"DS_OrcHead5",DEFAULT,DEFAULT,-1);
-	EquipItem(self,ItMw_2H_OrcAxe_03);
+	EquipItem(self,ItMw_DSP_RakTarakAxe);
 };
 const string WP_RakTarak_Wait = "DP_WAIT_ORCS";	//UNFINISHED - где орки ждут ГГ
 

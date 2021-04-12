@@ -6,7 +6,7 @@ instance PIR_223_DS2P_GuardMill(Npc_Default)
 	guild = GIL_PIR;
 	id = 223;
 	voice = 13;
-	npcType = NPCTYPE_PIR_MAIN;
+	npcType = NPCTYPE_PIR_AMBIENT;
 	B_SetAttributesToChapter(self,3);
 	fight_tactic = FAI_HUMAN_STRONG;
 	EquipItem(self,ItMw_Addon_PIR1hSword);
@@ -18,7 +18,7 @@ instance PIR_223_DS2P_GuardMill(Npc_Default)
 func void Rtn_Start_223()
 {
 	//днем спит
-	TA_Sleep(7,30,20,0,"");
+	TA_Sleep(8,30,19,0,"DP_FORT_TOWN_HOUSE03_IN_BED01");
 	//ночью сторожит мельницу
-	TA_Stand_Guarding(20,0,7,30,"");
+	TA_Stand_Guarding(19,0,8,30,"DP_FORT_TOWN_MILL_ENTRANCE");
 };

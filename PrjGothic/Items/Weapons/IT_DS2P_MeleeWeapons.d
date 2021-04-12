@@ -133,5 +133,48 @@ func void UnEquip_ItMw_DSP_WeaverSword()
 	GiveBonus_WeaverComplect();
 };
 
-
-
+//=========================
+//"Топор Рак-Тарака"
+//=========================
+const int Bonus_RakTarakAxe = 5;
+instance ItMw_DSP_RakTarakAxe(C_Item)
+{
+	name = "Топор Рак-Тарака";
+	mainflag = ITEM_KAT_NF;
+	flags = ITEM_2HD_AXE;
+	material = MAT_METAL;
+	value = 400;
+	damageTotal = 155;
+	damagetype = DAM_EDGE;
+	range = 100;
+	cond_atr[2] = ATR_STRENGTH;
+	cond_value[2] = 150;
+	cond_value[2] = Condition_ds_AngerOrk;
+	visual = "ItMw_DS_OrcAxe_02.3DS";
+	description = name;
+	text[1] = NAME_Damage;
+	count[1] = damageTotal;
+	text[2] = NAME_Str_needed;
+	count[2] = cond_value[2];
+	text[3] = NAME_ADDON_BONUS_2H;
+	count[3] = Bonus_RakTarakAxe;
+	text[4] = NAME_TalentOrcWeapon_needed;
+	text[5] = NAME_Value;
+	count[5] = value;
+};
+func void Equip_ItMw_DSP_RakTarakAxe()
+{
+	if(Npc_IsPlayer(self))
+	{
+		B_AddFightSkill(self,NPC_TALENT_2H,Bonus_RakTarakAxe);
+	};
+	S_Topor_ds_Orks_01();
+};
+func void UnEquip_ItMw_DSP_RakTarakAxe()
+{
+	if(Npc_IsPlayer(self))
+	{
+		B_AddFightSkill(self,NPC_TALENT_2H,-Bonus_RakTarakAxe);
+	};
+	S_Topor_ds_Orks_02();
+};
