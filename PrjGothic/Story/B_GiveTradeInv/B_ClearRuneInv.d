@@ -11,7 +11,6 @@ func void B_ClearRuneInv(var C_Npc slf)
 		Npc_RemoveInvItems(slf,ItRu_PalHolyBolt,Npc_HasItems(slf,ItRu_PalHolyBolt));
 		Npc_RemoveInvItems(slf,ItRu_PalRepelEvil,Npc_HasItems(slf,ItRu_PalRepelEvil));
 		Npc_RemoveInvItems(slf,ItRu_PalDestroyEvil,Npc_HasItems(slf,ItRu_PalDestroyEvil));
-		Npc_RemoveInvItems(slf,ItRu_PalTeleportSecret,Npc_HasItems(slf,ItRu_PalTeleportSecret));
 		Npc_RemoveInvItems(slf,ItRu_Light,Npc_HasItems(slf,ItRu_PalLight));
 		Npc_RemoveInvItems(slf,ItRu_PalLight,Npc_HasItems(slf,ItRu_Light));
 		Npc_RemoveInvItems(slf,ItRu_FireBolt,Npc_HasItems(slf,ItRu_FireBolt));

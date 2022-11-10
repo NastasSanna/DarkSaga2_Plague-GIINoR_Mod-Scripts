@@ -364,49 +364,6 @@ func void PC_SPL_MasterOfDisaster_Create()
 	b_endproductiondialog();
 };
 
-instance PC_SPL_PalTeleportSecret(C_Info)
-{
-	npc = PC_Hero;
-	condition = PC_SPL_PalTeleportSecret_Condition;
-	information = PC_SPL_PalTeleportSecret_Info;
-	permanent = TRUE;
-	description = "Создать руну телепорта";
-};
-func int PC_SPL_PalTeleportSecret_Condition()
-{
-	if((PLAYER_MOBSI_PRODUCTION == MOBSI_MakeRune) && (PLAYER_TALENT_RUNES[SPL_PalTeleportSecret] == TRUE))
-	{
-		return TRUE;
-	};
-};
-func void PC_SPL_PalTeleportSecret_Info()
-{
-	Info_ClearChoices(PC_SPL_PalTeleportSecret);
-	Info_AddChoice(PC_SPL_PalTeleportSecret,Dialog_Back,PC_SPL_PalTeleportSecret_BACK);
-	if(PLAYER_TALENT_RUNES[SPL_PalTeleportSecret] == TRUE)
-	{
-		Info_AddChoice(PC_SPL_PalTeleportSecret,"Секрет библиотеки!",PC_SPL_PalTeleportSecret_Create);
-	};
-};
-func void PC_SPL_PalTeleportSecret_BACK()
-{
-	Info_ClearChoices(PC_SPL_PalTeleportSecret);
-};
-func void PC_SPL_PalTeleportSecret_Create()
-{
-	if(Npc_HasItems(hero,ItMi_HolyWater) >= 1)
-	{
-		Npc_RemoveInvItems(hero,ItMi_HolyWater,1);
-		CreateInvItems(hero,ItRu_PalTeleportSecret,1);
-		Print(PRINT_RuneSuccess);
-	}
-	else
-	{
-		Print(PRINT_ProdItemsMissing);
-		CreateInvItems(hero,ItMi_RuneBlank,1);
-	};
-	b_endproductiondialog();
-};
 func void PC_ItRu_Light_Info()
 {
 	if((Npc_HasItems(hero,ItSc_Light) >= 1) && (Npc_HasItems(hero,ItMi_Gold) >= 1))

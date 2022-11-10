@@ -38,17 +38,6 @@ const int Value_Ru_MassDeath = 3000;
 const int Value_Ru_MasterOfDisaster = 3000;
 const int Value_Ru_ArmyOfDarkness = 3000;
 const int Value_Ru_Shrink = 3000;
-const int Value_Ru_PalTeleportSecret = 500;
-const int Value_Ru_TeleportSeaport = 500;
-const int Value_Ru_TeleportMonastery = 500;
-const int Value_Ru_TeleportFarm = 500;
-const int Value_Ru_TeleportXardas = 500;
-const int Value_Ru_TeleportPassNW = 500;
-const int Value_Ru_TeleportPassOW = 500;
-const int Value_Ru_TeleportOC = 500;
-const int Value_Ru_TeleportOWDemonTower = 500;
-const int Value_Ru_TeleportTaverne = 500;
-const int Value_Ru_Teleport_3 = 500;
 
 instance ItRu_PalLight(C_Item)
 {
@@ -197,161 +186,6 @@ instance ItRu_PalDestroyEvil(C_Item)
 	count[5] = value;
 };
 
-instance ItRu_PalTeleportSecret(C_Item)
-{
-	name = NAME_Rune;
-	mainflag = ITEM_KAT_RUNE;
-	flags = 0;
-	value = Value_Ru_PalTeleportSecret;
-	visual = "ItRu_PalTeleportSecret.3DS";
-	material = MAT_STONE;
-	spell = SPL_PalTeleportSecret;
-	wear = WEAR_EFFECT;
-	effect = "SPELLFX_WEAKGLIMMER";
-	description = NAME_SPL_PalTeleportSecret;
-//	text[0] = Name_PaladinSpell;
-	text[1] = NAME_Manakosten;
-	count[1] = SPL_Cost_Teleport;
-	text[5] = NAME_Value;
-	count[5] = value;
-};
-
-instance ItRu_TeleportSeaport(C_Item)
-{
-	name = NAME_Rune;
-	mainflag = ITEM_KAT_RUNE;
-	flags = 0;
-	value = Value_Ru_TeleportSeaport;
-	visual = "ItRu_TeleportSeaport.3ds";
-	material = MAT_STONE;
-	spell = SPL_TeleportSeaport;
-	wear = WEAR_EFFECT;
-	effect = "SPELLFX_WEAKGLIMMER";
-	description = NAME_SPL_TeleportSeaport;
-	text[1] = NAME_Manakosten;
-	count[1] = SPL_Cost_Teleport;
-	text[5] = NAME_Value;
-	count[5] = value;
-};
-
-instance ItRu_TeleportMonastery(C_Item)
-{
-	name = NAME_Rune;
-	mainflag = ITEM_KAT_RUNE;
-	flags = 0;
-	value = Value_Ru_TeleportMonastery;
-	visual = "ItRu_TeleportMonastery.3ds";
-	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
-	wear = WEAR_EFFECT;
-	effect = "SPELLFX_WEAKGLIMMER";
-	description = NAME_SPL_TeleportMonastery;
-	text[1] = NAME_Manakosten;
-	count[1] = SPL_Cost_Teleport;
-	text[5] = NAME_Value;
-	count[5] = value;
-};
-
-instance ItRu_TeleportXardas(C_Item)
-{
-	name = NAME_Rune;
-	mainflag = ITEM_KAT_RUNE;
-	flags = 0;
-	value = Value_Ru_TeleportXardas;
-	visual = "ItRu_TeleportXardas.3ds";
-	material = MAT_STONE;
-	spell = SPL_TeleportXardas;
-	wear = WEAR_EFFECT;
-	effect = "SPELLFX_WEAKGLIMMER";
-	description = NAME_SPL_TeleportXardas;
-	text[1] = NAME_Manakosten;
-	count[1] = SPL_Cost_Teleport;
-	text[5] = NAME_Value;
-	count[5] = value;
-};
-
-instance ItRu_TeleportPassNW(C_Item)
-{
-	name = NAME_Rune;
-	mainflag = ITEM_KAT_RUNE;
-	flags = 0;
-	value = Value_Ru_TeleportPassNW;
-	visual = "ItRu_TeleportPassNW.3ds";
-	material = MAT_STONE;
-	spell = SPL_TeleportPassNW;
-	wear = WEAR_EFFECT;
-	effect = "SPELLFX_WEAKGLIMMER";
-	description = NAME_SPL_TeleportPassNW;
-	text[1] = NAME_Manakosten;
-	count[1] = SPL_Cost_Teleport;
-	text[5] = NAME_Value;
-	count[5] = value;
-};
-
-instance ItRu_TeleportPassOW(C_Item)
-{
-	name = NAME_Rune;
-	mainflag = ITEM_KAT_RUNE;
-	flags = 0;
-	value = Value_Ru_TeleportPassOW;
-	visual = "ItRu_TeleportPassOW.3ds";
-	material = MAT_STONE;
-	spell = SPL_TeleportPassOW;
-	wear = WEAR_EFFECT;
-	effect = "SPELLFX_WEAKGLIMMER";
-	description = NAME_SPL_TeleportPassOW;
-	text[1] = NAME_Manakosten;
-	count[1] = SPL_Cost_Teleport;
-	text[5] = NAME_Value;
-	count[5] = value;
-};
-
-instance ItRu_TeleportFarm(C_Item)
-{
-	name = NAME_Rune;mainflag = ITEM_KAT_RUNE;flags = 0;value = Value_Ru_TeleportFarm;
-	visual = "ItRu_TeleportFarm.3ds";material = MAT_STONE;spell = SPL_TeleportFarm;
-	wear = WEAR_EFFECT;effect = "SPELLFX_WEAKGLIMMER";description = NAME_SPL_TeleportFarm;
-	text[1] = NAME_Manakosten;count[1] = SPL_Cost_Teleport;text[5] = NAME_Value;count[5] = value;
-};
-instance ItRu_TeleportOC(C_Item)
-{
-	name = NAME_Rune;mainflag = ITEM_KAT_RUNE;flags = 0;value = Value_Ru_TeleportOC;
-	visual = "ItRu_TeleportOC.3ds";	material = MAT_STONE;spell = SPL_TeleportOC;
-	wear = WEAR_EFFECT;effect = "SPELLFX_WEAKGLIMMER";description = NAME_SPL_TeleportOC;
-	text[1] = NAME_Manakosten;count[1] = SPL_Cost_Teleport;text[5] = NAME_Value;count[5] = value;
-};
-instance ItRu_TeleportOWDemonTower(C_Item)
-{
-	name = NAME_Rune;mainflag = ITEM_KAT_RUNE;flags = 0;value = Value_Ru_TeleportOWDemonTower;
-	visual = "ItRu_Teleport_2.3ds";material = MAT_STONE;spell = SPL_TeleportOWDemonTower;
-	wear = WEAR_EFFECT;effect = "SPELLFX_WEAKGLIMMER";description = NAME_SPL_TeleportOWDemonTower;
-	text[1] = NAME_Manakosten;count[1] = SPL_Cost_Teleport;text[5] = NAME_Value;count[5] = value;
-};
-instance ItRu_TeleportTaverne(C_Item)
-{
-	name = NAME_Rune;mainflag = ITEM_KAT_RUNE;flags = 0;value = Value_Ru_TeleportTaverne;
-	visual = "ItRu_Teleport_2.3ds";material = MAT_STONE;spell = SPL_TeleportTaverne;
-	wear = WEAR_EFFECT;effect = "SPELLFX_WEAKGLIMMER";description = NAME_SPL_TeleportTaverne;
-	text[1] = NAME_Manakosten;count[1] = SPL_Cost_Teleport;text[5] = NAME_Value;count[5] = value;
-};
-
-instance ItRu_Teleport_3(C_Item)
-{
-	name = NAME_Rune;
-	mainflag = ITEM_KAT_RUNE;
-	flags = 0;
-	value = Value_Ru_Teleport_3;
-	visual = "ItRu_Teleport_3.3ds";
-	material = MAT_STONE;
-	spell = SPL_Teleport_3;
-	wear = WEAR_EFFECT;
-	effect = "SPELLFX_WEAKGLIMMER";
-	description = NAME_SPL_Teleport_3;
-	text[1] = NAME_Manakosten;
-	count[1] = SPL_Cost_Teleport;
-	text[5] = NAME_Value;
-	count[5] = value;
-};
 
 instance ItRu_Light(C_Item)
 {
@@ -1291,7 +1125,7 @@ instance ItRu_fLight(C_Item)
 	value = Value_Ru_Light;
 	visual = "ItRu_Light.3ds";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 1;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -1315,7 +1149,7 @@ instance ItRu_fFireBolt(C_Item)
 	value = Value_Ru_Firebolt;
 	visual = "ItRu_FireBolt.3DS";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 1;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER_YELLOW";
@@ -1340,7 +1174,7 @@ instance ItRu_fZap(C_Item)
 	visual = "ItRu_Zap.3DS";
 	material = MAT_STONE;
 	mag_circle = 1;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
 	description = NAME_SPL_Zap;
@@ -1363,7 +1197,7 @@ instance ItRu_fLightHeal(C_Item)
 	value = Value_Ru_LightHeal;
 	visual = "ItRu_LightHeal.3ds";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 1;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -1387,7 +1221,7 @@ instance ItRu_fSumGobSkel(C_Item)
 	value = Value_Ru_SumGobSkel;
 	visual = "ItRu_SumGobSkel.3DS";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 1;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -1412,7 +1246,7 @@ instance ItRu_fInstantFireball(C_Item)
 	visual = "ItRu_InstantFireball.3DS";
 	material = MAT_STONE;
 	mag_circle = 2;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER_YELLOW";
 	description = NAME_SPL_InstantFireball;
@@ -1435,7 +1269,7 @@ instance ItRu_fIcebolt(C_Item)
 	value = Value_Ru_Icebolt;
 	visual = "ItRu_Icebolt.3ds";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 2;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER_BLUE";
@@ -1459,7 +1293,7 @@ instance ItRu_fSumWolf(C_Item)
 	value = Value_Ru_SumWolf;
 	visual = "ItRu_SumWolf.3DS";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 2;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -1481,7 +1315,7 @@ instance ItRu_fWindfist(C_Item)
 	value = Value_Ru_Windfist;
 	visual = "ItRu_Windfist.3ds";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 2;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -1509,7 +1343,7 @@ instance ItRu_fSleep(C_Item)
 	value = Value_Ru_Sleep;
 	visual = "ItRu_Sleep.3ds";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 2;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -1533,7 +1367,7 @@ instance ItRu_fMediumHeal(C_Item)
 	value = Value_Ru_MediumHeal;
 	visual = "ItRu_MediumHeal.3ds";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 3;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -1558,7 +1392,7 @@ instance ItRu_fLightningFlash(C_Item)
 	visual = "ItRu_LightningFlash.3DS";
 	material = MAT_STONE;
 	mag_circle = 4;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
 	description = NAME_SPL_LightningFlash;
@@ -1582,7 +1416,7 @@ instance ItRu_fChargeFireball(C_Item)
 	visual = "ItRu_ChargeFireball.3DS";
 	material = MAT_STONE;
 	mag_circle = 4;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER_YELLOW";
 	description = NAME_SPL_ChargeFireball;
@@ -1609,7 +1443,7 @@ instance ItRu_fSumSkel(C_Item)
 	value = Value_Ru_SumSkel;
 	visual = "ItRu_SumSkel.3DS";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 3;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -1632,7 +1466,7 @@ instance ItRu_fFear(C_Item)
 	visual = "ItRu_Fear.3DS";
 	material = MAT_STONE;
 	mag_circle = 3;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
 	description = NAME_SPL_Fear;
@@ -1655,7 +1489,7 @@ instance ItRu_fIceCube(C_Item)
 	value = Value_Ru_IceCube;
 	visual = "ItRu_IceCube.3ds";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 3;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER_BLUE";
@@ -1681,7 +1515,7 @@ instance ItRu_fThunderBall(C_Item)
 	value = Value_Ru_ThunderBall;
 	visual = "ItRu_ThunderBall.3ds";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 3;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -1709,7 +1543,7 @@ instance ItRu_fSumGol(C_Item)
 	value = Value_Ru_SumGol;
 	visual = "ItRu_SumGol.3DS";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 4;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -1731,7 +1565,7 @@ instance ItRu_fHarmUndead(C_Item)
 	value = Value_Ru_HarmUndead;
 	visual = "ItRu_HarmUndead.3DS";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 4;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -1755,7 +1589,7 @@ instance ItRu_fPyrokinesis(C_Item)
 	value = Value_Ru_Pyrokinesis;
 	visual = "ItRu_Pyrokinesis.3ds";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 5;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER_YELLOW";
@@ -1783,7 +1617,7 @@ instance ItRu_fFirestorm(C_Item)
 	value = Value_Ru_Firestorm;
 	visual = "ItRu_Firestorm.3ds";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 3;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER_YELLOW";
@@ -1807,7 +1641,7 @@ instance ItRu_fIceWave(C_Item)
 	value = Value_Ru_IceWave;
 	visual = "ItRu_IceWave.3ds";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 5;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER_BLUE";
@@ -1835,7 +1669,7 @@ instance ItRu_fSumDemon(C_Item)
 	value = Value_Ru_SumDemon;
 	visual = "ItRu_SumDemon.3DS";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 5;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -1857,7 +1691,7 @@ instance ItRu_fFullHeal(C_Item)
 	value = Value_Ru_FullHeal;
 	visual = "ItRu_FullHeal.3ds";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 5;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -1881,7 +1715,7 @@ instance ItRu_fFirerain(C_Item)
 	value = Value_Ru_Firerain;
 	visual = "ItRu_Firerain.3ds";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 6;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER_YELLOW";
@@ -1905,7 +1739,7 @@ instance ItRu_fBreathOfDeath(C_Item)
 	value = Value_Ru_BreathOfDeath;
 	visual = "ItRu_BreathOfDeath.3ds";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 6;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER_RED";
@@ -1929,7 +1763,7 @@ instance ItRu_fMassDeath(C_Item)
 	value = Value_Ru_MassDeath;
 	visual = "ItRu_MassDeath.3ds";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 6;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER_RED";
@@ -1954,7 +1788,7 @@ instance ItRu_fArmyOfDarkness(C_Item)
 	value = Value_Ru_ArmyOfDarkness;
 	visual = "ItRu_ArmyOfDarkness.3DS";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 6;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER_RED";
@@ -1976,7 +1810,7 @@ instance ItRu_fShrink(C_Item)
 	value = Value_Ru_Shrink;
 	visual = "ItRu_Shrink.3DS";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 6;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -1998,7 +1832,7 @@ instance ItRu_fDeathbolt(C_Item)
 	value = 0;
 	visual = "ItRu_PalRepelEvil.3DS";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 6;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -2022,7 +1856,7 @@ instance ItRu_fDeathball(C_Item)
 	value = 0;
 	visual = "ItRu_PalRepelEvil.3DS";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 6;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";
@@ -2046,7 +1880,7 @@ instance ItRu_fConcussionbolt(C_Item)
 	value = 0;
 	visual = "ItRu_PalRepelEvil.3DS";
 	material = MAT_STONE;
-	spell = SPL_TeleportMonastery;
+	spell = SPL_Teleport_3;
 	mag_circle = 6;
 	wear = WEAR_EFFECT;
 	effect = "SPELLFX_WEAKGLIMMER";

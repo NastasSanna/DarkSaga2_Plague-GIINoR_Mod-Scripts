@@ -31,39 +31,18 @@ func int Spell_ProcessMana(var int manaInvested)
 	{
 		return Spell_Logic_PalDestroyEvil(manaInvested);
 	};
-	if(activeSpell == SPL_PalTeleportSecret)
+	if(activeSpell == SPL_DSP_TeleportForestTower)
 	{
-		return Spell_Logic_PalTeleportSecret(manaInvested);
+		return Spell_Logic_TeleportForestTower(manaInvested);
 	};
-	if(activeSpell == SPL_TeleportSeaport)
+	if(activeSpell == SPL_DSP_TeleportFortTower)
 	{
-		return Spell_Logic_TeleportSeaport(manaInvested);
+		return Spell_Logic_TeleportFortTower(manaInvested);
 	};
-	if(activeSpell == SPL_TeleportMonastery)
+	if(activeSpell == SPL_DSP_TeleportCampTower)
 	{
-		return Spell_Logic_TeleportMonastery(manaInvested);
+		return Spell_Logic_TeleportCampTower(manaInvested);
 	};
-	
-	if(activeSpell == SPL_TeleportFarm){return Spell_Logic_TeleportFarm(manaInvested);};
-	
-	if(activeSpell == SPL_TeleportXardas)
-	{
-		return Spell_Logic_TeleportXardas(manaInvested);
-	};
-	if(activeSpell == SPL_TeleportPassNW)
-	{
-		return Spell_Logic_TeleportPassNW(manaInvested);
-	};
-	if(activeSpell == SPL_TeleportPassOW)
-	{
-		return Spell_Logic_TeleportPassOW(manaInvested);
-	};
-	
-	if(activeSpell == SPL_TeleportOC){return Spell_Logic_TeleportOC(manaInvested);};
-	
-	if(activeSpell == SPL_TeleportOWDemonTower){return Spell_Logic_TeleportOWDemonTower(manaInvested);};
-	
-	if(activeSpell == SPL_TeleportTaverne){return Spell_Logic_TeleportTaverne(manaInvested);};
 	
 	if(activeSpell == SPL_Light)
 	{

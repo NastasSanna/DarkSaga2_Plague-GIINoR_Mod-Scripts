@@ -62,38 +62,19 @@ func int B_TeachPlayerTalentRunes(var C_Npc slf,var C_Npc oth,var int spell)
 	{
 		PLAYER_TALENT_RUNES[SPL_PalDestroyEvil] = TRUE;
 	};
-	if(spell == SPL_PalTeleportSecret)
+	if(spell == SPL_DSP_TeleportForestTower)
 	{
-		PLAYER_TALENT_RUNES[SPL_PalTeleportSecret] = TRUE;
+		PLAYER_TALENT_RUNES[SPL_DSP_TeleportForestTower] = TRUE;
 	};
-	if(spell == SPL_TeleportSeaport)
+	if(spell == SPL_DSP_TeleportFortTower)
 	{
-		PLAYER_TALENT_RUNES[SPL_TeleportSeaport] = TRUE;
+		PLAYER_TALENT_RUNES[SPL_DSP_TeleportFortTower] = TRUE;
 	};
-	if(spell == SPL_TeleportMonastery)
+	if(spell == SPL_DSP_TeleportCampTower)
 	{
-		PLAYER_TALENT_RUNES[SPL_TeleportMonastery] = TRUE;
+		PLAYER_TALENT_RUNES[SPL_DSP_TeleportCampTower] = TRUE;
 	};
-	if(spell == SPL_TeleportFarm)
-	{
-		PLAYER_TALENT_RUNES[SPL_TeleportFarm] = TRUE;
-	};
-	if(spell == SPL_TeleportXardas)
-	{
-		PLAYER_TALENT_RUNES[SPL_TeleportXardas] = TRUE;
-	};
-	if(spell == SPL_TeleportPassNW)
-	{
-		PLAYER_TALENT_RUNES[SPL_TeleportPassNW] = TRUE;
-	};
-	if(spell == SPL_TeleportPassOW)
-	{
-		PLAYER_TALENT_RUNES[SPL_TeleportPassOW] = TRUE;
-	};
-	if(spell == SPL_TeleportOC)
-	{
-		PLAYER_TALENT_RUNES[SPL_TeleportOC] = TRUE;
-	};
+	
 	if(spell == SPL_Light)
 	{
 		PLAYER_TALENT_RUNES[SPL_Light] = TRUE;
